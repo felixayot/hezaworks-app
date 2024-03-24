@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "title": "Math and Physics Teacher",
+        "description": "Educating and engaging students in curriculum and extra curriculum activities",
+        "requirements": "Great scores in Maths and Physics"
+    },
+    {
+        "id": 2,
+        "title": "CPA A/cnts",
+        "description": "Book keeping",
+        "requirements": "Above board attention to details"
+    },
+    {
+        "id": 3,
+        "title": "will be updated",
+        "description": "needs an update",
+        "requirements": "Needs an update"
+    },
+    {
+        "id": 4,
+        "title": "update done",
+        "description": "update done",
+        "requirements": "update done"
+    },
+    {
+        "id": 5,
+        "title": "Modified title",
+        "description": "updated description",
+        "requirements": "updated requirements"
+    },
+    {
+        "id": 6,
+        "title": "Only title updated",
+        "description": "Description unchanged",
+        "requirements": "Requirements unchanged"
+    },
+    {
+        "id": 7,
+        "title": "Title unchanged",
+        "description": "Only description updated",
+        "requirements": "Requirements unchanged"
+    },
+    {
+        "id": 8,
+        "title": "Title unchanged",
+        "description": "Description unchanged",
+        "requirements": "Only requirements are updated"
+    },
+    {
+        "id": 9,
+        "title": "Mechanical Engineer",
+        "description": "Build efficient machine engines",
+        "requirements": "Good engineering skills an practices"
+    },
+    {
+        "id": 10,
+        "title": "Doctors",
+        "description": "Neuro surgeons practitioners",
+        "requirements": "Great medical practices"
+    },
+    {
+        "id": 11,
+        "title": "Software Engineer",
+        "description": "Build scalable software systems",
+        "requirements": "Fullstack skills"
+    },
+    {
+        "id": 12,
+        "title": "Lawyer",
+        "description": "Represent clients in legal matters pertaining to business",
+        "requirements": "Great legal practices"
+    },
+    {
+        "id": 13,
+        "title": "Trade Representive",
+        "description": "Push sales volumes",
+        "requirements": "Excellent selling skills"
+    },
+    {
+        "id": 14,
+        "title": "Relationship Manager",
+        "description": "Manage branch operations",
+        "requirements": "Above board managerial skills"
+    },
+    {
+        "id": 15,
+        "title": "Procurement officer",
+        "description": "Prepare tender packages for bidders",
+        "requirements": "Good procurement and contract management skills"
+    },
+    {
+        "id": 16,
+        "title": "Quality Assurance Analyst",
+        "description": "Ensure quality and standards in the systems before production",
+        "requirements": "Above board attention to details"
+    },
+    {
+        "id": 17,
+        "title": "Underwriter",
+        "description": "Drafting insurance policy contracts for potential clients",
+        "requirements": "Great insurance policies practices"
+    },
+    {
+        "id": 18,
+        "title": "Civil Engineer",
+        "description": "Building domestic civil roads and civil settlements",
+        "requirements": "Great construction engineering practices"
+    },
+    {
+        "id": 19,
+        "title": "Quantity Surveyor",
+        "description": "Optimizing the cost of construction projects",
+        "requirements": "Above board quality analysis and methodology"
+    },
+    {
+        "id": 20,
+        "title": "Nurse",
+        "description": "Administering medical procedures to in-patients",
+        "requirements": "Great medical practices"
+    }
+]
