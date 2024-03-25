@@ -9,15 +9,15 @@ import Footer from "./components/Footer.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Router>
     <AuthProvider>
+    <Router>
       <Navbar />
     <GlobalStyles />
       <Routes>
     <Route path="/*" element={<App />} />
     </Routes>
     <Footer />
-    </AuthProvider>
     </Router>
+  </AuthProvider>
  </React.StrictMode>
 );

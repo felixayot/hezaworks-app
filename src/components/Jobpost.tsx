@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
 //import Jobposts from "../assets/jobposts.json";
-import {
-  JobpostContainer,
-  JobpostAttribute,
-  JobpostTitle,
-  JobpostButton,
-} from "../styles/Jobpost.styles";
 import JobsList from "./JobsList";
+import { JobpostContainer } from "../styles/Jobpost.styles";
 import axios from "../api/axios";
 
 const JOBPOSTS_URL = "/jobs/posts";
@@ -38,24 +33,26 @@ function Jobpost() {
             setIsLoading(false);
         })
         .catch((err) => {
-          if (!err.response) {
+          if (!err?.response) {
             setError('No response from server');
           } else {
-            setError(`Failed to fetch data ${err.response.data.message}`);
+            setError(`Failed to fetch data ${err?.response?.data?.message}`);
           }
         });
   }, []);
-
-  function handleApply() {
-    window.location.href = "/jobs/:id/apply";
+  if (isLoading) {
+    return <JobpostContainer>Loading...</JobpostContainer>;
   }
 
-  function handleAddToCart() {
-    window.location.href = "/jobs/:id/add";
+  else if (error) {
+    return <JobpostContainer>{error}</JobpostContainer>;
   }
-  return (
-    <JobsList posts={Jobposts} title={'Job posts to apply'}/>
-  ) 
+
+  else {
+    return (
+      <JobsList posts={Jobposts} />
+    ) 
+  }
 }
 
 export default Jobpost;

@@ -11,7 +11,7 @@ export const JobpostContainer = styled.article`
   background-color: #f5f5f5;
 `;
 
-export const JobpostTitle = styled.h1`
+export const JobpostTitle = styled.h2`
   margin-bottom: 10px;
   color: #333;
 `;
