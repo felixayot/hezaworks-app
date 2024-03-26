@@ -18,6 +18,7 @@ import NotFound from "./components/NotFound";
 import Admin from "./components/Admin";
 import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
+import Error500 from "./components/Error500";
 
 function App() {
   // const [ auth, setAuth ] = useState(false)
@@ -52,6 +53,8 @@ function App() {
         </Route>
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
+        {/* 500 */}
+        <Route path="error" element={<Error500 />} />
       </Routes>
   );
 }

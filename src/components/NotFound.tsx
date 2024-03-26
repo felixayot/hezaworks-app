@@ -1,11 +1,16 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { ErrorpageButton, ErrorpageContainer, ErrorpageText, ErrorpageTitle } from '../styles/ErrorPage.styles'
 
 function NotFound() {
+  const navigate = useNavigate()
+  const handleRedirect = () => navigate(-1)
   return (
-    <section>
-        <h2>Oops! Page Not Found.</h2>
-        <p>Please try accessing another page, maybe <Link to='home'>home</Link></p>
-    </section>
+    <ErrorpageContainer style={{ height: '60vh' }}>
+        <ErrorpageTitle>Oops! Page Not Found</ErrorpageTitle>
+        <ErrorpageText>Please try accessing another page,</ErrorpageText>
+        <ErrorpageText>Or</ErrorpageText>
+        <ErrorpageButton onClick={handleRedirect}>Go back</ErrorpageButton>
+    </ErrorpageContainer>
   )
 }
 
