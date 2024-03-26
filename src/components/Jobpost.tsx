@@ -21,6 +21,7 @@ function Jobpost() {
   const [Jobposts, setJobposts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
+
   useEffect(() => {
     axios.get(JOBPOSTS_URL, {
         headers: {
