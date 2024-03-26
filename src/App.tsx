@@ -19,6 +19,7 @@ import Admin from "./components/Admin";
 import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
 import Error500 from "./components/Error500";
+import UserPosts from "./components/UserPosts";
 
 function App() {
   // const [ auth, setAuth ] = useState(false)
@@ -34,9 +35,13 @@ function App() {
         <Route path="signup/jobseeker" element={<JobSeekerRegForm />} />
         <Route path="login" element={<SigninForm />} />
         <Route path="unauthorized" element={<Unauthorized />} />
+        <Route path="/user/profile" element={<UserProfile />} />
+        <Route path="/user/account/edit" element={<UserAccountSettingsForm />} />
+        <Route path="/user/account/delete" element="<UserProfile />" />
         {/* User Protected routes */}
         <Route element={<RequireAuth allowedRoles={[55]} />}>
         <Route path="home" element={<HomePage />} />
+        <Route path="/user/account" element={<AccountProfile />} />
         <Route path="jobs/:id/apply" element="<Jobpost />" />
         <Route path="jobs/:id/add" element="<Jobpost />" />
         </Route>
@@ -44,6 +49,7 @@ function App() {
         {/* Employer routes */}
         <Route element={<RequireAuth allowedRoles={[3, 2]}/>}>
         <Route path="postjob" element={<JobpostForm />} />
+        <Route path="/user/jobs" element={<UserPosts />} />
         <Route path="jobs/:id/update" element={<EditJobpostForm />} />
         <Route path="jobs/:id/delete" element="<Jobpost />" />
         </Route>
