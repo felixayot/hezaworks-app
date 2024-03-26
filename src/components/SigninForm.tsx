@@ -52,8 +52,9 @@ function SigninForm() {
       );
       console.log(JSON.stringify(response?.data))
       const accessToken = response?.data?.access_token
+      const userId = response?.data?.user_id
       const roles = response?.data?.roles
-      setAuth({ username, password, roles, accessToken })
+      setAuth({ username, password, userId, roles, accessToken })
       setUsername('')
       setPassword('')
       navigate(from, { replace: true })
