@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavDropdown } from "react-bootstrap";
-import { Routes, Route } from "react-router-dom";
+//import { Routes, Route } from "react-router-dom";
 import {
   Nav,
   LeftContainer,
@@ -17,20 +17,11 @@ import {
 import LogoImage from "../assets/heza-logo.png";
 import Icon from "./Icons";
 import useAuth from "../hooks/useAuth";
-import UserProfile from "./UserProfile";
-import AccountProfile from "./AccountProfile";
-import UserAccountSettingsForm from "./EditUserSettingsForm";
 
 function Navbar() {
   const [extendNav, setExtendNav] = useState(false);
   const { auth } = useAuth();
 
-  <Routes>
-  <Route path="/user/profile" element={<UserProfile />} />
-  <Route path="/user/account" element={<AccountProfile />} />
-  <Route path="/user/account/edit" element={<UserAccountSettingsForm />} />
-  <Route path="/user/account/delete" element="<UserProfile />" />
-  </Routes>
   return (
     <Nav extendNav={extendNav}>
       <NavInnerContainer>
@@ -43,7 +34,7 @@ function Navbar() {
               ? (
                 <>
             <NavLink to="/postjob">Post Jobs</NavLink>
-            <NavLink to="/jobs/:id/update">My Posts</NavLink>
+            <NavLink to="/user/jobs">My Posts</NavLink>
             </>
             ) : auth?.username ? (
             <>
