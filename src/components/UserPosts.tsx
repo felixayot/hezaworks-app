@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import JobsList from "./JobsList";
 import { JobpostContainer } from "../styles/Jobpost.styles";
 import axios from "../api/axios";
+import { PageError, PageLoading, PageLoadingWrapper } from "../styles/PageLoading.styles";
 //import { useParams } from "react-router-dom";
 //import useAuth from "../hooks/useAuth";
 
@@ -31,14 +32,19 @@ function UserPosts() {
         if (!err?.response) {
           setError("No response from server");
         } else {
-          setError(`Failed to fetch data ${err?.response?.data?.message}`);
+          setError("Failed to fetch data. Please try again later");
         }
       });
   }, []);
-  if (isLoading) {
-    return <JobpostContainer>Loading...</JobpostContainer>;
-  } else if (error) {
-    return <JobpostContainer>{error}</JobpostContainer>;
+  
+  if (error) {
+    return <PageLoadingWrapper>
+      <PageError>{error}</PageError>
+      </PageLoadingWrapper>
+  } else if (isLoading) {
+    return <PageLoadingWrapper>
+      <PageLoading>Loading...</PageLoading>
+      </PageLoadingWrapper>
   } else {
     return <JobsList posts={Jobposts} />;
   }

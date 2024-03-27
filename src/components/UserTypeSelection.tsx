@@ -13,9 +13,9 @@ function SelectUserType() {
     if (userType === 'employer') {
       // Redirect to employer registration form
       window.location.href = '/signup/employer';
-    } else if (userType === 'freelancer') {
+    } else if (userType === 'talent') {
       // Redirect to freelancer registration form
-      window.location.href = '/signup/jobseeker';
+      window.location.href = '/signup/talent';
     } else {
         alert('Please select an account type');
         }
@@ -40,8 +40,8 @@ function SelectUserType() {
         </SignUpFormText>
         <SignUpFormInput
           type="radio"
-          value="freelancer"
-          checked={userType === 'freelancer'}
+          value="talent"
+          checked={userType === 'talent'}
           onChange={handleUserTypeChange}
         />
       <SignUpFormButton type="submit">Proceed to Account Creation</SignUpFormButton>

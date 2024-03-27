@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 //import Jobposts from "../assets/jobposts.json";
 import JobsList from "./JobsList";
-import { JobpostContainer } from "../styles/Jobpost.styles";
 import axios from "../api/axios";
+import { PageError, PageLoading, PageLoadingWrapper } from "../styles/PageLoading.styles";
 
 const JOBPOSTS_URL = "/jobs/posts";
 
@@ -41,14 +41,17 @@ function Jobpost() {
           }
         });
   }, []);
-  if (isLoading) {
-    return <JobpostContainer>Loading...</JobpostContainer>;
-  }
 
-  else if (error) {
-    return <JobpostContainer>{error}</JobpostContainer>;
+  if (error) {
+    return <PageLoadingWrapper>
+    <PageError>{error}</PageError>
+    </PageLoadingWrapper>
+  } else if (isLoading) {
+    return <PageLoadingWrapper>
+    <PageLoading>Loading...</PageLoading>
+    </PageLoadingWrapper>
   }
-
+  
   else {
     return (
       <JobsList posts={Jobposts} />

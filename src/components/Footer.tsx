@@ -4,7 +4,8 @@ import Icon from './Icons'
 
 function Footer() {
   return (
-    <FooterContainer><Wrapper>
+    <FooterContainer>
+      <Wrapper>
         <Row>
         <Column>
         <Title>For Employers and Clients</Title>
@@ -36,7 +37,8 @@ function Footer() {
         <FooterLink to="/#"><Icon className="fa-regular fa-envelope" />Email</FooterLink>
         </Column>
         </Row>
-        </Wrapper></FooterContainer>
+        </Wrapper>
+      </FooterContainer>
   )
 }
 

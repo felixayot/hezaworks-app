@@ -17,6 +17,7 @@ import {
 import LogoImage from "../assets/heza-logo.png";
 import Icon from "./Icons";
 import useAuth from "../hooks/useAuth";
+import Layout from "./Layout";
 
 function Navbar() {
   const [extendNav, setExtendNav] = useState(false);
@@ -27,25 +28,30 @@ function Navbar() {
       <NavInnerContainer>
         <LeftContainer>
           <NavLinkContainer>
-            <NavLink to="/home">
+          <Layout />
+            <NavLink to="home">
               <Logo src={LogoImage}></Logo>
             </NavLink>
               { auth?.roles?.includes(3)
               ? (
                 <>
-            <NavLink to="/postjob">Post Jobs</NavLink>
-            <NavLink to="/user/jobs">My Posts</NavLink>
+            <Layout />
+            <NavLink to="postjob">Post Jobs</NavLink>
+            <NavLink to="user/jobs">My Posts</NavLink>
+            <NavLink to="user/applicants">Job Applicants</NavLink>
             </>
             ) : auth?.username ? (
             <>
-            <NavLink to="/jobs">Find Jobs</NavLink>
-            <NavLink to="/jobs/:id/add">My Applications</NavLink>
-            <NavLink to="/jobs/:id/add">My Job Cart</NavLink>
+            <Layout />
+            <NavLink to="jobs">Find Jobs</NavLink>
+            <NavLink to="jobs/:id/add">My Applications</NavLink>
+            <NavLink to="jobs/:id/add">My Job Cart</NavLink>
             </>
               ) : (
             <>
-            <NavLink to="/postjob">Post Jobs</NavLink>
-            <NavLink to="/jobs">Find Jobs</NavLink>
+            <Layout />
+            <NavLink to="postjob">Post Jobs</NavLink>
+            <NavLink to="jobs">Find Jobs</NavLink>
             </>
             )
             }
@@ -61,17 +67,31 @@ function Navbar() {
         </LeftContainer>
         <RightContainer>
           <NavLinkContainer>
-            {!auth?.username ? (
+            {auth?.roles?.includes(3) ? (
               <>
-              <NavLink to="/login">Log in</NavLink>
-              <NavLink to="/signup">Sign up</NavLink>
+            <NavLink to="user/viewprofiles">View Talents</NavLink>
+              <ProfileDropdown title="My Profile">
+              <Layout />
+              <NavDropdown.Item href="user/account">Account Settings</NavDropdown.Item><br />
+              <NavDropdown.Item href="home">Sign Out</NavDropdown.Item>
+            </ProfileDropdown>
+            </>
+            ) : auth?.username ?
+            (
+              <>
+              <ProfileDropdown title="My Profile">
+                <Layout />
+              <NavDropdown.Item href="user/profile">Profile</NavDropdown.Item><br />
+              <NavDropdown.Item href="user/account">Account Settings</NavDropdown.Item><br />
+              <NavDropdown.Item href="home">Sign Out</NavDropdown.Item>
+            </ProfileDropdown>
               </>
             ) : (
-              <ProfileDropdown title="User Profile">
-              <NavDropdown.Item href="/user/profile">Profile</NavDropdown.Item><br />
-              <NavDropdown.Item href="/user/account">Account Settings</NavDropdown.Item><br />
-              <NavDropdown.Item href="/user/home">Sign Out</NavDropdown.Item>
-            </ProfileDropdown>
+              <>
+              <Layout />
+              <NavLink to="login">Log in</NavLink>
+              <NavLink to="signup">Sign up</NavLink>
+              </>
             )
             }
           </NavLinkContainer>
@@ -79,14 +99,15 @@ function Navbar() {
       </NavInnerContainer>
       {extendNav && (
         <NavExtendedContainer>
-          <NavLinkExtended to="/home">
+          <Layout />
+          <NavLinkExtended to="home">
             <Logo src={LogoImage}></Logo>
           </NavLinkExtended>
-          <NavLinkExtended to="/postjob">Post Jobs</NavLinkExtended>
-          <NavLinkExtended to="/jobs">Find Jobs</NavLinkExtended>
-          <NavLinkExtended to="/login">Log in</NavLinkExtended>
-          <NavLinkExtended to="/signup">Sign up</NavLinkExtended>
-          <NavLinkExtended to="/profile">Profile</NavLinkExtended>
+          <NavLinkExtended to="postjob">Post Jobs</NavLinkExtended>
+          <NavLinkExtended to="jobs">Find Jobs</NavLinkExtended>
+          <NavLinkExtended to="login">Log in</NavLinkExtended>
+          <NavLinkExtended to="signup">Sign up</NavLinkExtended>
+          <NavLinkExtended to="profile">Profile</NavLinkExtended>
         </NavExtendedContainer>
       )}
     </Nav>
