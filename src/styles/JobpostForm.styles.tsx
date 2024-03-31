@@ -58,7 +58,7 @@ export const JobFormButton = styled.button`
     margin: 10px 0;
     border: none;
     border-radius: 5px;
-    background-color: #0795ff;
+    background-color: #27005D;
     color: #fff;
     cursor: pointer;
     `;

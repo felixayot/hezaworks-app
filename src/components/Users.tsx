@@ -1,20 +1,20 @@
 // Display all users
 import { useState, useEffect } from 'react';
 import { JobpostContainer, JobpostTitle, JobpostAttribute } from '../styles/Jobpost.styles';
-import axios from '../api/axios';
-import useRefreshToken from '../hooks/useRefreshToken';
+import useAxiosPrivate from '../hooks/UseAxiosPrivate';
 
 function Users() {
     const [ users, setUsers ] = useState();
-    const refresh = useRefreshToken();
+    const axiosPrivate = useAxiosPrivate();
 
     useEffect(() => {
+        document.title = 'HezaWorks - Users List';
         let isMounted = true;
         const Controller = new AbortController();
 
         const getUsers = async () => {
             try {
-                const response = await axios.get('/auth/users',
+                const response = await axiosPrivate.get('/auth/users',
                 { signal: Controller.signal });
                 isMounted && setUsers(response.data);
             } catch (err) {
@@ -47,8 +47,6 @@ function Users() {
          :
         <JobpostAttribute>No users to found</JobpostAttribute>
          }
-         <button onClick={() => refresh}>Refresh</button>
-         <br />
     </article>
   )
 }

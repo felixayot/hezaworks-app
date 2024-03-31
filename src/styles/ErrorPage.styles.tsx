@@ -22,8 +22,8 @@ export const ErrorpageButton = styled.button`
   padding: 10px 20px;
   margin-top: 5px;
   border: none;
-  border-radius: 5px;
-  background-color: #0795ff;
+  border-radius: 20px;
+  background-color: #27005D;
   color: #fff;
   cursor: pointer;
 

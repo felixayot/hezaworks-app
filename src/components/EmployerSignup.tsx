@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import {
     SignUpFormContainer,
@@ -10,12 +10,19 @@ import {
     SignUpFormLink,
     SignUp,
     SignUpFormRedirectLink, } from '../styles/SignUpFormStyles';
-import axios from '../api/axios';
+import axiosInstance from '../api/axios';
 import IsAuthenticated from './IsAuthenticated';
+import { PageLoadingWrapper, PageSuccess } from '../styles/PageLoading.styles';
 
 const SIGNUP_URL = '/auth/signup'
 
 function EmployerSignup() {
+
+  useEffect(() => {
+    document.title = 'HezaWorks - Recruiter Sign Up'
+  }
+  , [])
+
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/home'
@@ -37,7 +44,7 @@ function EmployerSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-        const response = await axios.post(SIGNUP_URL,
+        const response = await axiosInstance.post(SIGNUP_URL,
           JSON.stringify({
           first_name: firstName,
           last_name: lastName,
@@ -53,9 +60,8 @@ function EmployerSignup() {
           }
         )
         console.log(response)
-        window.location.href = '/login'
-        setSuccess('Account creation successful!')
-        window.alert(success)
+        setSuccess('Account creation successful! You will be notified via email \
+        once your account has been approved for posting jobs.')
     } catch (err) {
         if(!err?.response) {
             setError('No response from server')
@@ -72,11 +78,12 @@ function EmployerSignup() {
   return (
       <SignUpFormContainer style={{height: "120vh"}}>
         { success ?
-        <SignUpFormText>Account creation successful! You will be notified via email
-          once your account has been approved for posting jobs and projects.
-          Meanwhile you can proceed to
+        <PageLoadingWrapper>
+          <PageSuccess>{success} Meanwhile you can proceed to
           <SignUpFormLink to="/login">Log in</SignUpFormLink> and interact with the platform.
-        </SignUpFormText>
+        </PageSuccess>
+        </PageLoadingWrapper>
+
         : error ? <SignUpFormText>{error}</SignUpFormText> :
           <SignUpFormWrapper>
               <SignUpFormTitle>Sign Up</SignUpFormTitle>

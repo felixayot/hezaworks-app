@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from '../api/axios'
+import axiosInstance from '../api/axios'
 import { useNavigate, useLocation } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import {
@@ -23,6 +23,7 @@ function TalentSignup() {
   const from = location.state?.from?.pathname || '/home'
 
   useEffect(() => {
+    document.title = 'HezaWorks - Talent Sign Up'
     if(auth.username) {
       navigate(from, { replace: true })
     }
@@ -40,7 +41,7 @@ function TalentSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post(SIGNUP_URL,
+      const response = await axiosInstance.post(SIGNUP_URL,
         JSON.stringify({
         first_name: firstName,
         last_name: lastName,

@@ -1,11 +1,25 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import { ProfileForm, UserProfileButton, UserProfileContainer, UserProfileInput, UserProfileTitle, UserProfileWrapper } from '../styles/UserProfile.styles'
 import { useState, useEffect } from 'react'
-import axios from '../api/axios'
+// import axiosInstance from '../api/axios'
 import { PageError, PageLoadingWrapper } from '../styles/PageLoading.styles'
+import useAxiosPrivate from '../hooks/UseAxiosPrivate'
+
 
 const PROFILE_URL = '/auth/user/talentprofile'
 
 function UserProfile() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || '/jobs'
+
+  useEffect(() => {
+    document.title = 'HezaWorks - Create My Profile'
+  }
+  , [])
+
+  const axiosPrivate = useAxiosPrivate();
   const [resume, setResume] = useState('')
   const [phone, setPhone] = useState('')
   const [address, setAddress] = useState('')
@@ -21,13 +35,15 @@ function UserProfile() {
 
   const handleNext = (e) => {
     e.preventDefault()
-    console.log('Next')
+    if(resume) {
+      moveTo(key.current + 1)
+    }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post(PROFILE_URL,
+      const response = await axiosPrivate.post(PROFILE_URL,
         JSON.stringify({
           resume,
           phone_number: phone,
@@ -57,7 +73,7 @@ function UserProfile() {
       setEmployer('')
       setTitle('')
       setResponsibilities('')
-      window.alert(success)
+      navigate(from, { replace: true })
     } catch (err) {
       if (!err?.response) {
         setError('No response from server')
@@ -79,7 +95,7 @@ function UserProfile() {
     <>
     <UserProfileTitle>Create Your Professional Profile</UserProfileTitle>
     <UserProfileContainer>
-        <UserProfileWrapper>
+        <UserProfileWrapper key="cvCard">
         <UserProfileTitle>Upload your Resume</UserProfileTitle>
           <ProfileForm>
         <label>Resume:
@@ -92,7 +108,8 @@ function UserProfile() {
         <UserProfileButton onClick={handleNext}>Save and Proceed to Next</UserProfileButton>
         </ProfileForm>
         </UserProfileWrapper>
-        <UserProfileWrapper>
+
+        <UserProfileWrapper key="piCard">
         <UserProfileTitle>Personal Information</UserProfileTitle>
           <ProfileForm>
         <UserProfileInput
@@ -117,7 +134,7 @@ function UserProfile() {
         </ProfileForm>
         </UserProfileWrapper>
 
-        <UserProfileWrapper>
+        <UserProfileWrapper key="edCard">
         <UserProfileTitle>Education</UserProfileTitle>
           <ProfileForm>
         <UserProfileInput
@@ -142,7 +159,7 @@ function UserProfile() {
         </ProfileForm>
         </UserProfileWrapper>
 
-        <UserProfileWrapper>
+        <UserProfileWrapper key="expCard">
         <UserProfileTitle>Professional Experience</UserProfileTitle>
           <ProfileForm>
         <UserProfileInput

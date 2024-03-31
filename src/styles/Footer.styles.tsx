@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const FooterContainer = styled.div`
     padding: 60px 80px;
-    background-color: #0795ff;
+    background-color:  #27005D;
     `;
 
 export const Wrapper = styled.div`
@@ -33,24 +33,24 @@ export const Row = styled.div`
 
 export const FooterLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: #fff;
   margin: 10px;
   font-size: 18px;
 
   &:hover {
-  color:  #F6921E;
+  color:  #0795FF;
   transition: 200ms ease-out;
     }
     `;
 
 export const Title = styled.p`
-    color: #fff;
+    color: #F6921E;
     font-size: 24px;
     margin-bottom: 40px;
     font-weight: bold;
 
     // &:hover {
-    //     color: #0795ff; #ff9c00
+    //     color: #0795ff; #ff9c00 #F6921E
     //     transition: 200ms ease-out;
     `;
 

@@ -10,6 +10,7 @@ function NotFound() {
         <ErrorpageText>Please try accessing another page,</ErrorpageText>
         <ErrorpageText>Or</ErrorpageText>
         <ErrorpageButton onClick={handleRedirect}>Go back</ErrorpageButton>
+        <br />
     </ErrorpageContainer>
   )
 }

@@ -1,11 +1,9 @@
 import { Outlet } from "react-router-dom";
-import { GlobalStyles } from "../styles/GlobalStyles.tsx";
+// import { GlobalStyles } from "../styles/GlobalStyles.tsx";
 
 function Layout() {
   return (
-    <GlobalStyles>
         <Outlet />
-    </GlobalStyles>
   )
 }
 

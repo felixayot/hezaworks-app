@@ -49,7 +49,7 @@ export const SignUpFormButton = styled.button`
   margin: 10px 0;
   border: none;
   border-radius: 5px;
-  background-color: #0795ff;
+  background-color: #27005D;
   color: #fff;
   cursor: pointer;
 `;
@@ -74,11 +74,6 @@ export const SignUpFormLink = styled(Link)`
 export const SignUpFormError = styled.p`
   margin-top: 10px;
   color: #f00;
-`;
-
-export const SignUpFormSuccess = styled.p`
-  margin-top: 10px;
-  color: #0f0;
 `;
 
 export const SignUpFormRedirect = styled.p`

@@ -8,7 +8,7 @@ export const Nav = styled.nav<{ extendNav: boolean }>`
   background-color: white;
   display: flex;
   flex-direction: column;
-  border-bottom: 0.05px solid #0795ff;
+  border-bottom: 0.05px solid #27005D;
 `;
 
 export const LeftContainer = styled.div`

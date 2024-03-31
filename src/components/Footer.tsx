@@ -8,7 +8,7 @@ function Footer() {
       <Wrapper>
         <Row>
         <Column>
-        <Title>For Employers and Clients</Title>
+        <Title>For Employers</Title>
         <FooterLink to="/#">How to Hire</FooterLink>
         <FooterLink to="/#">Pricing</FooterLink>
         </Column>

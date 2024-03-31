@@ -1,21 +1,22 @@
 import { useState, useEffect } from 'react';
-import { JobpostContainer, JobpostTitle, JobpostAttribute, JobpostButton } from "../styles/Jobpost.styles";
+import { JobpostContainer, JobpostTitle, JobpostAttribute, JobpostButton, JobpostLink } from "../styles/Jobpost.styles";
 
 function Jobcart() {
-    const [cartposts, setCartposts] = useState([]);
+    const [cartposts, setCartposts] = useState<{ id: number; title: string; organization: string; description: string; requirements: string; posted_at: string; expires_on: string; }[]>([]);
 
     useEffect(() => {
-        setCartposts([
-            {
-                id: 1,
-                title: "Software Engineer",
-                organization: "Google",
-                description: "Develop software applications",
-                requirements: "3 years experience",
-                posted_at: "2021-12-01",
-                expires_on: "2022-12-01"
-            }
-        ]);
+      document.title = 'HezaWorks - Job Cart';
+      setCartposts([
+        {
+          "id": 1,
+          "title": "Software Engineer",
+          "organization": "Google",
+          "description": "Develop software applications",
+          "requirements": "3 years experience",
+          "posted_at": "2021-12-01",
+          "expires_on": "2022-12-01"
+        }
+      ]);
     }, []);
   return (
     cartposts.map((post) => (
@@ -41,7 +42,7 @@ function Jobcart() {
           <h2>Job Expires On</h2>
           {post.expires_on}
         </JobpostAttribute>
-        <JobpostButton onClick={handleApply}>Apply Now</JobpostButton>
+        <JobpostLink to={`/jobs/job/${post.id}/apply`}>Apply Now</JobpostLink>
         </JobpostContainer>
   )
 ));

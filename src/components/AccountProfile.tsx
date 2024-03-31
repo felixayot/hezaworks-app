@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { JobpostContainer, JobpostTitle, JobpostAttribute } from '../styles/Jobpost.styles';
 import { SignUpFormButton } from '../styles/SignUpFormStyles';
-import axios from '../api/axios'
+// import axiosInstance from '../api/axios'
+import useAxiosPrivate from '../hooks/UseAxiosPrivate';
 
 const ACCPROFILE_URL = 'auth/users/me'
 
 function AccountProfile() {
+  const axiosPrivate = useAxiosPrivate()
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -15,7 +17,7 @@ function AccountProfile() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get(ACCPROFILE_URL, {
+    axiosPrivate.get(ACCPROFILE_URL, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from '../api/axios'
+import axiosInstance from '../api/axios'
 import {
     JobFormContainer,
     JobForm,
@@ -11,14 +12,22 @@ import {
     JobFormLongInput,
     JobFormWrapper,
 } from '../styles/JobpostForm.styles';
-import { SignUpFormError } from '../styles/SignUpFormStyles';
+import { PageError, PageSuccess, PageLoadingWrapper, PageSuccessLink } from "../styles/PageLoading.styles";
+import useAxiosPrivate from '../hooks/UseAxiosPrivate';
 
 const POST_URL = '/jobs/posts'
 function JobpostForm() {
+
+    useEffect(() => {
+        document.title = 'HezaWorks - Post a Job'
+      }
+      , [])
+
+    const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate()
     const location = useLocation()
 
-    const from = location.state?.from?.pathname || '/jobs'
+    const from = location.state?.from?.pathname || '/user/jobs'
 
     const [jobTitle, setJobTitle] = useState('')
     const [jobDescription, setJobDescription] = useState('')
@@ -37,7 +46,7 @@ function JobpostForm() {
         })
         console.log(item)
         try {
-            const response = await axios.post(POST_URL,
+            const response = await axiosPrivate.post(POST_URL,
                 item,
                 {
                 headers: {
@@ -50,25 +59,33 @@ function JobpostForm() {
             setJobDescription('')
             setJobRequirements('')
             setJobpostexpireson('')
-            navigate(from, { replace: true })
+            // navigate(from, { replace: true })
             setSuccess('Jobpost created successfully')
-            window.alert(success)
         } catch (err) {
             if(!err?.response) {
                 setError('No response from server')
-                window.alert(error)
             } else if(err?.response?.status === 400) {
-                setError('Missing job post details')
-                window.alert(error)
+                setError('Invalid expiry date. Please input a future date.')
             } else if(err?.response?.status === 401) {
-                setError('Unauthorized access')
-                window.alert(error)
+                setError('Account not authorized to create job posts. Please contact the administrator.')
             } else {
                 setError('Jobpost creation failed. Please try again later.')
-                window.alert(error)
             }
         }
     }
+    if (error) {
+        return <PageLoadingWrapper>
+        <PageError>{error}</PageError>
+        </PageLoadingWrapper>
+      } else if (success) {
+        return <PageLoadingWrapper>
+        <PageSuccess>Job post created successfully! Go to
+            <PageSuccessLink to="/user/posts"> My Posts</PageSuccessLink>
+        </PageSuccess>
+        </PageLoadingWrapper>
+      }
+      
+
   return (
     <JobFormContainer>
         <JobFormWrapper>
@@ -110,4 +127,4 @@ function JobpostForm() {
   )
 }
 
-export default JobpostForm
+export default JobpostForm;

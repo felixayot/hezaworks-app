@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import useAxiosPrivate from '../hooks/UseAxiosPrivate';
+import { useParams } from 'react-router-dom';
 import {
     JobFormContainer,
     JobForm,
@@ -11,23 +13,56 @@ import {
 } from '../styles/JobpostForm.styles';
 
 function EditJobpost() {
+    const { id } = useParams();
+    const axiosPrivate = useAxiosPrivate();
     const [jobTitle, setJobTitle] = useState('')
     const [jobDescription, setJobDescription] = useState('')
     const [jobRequirements, setJobRequirements] = useState('')
     const [jobpostexpireson, setJobpostexpireson] = useState('')
+    const [error, setError] = useState('');
 
-    async function handleSubmit() {
-        const item = { jobTitle, jobDescription, jobRequirements, jobpostexpireson }
-        
-        await fetch('http://localhost:5000/jobs/posts', {
-            method: 'POST',
-            body: JSON.stringify(item),
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            }
+    function handleSubmit(e) {
+        e.preventDefault();
+        axiosPrivate.put(`/jobs/posts/job/${id}`, {
+            title: jobTitle,
+            description: jobDescription,
+            requirements: jobRequirements,
+            expireson: jobpostexpireson,
         })
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((err) => {
+            if (!err?.response) {
+                setError('No response from server');
+            } else {
+                setError(`Failed to fetch data ${err?.response?.data?.message}`);
+            }
+        });
     }
+
+    useEffect(() => {
+        axiosPrivate.put(`/jobs/posts/job/${id}`, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: false,
+          })
+            .then((response) => {
+                setJobTitle(response.data.title);
+                setJobDescription(response.data.description);
+                setJobRequirements(response.data.requirements);
+                setJobpostexpireson(response.data.expireson);
+            })
+            .catch((err) => {
+              if (!err?.response) {
+                setError('No response from server');
+              } else {
+                setError(`Failed to fetch data ${err?.response?.data?.message}`);
+              }
+            });
+      }, [axiosPrivate, id]);
+
   return (
     <JobFormContainer>
         <JobFormWrapper>

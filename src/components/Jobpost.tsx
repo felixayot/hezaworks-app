@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 //import Jobposts from "../assets/jobposts.json";
 import JobsList from "./JobsList";
-import axios from "../api/axios";
-import { PageError, PageLoading, PageLoadingWrapper } from "../styles/PageLoading.styles";
+import axiosInstance from "../api/axios";
+import { PageError, PageErrorButton, PageLoading, PageLoadingWrapper } from "../styles/PageLoading.styles";
 
 const JOBPOSTS_URL = "/jobs/posts";
 
@@ -23,7 +23,7 @@ function Jobpost() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get(JOBPOSTS_URL, {
+    axiosInstance.get(JOBPOSTS_URL, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -44,7 +44,8 @@ function Jobpost() {
 
   if (error) {
     return <PageLoadingWrapper>
-    <PageError>{error}</PageError>
+    <PageError>{error}</PageError><br />
+    <PageErrorButton onClick={() => window.location.reload()}>Try again</PageErrorButton>
     </PageLoadingWrapper>
   } else if (isLoading) {
     return <PageLoadingWrapper>

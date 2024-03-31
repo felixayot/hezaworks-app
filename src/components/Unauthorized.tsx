@@ -1,7 +1,14 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ErrorpageButton, ErrorpageContainer, ErrorpageText, ErrorpageTitle } from '../styles/ErrorPage.styles'
 
 function Unauthorized() {
+
+  useEffect(() => {
+    document.title = 'HezaWorks - Unauthorized'
+  }
+  , [])
+
   const navigate = useNavigate()
   const handleRedirect = () => navigate(-1)
   return (

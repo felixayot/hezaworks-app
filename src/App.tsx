@@ -13,58 +13,60 @@ import EditJobpost from "./components/EditJobpost";
 import Unauthorized from "./components/Unauthorized";
 import NotFound from "./components/NotFound";
 import Admin from "./components/Admin";
-import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
 import Error500 from "./components/Error500";
 import UserPosts from "./components/UserPosts";
 import JobApplicants from "./components/JobApplicants";
 import TalentsList from "./components/TalentsList";
+import MyApplications from "./components/MyApplications";
+import AllAplications from "./components/AllApplications";
+import ApplyJob from "./components/ApplyJob";
+import Jobcart from "./components/Jobcart";
 
 function App() {
   // const [ auth, setAuth ] = useState(false)
   return (
       <Routes>
         {/* Public routes */}
-        <Route path="/" element={<Layout />} />
+
+        <Route path="/" element={<HomePage />} />
         <Route path="home" element={<HomePage />} />
         <Route path="jobs" element={<Jobpost />} />
-        <Route path="jobs/:id" element="<Jobpost />" />
+        <Route path="jobs/job/:id" element="<Jobpost />" />
         <Route path="signup" element={<SelectUserType />} />
         <Route path="signup/employer" element={<EmployerSignup />} />
         <Route path="signup/talent" element={<TalentSignup />} />
         <Route path="login" element={<SigninForm />} />
         <Route path="unauthorized" element={<Unauthorized />} />
-        <Route path="user/profile" element={<UserProfile />} />
         <Route path="user/account/edit" element={<EditAccountSettings />} />
         <Route path="user/account" element={<AccountProfile />} />
         <Route path="user/account/delete" element="<UserProfile />" />
         {/* User Protected routes */}
         <Route element={<RequireAuth allowedRoles={[55]} />}>
-        <Route path="/" element={<Layout />} />
         <Route path="home" element={<HomePage />} />
-        <Route path="jobs/:id/apply" element="<Jobpost />" />
-        <Route path="jobs/:id/add" element="<Jobpost />" />
+        <Route path="user/profile" element={<UserProfile />} />
+        <Route path="jobs/job/:id/apply" element={<ApplyJob />} />
+        <Route path="user/myapplications" element={<MyApplications />} />
+        <Route path="user/jobcart" element={<Jobcart />} />
         </Route>
 
         {/* Employer routes */}
         <Route element={<RequireAuth allowedRoles={[3, 2]}/>}>
-        <Route path="/" element={<Layout />} />
         <Route path="postjob" element={<JobpostForm />} />
-        <Route path="user/jobs" element={<UserPosts />} />
-        <Route path="user/applicants" element={<JobApplicants />} />
+        <Route path="user/posts" element={<UserPosts />} />
+        <Route path="user/applicants" element={<AllAplications />} />
+        <Route path="user/job/:id/applicants" element={<JobApplicants />} />
         <Route path="user/viewprofiles" element={<TalentsList />} />
-        <Route path="jobs/:id/update" element={<EditJobpost />} />
-        <Route path="jobs/:id/delete" element="<Jobpost />" />
+        <Route path="user/job/:id/update" element={<EditJobpost />} />
+        <Route path="user/job/:id/delete" element="<Jobpost />" />
         </Route>
         {/* Admin routes */}
         <Route element={<RequireAuth allowedRoles={[1]}/>}>
-        <Route path="/" element={<Layout />} />
         <Route path="admin" element={<Admin />} />
         </Route>
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
         {/* 500 */}
-        <Route path="/" element={<Layout />} />
         <Route path="error" element={<Error500 />} />
       </Routes>
   );

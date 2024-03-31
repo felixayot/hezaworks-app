@@ -13,8 +13,9 @@ import {
     SignUpFormLink,
     SignUp,
   } from '../styles/SignUpFormStyles'
-import axios from '../api/axios'
+import axiosInstance from '../api/axios'
 import IsAuthenticated from './IsAuthenticated'
+import { PageError, PageErrorButton, PageLoadingWrapper, PageSuccess } from '../styles/PageLoading.styles'
 
 const SIGNIN_URL = '/auth/login'
 
@@ -32,17 +33,18 @@ function SigninForm() {
   const [ username, setUsername ] = useState('')
   // const [email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
-  //const [ success, setSuccess ] = useState('')
+  const [ success, setSuccess ] = useState('')
   const [ error, setError ] = useState('')
 
   useEffect(() => {
+    document.title = 'HezaWorks - Sign In'
     setError('');
   }, [username, password])
 
  const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post(SIGNIN_URL,
+      const response = await axiosInstance.post(SIGNIN_URL,
         JSON.stringify({ username, password }),
         {
           headers: { 'Content-Type': 'application/json' },
@@ -51,13 +53,14 @@ function SigninForm() {
       );
       console.log(JSON.stringify(response?.data))
       const accessToken = response?.data?.access_token
+      const refreshToken = response?.data?.refresh_token
       const userId = response?.data?.user_id
       const roles = response?.data?.roles
-      setAuth({ username, password, userId, roles, accessToken })
+      setAuth({ username, password, userId, roles, accessToken, refreshToken })
       setUsername('')
       setPassword('')
+      setSuccess('Log in successful. Redirecting...')
       navigate(from, { replace: true })
-      window.alert('Log in successful')
     } catch (err) {
       if(!err?.response) {
         setError('No response from server')
@@ -72,25 +75,23 @@ function SigninForm() {
   }
     
   return (
-    //<title>Sign In</title>
     <SignUpFormContainer>
       {
         error ? (
-          <SignUpFormError>{error}</SignUpFormError>
-          ) : null
-      }
-     {/*
-     { success ?
+          <PageLoadingWrapper>
+            <PageError>{error}</PageError><br />
+            <PageErrorButton onClick={() => window.location.reload()}>Try again</PageErrorButton>
+          </PageLoadingWrapper>
+          ) : success ?
      (
-       <SignUpFormText>You are logged in. Go to
+       <PageLoadingWrapper>
+        <PageSuccess>{success}
          <SignUpFormLink to="/home">Home</SignUpFormLink>
-       </SignUpFormText>
+         </PageSuccess>
+       </PageLoadingWrapper>
       )
-    : error ? (
-      <SignUpFormText>{error}</SignUpFormText>
-      ): null
-      }
-      */}
+    :
+    (
         <SignUpFormWrapper>
             <SignUpFormTitle>Sign In</SignUpFormTitle>
             <SignUp onSubmit={handleSubmit}>
@@ -112,6 +113,7 @@ function SigninForm() {
             </SignUpFormText>
             </SignUp>
         </SignUpFormWrapper>
+        )}
     </SignUpFormContainer>
   )
 }

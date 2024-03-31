@@ -1,15 +1,18 @@
-import axios from '../api/axios'
+import axiosInstance from '../api/axios'
 import useAuth from './useAuth'
 
 const REFRESH_URL = '/auth/refresh'
 
 function UseRefreshToken() {
     const { setAuth } = useAuth()
+    const authHeader = { headers:
+        { 'Authorization': `Bearer ${setAuth?.refreshToken}` }
+    }   
 
     async function refresh() {
-        const response = await axios.post(REFRESH_URL,
+        const response = await axiosInstance.post(REFRESH_URL,
             {
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', ...authHeader },
             withCredentials: false
             })
             setAuth(prev => {
@@ -19,6 +22,7 @@ function UseRefreshToken() {
             })
         return response.data.access_token
     }
+
     return refresh
 }
 

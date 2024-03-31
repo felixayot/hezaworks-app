@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SignUpFormText, SignUpFormLink, SignUpFormContainer, SignUpFormWrapper, SignUp, SignUpFormTitle, SignUpFormInput, SignUpFormButton } from '../styles/SignUpFormStyles';
 
 function SelectUserType() {
+
+  useEffect(() => {
+    document.title = 'HezaWorks - Select Account Type'
+  }
+  , [])
+
   const [userType, setUserType] = useState(''); // State to store user type
 
   const handleUserTypeChange = (e) => {
@@ -27,7 +33,7 @@ function SelectUserType() {
     <SignUp onSubmit={handleSubmit}>
       <SignUpFormTitle>Select your account type</SignUpFormTitle>
       <SignUpFormText>
-        Employer or Client
+        Employer
         </SignUpFormText>
         <SignUpFormInput
           type="radio"
@@ -36,7 +42,7 @@ function SelectUserType() {
           onChange={handleUserTypeChange}
         /><br />
         <SignUpFormText>
-        Freelancer or Job Seeker
+        Talent
         </SignUpFormText>
         <SignUpFormInput
           type="radio"

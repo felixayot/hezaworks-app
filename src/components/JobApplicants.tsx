@@ -1,72 +1,93 @@
-import { useEffect, useState } from 'react';
-import axios from '../api/axios';
-import { PageError, PageLoading, PageLoadingWrapper } from '../styles/PageLoading.styles';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+// import axiosInstance from '../api/axios';
+import {
+  PageError,
+  PageLoading,
+  PageLoadingWrapper,
+} from "../styles/PageLoading.styles";
+import useAxiosPrivate from "../hooks/UseAxiosPrivate";
+import { StyledLink, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow, TableTitle } from "../styles/ApplicationsTable.styles";
 
-const JOBAPPLICANTS_URL = '/jobs/posts/job/{id}/applicants';
 function JobApplicants() {
+  const { id } = useParams();
+
+  const axiosPrivate = useAxiosPrivate();
   const [applicants, setApplicants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    axios.get(JOBAPPLICANTS_URL, {
+    document.title = "HezaWorks - Job Applicants";
+    axiosPrivate
+      .get(`/jobs/posts/job/${id}/applicants`, {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: false,
       })
-        .then((response) => {
-            setApplicants(response.data);
-            setIsLoading(false);
-        })
-        .catch((err) => {
-          if (!err?.response) {
-            setError('No response from server');
-          } else if (err?.response?.data === undefined) {
-            setError('No applications received yet');
-          } else {
-            setError(`Failed to fetch data ${err?.response?.data?.message}`);
-          }
-        });
-  }, []);
+      .then((response) => {
+        setApplicants(response.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        if (!err?.response) {
+          setError("No response from server");
+        } else if (err?.response?.data === undefined) {
+          setError("No applications received yet");
+        } else {
+          setError(`Failed to fetch data ${err?.response?.data?.message}`);
+        }
+      });
+  }, [axiosPrivate, id]);
 
   if (error) {
-    return <PageLoadingWrapper>
-    <PageError>Loading...</PageError>
-    </PageLoadingWrapper>
-  } else if (isLoading) {
-    return <PageLoadingWrapper>
-      <PageLoading>Loading...</PageLoading>
+    return (
+      <PageLoadingWrapper>
+        <PageError>{error}</PageError>
       </PageLoadingWrapper>
+    );
+  } else if (isLoading) {
+    return (
+      <PageLoadingWrapper>
+        <PageLoading>Loading...</PageLoading>
+      </PageLoadingWrapper>
+    );
   }
 
   return (
     <>
-    <h2>Received Applications from Talent</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Application ID</th>
-                <th>Job ID</th>
-                <th>Applicant ID</th>
-                <th>Application Status</th>
-                <th>Date Applied</th>
-            </tr>
-        </thead>
-            <tbody>
-              {applicants.map((applicant) => (
-                <tr>
-                    <td>applicant.id</td>
-                    <td>applicant.job_id</td>
-                    <td>applicant.user_id</td>
-                    <td>applicant.status</td>
-                    <td>applicant.applied_at</td>
-                </tr>
-              ))}
-            </tbody>
-    </table>
-  </>
-  )
+      <TableTitle>Received Applications from Talent</TableTitle>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderCell>Application ID</TableHeaderCell>
+            <TableHeaderCell>Job ID</TableHeaderCell>
+            <TableHeaderCell>Applicant Email</TableHeaderCell>
+            <TableHeaderCell>Application Status</TableHeaderCell>
+            <TableHeaderCell>Date Applied</TableHeaderCell>
+            <TableHeaderCell>View Application</TableHeaderCell>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {applicants && applicants.map((applicant, i) => {
+              return (
+              <TableRow key={i}>
+              <TableCell>{applicant.application_id}</TableCell>
+              <TableCell>{applicant.job_id}</TableCell>
+              <TableCell>{applicant.applicant}</TableCell>
+              <TableCell>{applicant.status}</TableCell>
+              <TableCell>{applicant.applied_at}</TableCell>
+              <TableCell><StyledLink>View More</StyledLink></TableCell>
+            </TableRow>
+              )
+            }
+          )
+          }
+        </TableBody>
+      </Table>
+    </>
+  );
 }
 
-export default JobApplicants
+export default JobApplicants;

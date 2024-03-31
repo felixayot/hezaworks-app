@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react";
-import axios from "../api/axios";
-import { PageError, PageLoading, PageLoadingWrapper } from "../styles/PageLoading.styles";
+import { PageError, PageErrorButton, PageLoading, PageLoadingWrapper } from "../styles/PageLoading.styles";
+import useAxiosPrivate from "../hooks/UseAxiosPrivate";
+import { TalentListAttribute, TalentListContainer, TalentListLink, TalentListTitle } from "../styles/TalentList.styles";
+import { Title } from "../styles/Jobpost.styles";
 
 const TALENTS_URL = "/auth/users/talentlist";
 
 function TalentsList() {
+  const axiosPrivate = useAxiosPrivate();
   const [talents, setTalents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get(TALENTS_URL, {
+    document.title = "HezaWorks - Talents List";
+    axiosPrivate.get(TALENTS_URL, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -23,15 +27,16 @@ function TalentsList() {
         .catch((err) => {
           if (!err?.response) {
             setError('No response from server');
-          } else {
-            setError('Failed to fetch data. Please try again later');
+          } else if (err.response?.status === 401) {
+            setError('Your account is inactive. Please contact the administrator.');
           }
         });
-  }, []);
+  }, [axiosPrivate]);
 
   if (error) {
     return <PageLoadingWrapper>
     <PageError>{error}</PageError>
+    <PageErrorButton onClick={() => window.location.reload()}>Try again</PageErrorButton>
     </PageLoadingWrapper>
   } else if (isLoading) {
     return <PageLoadingWrapper>
@@ -39,19 +44,48 @@ function TalentsList() {
     </PageLoadingWrapper>
   } else {
     return (
-      talents.map((talent) => (
-        <div key={talent.id}>
-          <h1>{talent.first_name} {talent.last_name}</h1>
-          <h2>{talent.email}</h2>
-          <h3>{talent.phone_number}</h3>
-          <h4>{talent.location}</h4>
-          <h5>{talent.skills}</h5>
-          <h6>{talent.experience}</h6>
-          <h6>{talent.resume}</h6>
-        </div>
-      )
-    ) 
-  )}
+      <>
+      <Title>Talents List</Title>
+      {talents && talents.map((talent) => (
+        <TalentListContainer key={talent.user_id}>
+          <TalentListAttribute>
+          <TalentListTitle>Resume</TalentListTitle>
+          <TalentListLink>{talent.resume}</TalentListLink>
+          </TalentListAttribute>
+        <TalentListAttribute>
+          <TalentListTitle>Contact</TalentListTitle>
+          {talent.phone_number}
+        </TalentListAttribute>
+        <TalentListAttribute>
+          <TalentListTitle>Place of Residence</TalentListTitle>
+          {talent.city}
+        </TalentListAttribute>
+        <TalentListAttribute>
+         <TalentListTitle>Level of Education</TalentListTitle>
+          {talent.education_level}
+        </TalentListAttribute>
+        <TalentListAttribute>
+          <TalentListTitle>Field of Study</TalentListTitle>
+          {talent.field}
+        </TalentListAttribute>
+        <TalentListAttribute>
+          <TalentListTitle>Current or Former Employer</TalentListTitle>
+        {talent.employer}
+        </TalentListAttribute>
+        <TalentListAttribute>
+          <TalentListTitle>Current or Former Job Title</TalentListTitle>
+          {talent.title}
+        </TalentListAttribute>
+        <TalentListAttribute>
+        <TalentListTitle>Roles Performed at Former or Current Job</TalentListTitle>
+          {talent.responsibilities}
+        </TalentListAttribute>
+      </TalentListContainer>
+    ))
+  }
+  </>
+  );
+ }
 }
 
 export default TalentsList;
