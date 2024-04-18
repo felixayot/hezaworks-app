@@ -30,7 +30,9 @@ All contributions to help improve the API features and functionalities are welco
 # Git Commit Style
 The git commit message style used to update this repository is adopted from [Joel Parker Henderson's repository](https://github.com/joelparkerhenderson/git-commit-message).
 It recommends the following format:
- - **Add:** Create a capability e.g. feature, test, dependency.
+ - **Add:** Create a capability e.g. feature, test, dependency as in:
+    - **Add** a real use case of the commit message style or format
+    - **Add** a component for updating user attributes 
 
 
 # License🧾📜
