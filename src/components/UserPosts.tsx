@@ -3,6 +3,7 @@ import { PageError, PageErrorButton, PageLoading, PageLoadingWrapper } from "../
 import useAxiosPrivate from "../hooks/UseAxiosPrivate";
 import {
   JobpostAttribute,
+  JobpostButton,
   JobpostContainer,
   JobpostLink,
   JobpostTitle,
@@ -70,9 +71,9 @@ function UserPosts() {
           <h2>Job Expires On</h2>
           {post.expires_on}
         </JobpostAttribute>
-        <JobpostLink to={`/user/job/${post.id}/update`}>Update this Post</JobpostLink>
-        <JobpostLink to={`/user/job/${post.id}/applicants`}>View Applicants for this job</JobpostLink>
-      <JobpostLink to={`/user/${post.id}/delete`}>Delete this Post</JobpostLink>
+        <JobpostButton><JobpostLink to={`/user/job/${post.id}/update`}>Update this Post</JobpostLink></JobpostButton>
+        <JobpostButton><JobpostLink to={`/user/job/${post.id}/applications`}>View Applicants for this job</JobpostLink></JobpostButton>
+        <JobpostButton><JobpostLink to={`/user/${post.id}/delete`}>Delete this Post</JobpostLink></JobpostButton>
       </JobpostContainer>
   ))
   }

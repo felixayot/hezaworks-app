@@ -1,6 +1,6 @@
 // Display all users
 import { useState, useEffect } from 'react';
-import { JobpostContainer, JobpostTitle, JobpostAttribute } from '../styles/Jobpost.styles';
+import { JobpostTitle, JobpostAttribute } from '../styles/Jobpost.styles';
 import useAxiosPrivate from '../hooks/UseAxiosPrivate';
 
 function Users() {
@@ -10,13 +10,12 @@ function Users() {
     useEffect(() => {
         document.title = 'HezaWorks - Users List';
         let isMounted = true;
-        const Controller = new AbortController();
 
         const getUsers = async () => {
             try {
-                const response = await axiosPrivate.get('/auth/users',
-                { signal: Controller.signal });
+                const response = await axiosPrivate.get('/auth/users');
                 isMounted && setUsers(response.data);
+                console.log(JSON.stringify(response.data));
             } catch (err) {
                 console.error(err);
             }
@@ -26,7 +25,6 @@ function Users() {
 
         return () => {
             isMounted = false;
-            Controller.abort();
         };
     }, []);
 

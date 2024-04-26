@@ -106,9 +106,10 @@ function EmployerSignup() {
               value={username}
               onChange={(e)=>setUsername(e.target.value)}
               placeholder="Username" />
-              <alert style={{ color: "#F6921E"}}>For employers, please indicate your company's or organization's name</alert>
+              {/* <alert style={{ color: "#F6921E"}}>For employers, please indicate your company's or organization's name</alert> */}
               <SignUpFormInput
               type="text"
+              required
               value={company}
               onChange={(e)=>setCompany(e.target.value)}
               placeholder="Company/Organization Name" />

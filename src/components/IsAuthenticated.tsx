@@ -2,9 +2,11 @@ import useAuth from "../hooks/useAuth";
 
 function IsAuthenticated() {
   const { auth } = useAuth();
-
+  // if (auth?.username) {
+  //   console.log(auth?.username);
+  // }
   return (
-    auth?.username ? true : null
+    auth?.AccessToken ? true : null
 );
 }
 

@@ -77,7 +77,7 @@ function AllApplications() {
               <TableCell>{applicant.applicant}</TableCell>
               <TableCell>{applicant.status}</TableCell>
               <TableCell>{applicant.applied_at}</TableCell>
-              <TableCell><StyledLink>View More</StyledLink></TableCell>
+              <TableCell><StyledLink to={`/user/applications/${applicant.application_id}`}>View More</StyledLink></TableCell>
             </TableRow>
             ))
             }

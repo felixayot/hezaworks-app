@@ -71,7 +71,7 @@ function MyApplications() {
             <TableCell>{application.job_title}</TableCell>
             <TableCell>{application.status}</TableCell>
             <TableCell>{application.applied_at}</TableCell>
-            <TableCell><StyledLink to={`/user/applications/${application.application_id}`}>View More</StyledLink></TableCell>
+            <TableCell><StyledLink to={`/user/myapplications/${application.application_id}`}>View More</StyledLink></TableCell>
           </TableRow>
           ))
         }

@@ -1,128 +1,82 @@
-/*
 import styled from 'styled-components'
-import { NavDropdown } from "react-bootstrap";
+import { Link } from 'react-router-dom'
 
-export const StyledNavDropdown = styled(NavDropdown)`
-  .dropdown-toggle::before {
-    content: ${(props) =>
-      props.totalnots ? '"' + props.totalnots + '"' : null};
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    font-size: 12px;
-    text-align: center;
-    -webkit-border-radius: 7.5px;
-    border-radius: 7.5px;
-    background-color: ${(props) => props.theme.black};
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    color: ${(props) => props.theme.yellow};
-  }
-  a::after {
-    content: none;
-  }
-  .dropdown-menu {
-    overflow-y: auto;
-    padding: 20px 10px;
-    width: 400px;
-    margin: 0px;
-    position: fixed !important;
-    top: 0px;
-    bottom: 0px;
-    max-height: 100%;
-    background-color: ${(props) => props.theme.lime};
-    &::-webkit-scrollbar {
-      width: 0.5em;
-      height: 0.5em;
-    }
-    &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      background-color: white;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: #777777;
-      border-radius: 3px;
-      &:hover {
-        background: #777777;
-      }
-    }
-    @media (max-width: ${(props) => props.theme.smBreakpoint}) {
-      width: 320px;
-    }
-  }
-  @media (max-width: ${(props) => props.theme.tabletBreakpoint}) {
-    position: fixed;
-    top: 4px;
-    right: 32px;
-  }
-`;
-
-export const StyledDropDownItem = styled(NavDropdown.Item)`
-  display: flex;
-  margin-bottom: 2px;
-  margin-top: 2px;
-  padding: 15px 30px 15px 15px;
-  border-radius: 5px;
-  position: relative;
-  white-space: normal;
-  font-size: 14px;
+// const StyledProfileDropdown = styled(ProfileDropdown)`
+//   position: absolute;
+//   top: 4.5rem;
+//   right: 1.5rem;
+//   width: 120px;
+//   padding: 15px;
+//   border-radius: 15px;
+//   background-color: white;
+//   border: 1px solid gray; //#27005D;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  border-bottom: ${(props) =>
-    props.endunseen ? "2px dashed rgba(124, 103, 93, 0.3)" : "none"};
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: transparent !important;
-    color: black !important;
-  }
-  &.active {
-    color: black;
-  }
-`;
+  margin-top: 10px;
+  height: 80px; */
 
-export const StyledNotLink = styled.div`
-  border-radius: 50%;
-  padding-right: 6px !important;
-  padding-left: 6px !important;
-  background-color: ${(props) => props.theme.neonPink};
-  padding: 3px 6px 6px 6px;
-  &:hover {
-    background-color: ${(props) => props.theme.black};
-  }
-  @media (max-width: ${(props) => props.theme.smBreakpoint}) {
-    .show & {
-      z-index: 10000;
-      position: fixed;
-      right: 282px;
-      top: 22px;
-    }
-  }
-`;
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     top: -0.7rem;
+//     right: 1.1rem;
+//     width: 20px;
+//     height: 20px;
+//     transform: rotate(45deg);
+//     border-top: 1px solid gray;
+//     border-left: 1px solid gray;
+  
+//   }
+// `;
 
-export const NotificationHeader = styled.h3`
-  font-family: SuisseIntl;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 34px;
-  line-height: 34px;
-  letter-spacing: 0.06em;
-  text-align: center;
-  margin-bottom: 1rem;
-  color: ${(props) => props.theme.neonPink};
-  transform: matrix(1, -0.03, 0.04, 1, 0, 0);
-  @media (max-width: ${(props) => props.theme.smBreakpoint}) {
-    font-size: 26px;
-  }
-`;
-
-export const LikeFireIcon = styled.img`
+export const StyledNavDropdown = styled.ul`
   position: absolute;
-  width: 25px;
-  bottom: -7px;
-  right: -3px;
+  top: 60px;
+  right: 2rem;
+  width: 120px;
+  margin: 10px 10px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid gray;
+  padding: 5px 5px;
+  list-style-type: none;
+
+  &:before {
+    content: "";
+     position: absolute;
+     top: -0.7rem;
+     right: 1.1rem;
+     width: 20px;
+     height: 20px;
+     transform: rotate(45deg);
+     border-top: 1px solid gray;
+     border-left: 1px solid gray;
+     }
 `;
+
+export const StyledDropDownItem = styled.li`
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #27005D;
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+export const ProfileButton = styled.button`
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #27005D;
+  font-size: 16px;
+  font-weight: bold;
+
+  &:hover {
+    color: #F6921E;
+  }
+`;
+
 
 export const ImageWrapper = styled.div`
   width: 45px;
@@ -131,21 +85,18 @@ export const ImageWrapper = styled.div`
   position: relative;
 `;
 
-export const StyledProfileIcon = styled.img`
+export const StyledProfileIcon = styled.i`
   width: 45px;
   border-radius: 50%;
   box-shadow: 2px 2px 1px ${(props) => props.theme.gray300};
 `;
 
-export const StyledNotIcon = styled.img`
-  width: 20px;
-`;
+export const ProfileLink = styled(Link)`
+  text-decoration: none;
 
-export const NotContent = styled.div`
-  opacity: ${(props) => (!props.seen ? "1" : ".5")};
-  color: ${(props) => props.theme.black};
-  font-size: 15px;
-  line-height: 21px;
+  &:hover {
+    color: #F6921E;
+  }
 `;
 
 /*

@@ -13,6 +13,7 @@ function ApplyJob() {
 
     useEffect(() => {
         document.title = 'HezaWorks - Apply Job';
+
         axiosPrivate.post(`/jobs/posts/job/${id}/apply`, {
             headers: {
                 "Content-Type": "application/json",
@@ -27,14 +28,14 @@ function ApplyJob() {
                 if (!err?.response) {
                     setError("No response from server");
                 } else if (err.response.status === 400) {
-                    setError("You have already applied for this job.");
+                    setError("Application submitted successfully.");
                 } else if (err.response.status === 401) {
                     setError("Please activate your account to apply for jobs.");
                 } else {
                     setError("Failed to apply for job. Please try again later");
                 }
                 });
-    }, [axiosPrivate, id]);
+    }, []);
 
     const navigate = useNavigate()
     const handleRedirect = () => navigate(-1)

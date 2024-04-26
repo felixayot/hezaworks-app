@@ -7,7 +7,16 @@ import {
   PageLoadingWrapper,
 } from "../styles/PageLoading.styles";
 import useAxiosPrivate from "../hooks/UseAxiosPrivate";
-import { StyledLink, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow, TableTitle } from "../styles/ApplicationsTable.styles";
+import {
+  StyledLink,
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+  TableTitle,
+} from "../styles/ApplicationsTable.styles";
 
 function JobApplicants() {
   const { id } = useParams();
@@ -20,12 +29,7 @@ function JobApplicants() {
   useEffect(() => {
     document.title = "HezaWorks - Job Applicants";
     axiosPrivate
-      .get(`/jobs/posts/job/${id}/applicants`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: false,
-      })
+      .get(`/jobs/posts/job/${id}/applicants`)
       .then((response) => {
         setApplicants(response.data);
         setIsLoading(false);
@@ -70,20 +74,25 @@ function JobApplicants() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {applicants && applicants.map((applicant, i) => {
+          {applicants &&
+            applicants.map((applicant, i) => {
               return (
-              <TableRow key={i}>
-              <TableCell>{applicant.application_id}</TableCell>
-              <TableCell>{applicant.job_id}</TableCell>
-              <TableCell>{applicant.applicant}</TableCell>
-              <TableCell>{applicant.status}</TableCell>
-              <TableCell>{applicant.applied_at}</TableCell>
-              <TableCell><StyledLink>View More</StyledLink></TableCell>
-            </TableRow>
-              )
-            }
-          )
-          }
+                <TableRow key={i}>
+                  <TableCell>{applicant.application_id}</TableCell>
+                  <TableCell>{applicant.job_id}</TableCell>
+                  <TableCell>{applicant.applicant}</TableCell>
+                  <TableCell>{applicant.status}</TableCell>
+                  <TableCell>{applicant.applied_at}</TableCell>
+                  <TableCell>
+                    <StyledLink
+                      to={`/user/applications/${applicant.application_id}`}
+                    >
+                      View More
+                    </StyledLink>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
         </TableBody>
       </Table>
     </>

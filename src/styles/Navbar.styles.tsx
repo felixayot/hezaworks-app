@@ -24,6 +24,7 @@ export const RightContainer = styled.div`
   width: 40%;
   display: flex;
   justify-content: flex-end;
+  align-items: start;
   padding-right: 50px;
 `;
 
@@ -55,16 +56,25 @@ export const NavLink = styled(Link)`
   }
 `;
 
-export const ProfileDropdown = styled(NavDropdown)`
+export const NavButton = styled.button`
   text-decoration: none;
   color: black;
-  margin: 10px;
-  font-size: x-large;
+  border-radius: 75px;
+  padding: 0 20px;
+  overflow: hidden;
+  border: none;
+  margin-bottom: 1px;
+  font-size: large;
+  cursor: pointer;
 
   &:hover {
   color:  #F6921E;
   transition: 200ms ease-out;
     }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const NavLinkExtended = styled(Link)`

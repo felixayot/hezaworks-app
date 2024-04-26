@@ -51,15 +51,15 @@ function SigninForm() {
           withCredentials: false
         }
       );
-      console.log(JSON.stringify(response?.data))
+      // console.log(JSON.stringify(response?.data))
       const accessToken = response?.data?.access_token
       const refreshToken = response?.data?.refresh_token
-      const userId = response?.data?.user_id
       const roles = response?.data?.roles
-      setAuth({ username, password, userId, roles, accessToken, refreshToken })
+      setAuth({ username, roles, accessToken, refreshToken })
       setUsername('')
       setPassword('')
       setSuccess('Log in successful. Redirecting...')
+      // console.log(setAuth)
       navigate(from, { replace: true })
     } catch (err) {
       if(!err?.response) {
@@ -100,7 +100,7 @@ function SigninForm() {
             required
             value={username}
             onChange={(e)=>setUsername(e.target.value)}
-            placeholder="Username or Email" />
+            placeholder="Username" />
             <SignUpFormInput
             type="password"
             required

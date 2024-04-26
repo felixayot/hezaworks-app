@@ -1,10 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { ProfileForm, UserProfileButton, UserProfileContainer, UserProfileInput, UserProfileTitle, UserProfileWrapper } from '../styles/UserProfile.styles'
 import { useState, useEffect } from 'react'
-// import axiosInstance from '../api/axios'
 import { PageError, PageLoadingWrapper } from '../styles/PageLoading.styles'
 import useAxiosPrivate from '../hooks/UseAxiosPrivate'
-
+import Icon from "./Icons";
 
 const PROFILE_URL = '/auth/user/talentprofile'
 
@@ -32,13 +31,6 @@ function UserProfile() {
   const [responsibilities, setResponsibilities] = useState('')
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
-
-  const handleNext = (e) => {
-    e.preventDefault()
-    if(resume) {
-      moveTo(key.current + 1)
-    }
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -89,6 +81,10 @@ function UserProfile() {
     return <PageLoadingWrapper>
     <PageError>{error}</PageError>
     </PageLoadingWrapper>
+  } else if (success) {
+    return <PageLoadingWrapper>
+    <PageError>{success}</PageError>
+    </PageLoadingWrapper>
   }
 
   return (
@@ -105,7 +101,7 @@ function UserProfile() {
         value={resume}
         onChange={(e)=>setResume(e.target.value)} />
         </label>
-        <UserProfileButton onClick={handleNext}>Save and Proceed to Next</UserProfileButton>
+        <UserProfileButton><Icon className="fa-solid fa-arrow-right"></Icon>Proceed to Next</UserProfileButton>
         </ProfileForm>
         </UserProfileWrapper>
 
@@ -130,7 +126,7 @@ function UserProfile() {
         value={city}
         onChange={(e)=>setCity(e.target.value)}
         placeholder="City" />
-        <UserProfileButton onClick={handleNext}>Save and Proceed to Next</UserProfileButton>
+        <UserProfileButton><Icon className="fa-solid fa-arrow-right"></Icon>Proceed to Next</UserProfileButton>
         </ProfileForm>
         </UserProfileWrapper>
 
@@ -155,7 +151,7 @@ function UserProfile() {
         value={field}
         onChange={(e)=>setField(e.target.value)}
         placeholder="Field of Study" />
-        <UserProfileButton onClick={handleNext}>Save and Proceed to Next</UserProfileButton>
+        <UserProfileButton><Icon className="fa-solid fa-arrow-right"></Icon>Proceed to Next</UserProfileButton>
         </ProfileForm>
         </UserProfileWrapper>
 
@@ -180,7 +176,7 @@ function UserProfile() {
         value={responsibilities}
         onChange={(e)=>setResponsibilities(e.target.value)}
         placeholder="Responsibilites" />
-        <UserProfileButton onClick={handleSubmit}>Review and Submit</UserProfileButton>
+        <UserProfileButton onClick={handleSubmit}><Icon className="fa-solid fa-paper-plane"></Icon>Submit</UserProfileButton>
         </ProfileForm>
         </UserProfileWrapper>
         </UserProfileContainer>

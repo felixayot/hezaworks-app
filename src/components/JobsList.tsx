@@ -5,6 +5,7 @@ import {
   JobpostTitle,
   Title,
   JobpostLink,
+  JobpostButton,
 } from "../styles/Jobpost.styles";
 
 function JobsList({ posts }) {
@@ -41,8 +42,12 @@ function JobsList({ posts }) {
           <h2>Job Expires On</h2>
           {post.expires_on}
         </JobpostAttribute>
-        <JobpostLink to="/user/profile">Apply Now</JobpostLink>
+        <JobpostButton>
+        <JobpostLink to={`/jobs/job/${post.id}/apply`}>Apply Now</JobpostLink>
+        </JobpostButton>
+        <JobpostButton>
         <JobpostLink to="/user/jobcart">Add to Job cart</JobpostLink>
+        </JobpostButton>
       </JobpostContainer>
   ))}
   </>
