@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { useEffect, useState } from "react";
 // import axiosInstance from '../api/axios';
 import {

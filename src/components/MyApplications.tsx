@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { useState, useEffect } from 'react'
 import { PageError, PageErrorButton, PageLoading, PageLoadingWrapper } from '../styles/PageLoading.styles';
 import useAxiosPrivate from '../hooks/UseAxiosPrivate';

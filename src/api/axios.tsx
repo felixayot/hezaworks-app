@@ -1,7 +1,7 @@
 // API url definition
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:5000'
+const BASE_URL = 'http://hezaapi.custopedia.tech/'
 
 const axiosInstance = axios.create({
     baseURL: BASE_URL

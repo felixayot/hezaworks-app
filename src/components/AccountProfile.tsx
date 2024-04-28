@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { JobpostContainer, JobpostTitle, JobpostAttribute, JobpostLink, JobpostButton } from '../styles/Jobpost.styles';

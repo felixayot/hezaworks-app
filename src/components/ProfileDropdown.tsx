@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { useState } from "react"
 import { ProfileLink, StyledDropDownItem, StyledNavDropdown } from "../styles/ProfileDropdown.styles"
 

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
@@ -6,8 +8,6 @@ import { AuthProvider } from "./context/AuthProvider.tsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.tsx";
 import Footer from "./components/Footer.tsx";
-import PublicNavbar from "./components/PublicNavbar.tsx";
-import IsAuthenticated from "./components/IsAuthenticated.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

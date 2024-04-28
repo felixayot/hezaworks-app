@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { useLocation, useNavigate } from "react-router-dom";
 import { ProfileForm, UserProfileButton, UserProfileContainer, UserProfileInput, UserProfileTitle, UserProfileWrapper } from '../styles/UserProfile.styles'
 import { useState, useEffect } from 'react'

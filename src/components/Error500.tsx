@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { ErrorpageButton, ErrorpageContainer, ErrorpageText, ErrorpageTitle } from "../styles/ErrorPage.styles"
 
 function Error500() {

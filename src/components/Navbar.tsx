@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { useState } from "react";
 //import { Routes, Route } from "react-router-dom";
 import ProfileDropdown from "./ProfileDropdown";

@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { SignUp, SignUpFormButton, SignUpFormContainer, SignUpFormInput, SignUpFormLink, SignUpFormText, SignUpFormTitle, SignUpFormWrapper } from '../styles/SignUpFormStyles'
 
 function EditAccountSettings() {

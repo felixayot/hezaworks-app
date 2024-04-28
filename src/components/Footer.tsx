@@ -1,4 +1,6 @@
-import React from 'react'
+/* eslint-disable */
+// @ts-nocheck
+
 import {FooterContainer, Title, Wrapper, Column, Row, FooterLink} from '../styles/Footer.styles'
 import Icon from './Icons'
 

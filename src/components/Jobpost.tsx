@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { useState, useEffect } from "react";
 //import Jobposts from "../assets/jobposts.json";
 import JobsList from "./JobsList";

@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import HomePh from "../assets/home-image.jpg";

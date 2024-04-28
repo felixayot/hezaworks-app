@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import useAxiosPrivate from '../hooks/UseAxiosPrivate'

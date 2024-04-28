@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { NavDropdown } from "react-bootstrap";
+// import { NavDropdown } from "react-bootstrap";
 
 export const Nav = styled.nav<{ extendNav: boolean }>`
   width: 100%;

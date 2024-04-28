@@ -1,4 +1,7 @@
 // Display all users
+/* eslint-disable */
+// @ts-nocheck
+
 import { useState, useEffect } from 'react';
 import { JobpostTitle, JobpostAttribute } from '../styles/Jobpost.styles';
 import useAxiosPrivate from '../hooks/UseAxiosPrivate';

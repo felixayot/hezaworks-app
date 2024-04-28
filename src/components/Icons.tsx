@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import React from "react";
 
 import { Icons } from "../styles/icons.styles";

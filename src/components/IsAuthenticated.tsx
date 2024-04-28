@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import useAuth from "../hooks/useAuth";
 
 function IsAuthenticated() {

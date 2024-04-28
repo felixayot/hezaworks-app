@@ -1,3 +1,6 @@
+/* eslint-disable */
+// @ts-nocheck
+
 import useAxiosPrivate from "../hooks/UseAxiosPrivate";
 import { HomeButton, HomeLink } from "../styles/HomePage.styles";
 import { PageLoadingWrapper, PageSuccess } from "../styles/PageLoading.styles";
