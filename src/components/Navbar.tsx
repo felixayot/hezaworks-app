@@ -108,10 +108,33 @@ function Navbar() {
           <NavLinkExtended to="/home">
             <Logo src={LogoImage}></Logo>
           </NavLinkExtended>
+          { auth?.roles?.includes(3) ? (
+          <>
           <NavLinkExtended to="/postjob">Post Jobs</NavLinkExtended>
+          <NavLinkExtended to="/user/posts">My Posts</NavLinkExtended>
+          <NavLinkExtended to="/user/applications">Job Applicants</NavLinkExtended>
+          <NavLinkExtended to="/user/viewprofiles">View Talents</NavLinkExtended>
+          <NavButton onClick={showDropdown}><Icon className="fa-regular fa-user" />{auth.username}</NavButton>
+          { showProfileDropdown && <ProfileDropdown />}
+          </>
+          ) : auth?.accessToken ? (
+          <>
           <NavLinkExtended to="/jobs">Find Jobs</NavLinkExtended>
+          <NavLinkExtended to="/user/myapplications">My Applications</NavLinkExtended>
+          <NavLinkExtended to="/user/jobcart">My Job Cart</NavLinkExtended>
+          <NavLinkExtended to="/user/profile">Professional Profile</NavLinkExtended>
+          <NavButton onClick={showDropdown}><Icon className="fa-regular fa-user" />{auth.username}</NavButton>
+          { showProfileDropdown && <ProfileDropdown />}
+          </>
+          ) : (
+          <>
+          <NavLinkExtended to="/jobs">Find Jobs</NavLinkExtended>
+          <NavLinkExtended to="/postjob">Post Jobs</NavLinkExtended>
           <NavLinkExtended to="/login">Log in</NavLinkExtended>
           <NavLinkExtended to="/signup">Sign up</NavLinkExtended>
+          </>
+          )
+          }
         </NavExtendedContainer>
       )}
     </Nav>

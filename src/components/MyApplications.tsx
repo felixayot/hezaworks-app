@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react'
 import { PageError, PageErrorButton, PageLoading, PageLoadingWrapper } from '../styles/PageLoading.styles';
 import useAxiosPrivate from '../hooks/UseAxiosPrivate';
-import { StyledLink, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow, TableTitle } from '../styles/ApplicationsTable.styles';
+import { StyledLink, Table, TableBody, TableCell, TableContainer, TableHeader, TableHeaderCell, TableRow, TableTitle } from '../styles/ApplicationsTable.styles';
 import { useNavigate } from 'react-router-dom';
 
 const MYAPPLICATIONS_URL = '/jobs/user/myapplications';
@@ -54,6 +54,7 @@ function MyApplications() {
 
   return (
     <>
+    <TableContainer>
     <TableTitle>My Applications List</TableTitle>
     <Table>
       <TableHeader>
@@ -80,6 +81,7 @@ function MyApplications() {
         }
       </TableBody>
     </Table>
+    </TableContainer>
   </>
   )
 }
