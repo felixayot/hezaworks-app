@@ -5,10 +5,15 @@ import { Link } from "react-router-dom";
 export const Nav = styled.nav<{ extendNav: boolean }>`
   width: 100%;
   height: ${(props) => (props.extendNav ? "100vh" : "80px")};
+  /* overflow: ${(props) => (props.extendNav ? "visible !important" : "hidden")}; */
   background-color: white;
   display: flex;
   flex-direction: column;
   border-bottom: 0.05px solid #27005D;
+
+  @media (max-width: 768px) {
+    border-bottom: none;
+  }
 `;
 
 export const LeftContainer = styled.div`
@@ -82,6 +87,18 @@ export const NavLinkExtended = styled(Link)`
   color: black;
   margin: 10px;
   font-size: x-large;
+
+  &:hover {
+  color:  #F6921E;
+  transition: 200ms ease-out;
+  }
+`;
+
+export const NavText = styled.p`
+  text-decoration: none;
+  color: black;
+  margin: 10px;
+  font-size: x-large;
 `;
 
 export const Logo = styled.img`
@@ -108,9 +125,20 @@ export const OpenLinksButton = styled.button`
 export const NavExtendedContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  height: auto;
+  align-items:left;
+  /* border: 0.05px solid #27005D; */
 
   @media (min-width: 768px) {
     display: none;
   }
+`;
+
+export const NavWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.1);
+  width: 100%;
 `;

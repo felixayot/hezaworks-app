@@ -11,6 +11,12 @@ export const HomeContainer = styled.div`
   overflow: hidden;
   align-items: center;
   height: 100vh;
+
+  @media (max-width: 768px) {
+      flex-direction: column;
+      margin-left: 0;
+      align-items: center;
+  }
 `;
 
 export const HomeTitle = styled.h2`
@@ -31,6 +37,10 @@ export const HomeButton = styled.button`
   border: none;
   border-radius: 35px;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+      width: 100%;
+  }
 `;
 
 export const HomeImage = styled.img`

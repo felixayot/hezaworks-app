@@ -16,6 +16,8 @@ import {
   OpenLinksButton,
   NavLinkExtended,
   NavButton,
+  NavText,
+  NavWrapper,
 } from "../styles/Navbar.styles";
 import LogoImage from "../assets/heza-logo.png";
 import Icon from "./Icons";
@@ -63,7 +65,7 @@ function Navbar() {
                 setExtendNav((curr) => !curr);
               }}
             >
-              {" "}
+              {/* {""} */}
               {extendNav ? <> &#10005;</> : <> &#8801;</>}
             </OpenLinksButton>
           </NavLinkContainer>
@@ -110,28 +112,34 @@ function Navbar() {
           </NavLinkExtended>
           { auth?.roles?.includes(3) ? (
           <>
-          <NavLinkExtended to="/postjob">Post Jobs</NavLinkExtended>
-          <NavLinkExtended to="/user/posts">My Posts</NavLinkExtended>
-          <NavLinkExtended to="/user/applications">Job Applicants</NavLinkExtended>
-          <NavLinkExtended to="/user/viewprofiles">View Talents</NavLinkExtended>
-          <NavButton onClick={showDropdown}><Icon className="fa-regular fa-user" />{auth.username}</NavButton>
-          { showProfileDropdown && <ProfileDropdown />}
+          <NavWrapper>
+            <NavText><Icon className="fa-regular fa-user"></Icon>{auth.username}</NavText>
+          </NavWrapper>
+          <NavWrapper><NavLinkExtended to="/postjob">Post Jobs</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/posts">My Posts</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/applications">Job Applicants</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/viewprofiles">View Talents</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/account">Settings</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/logout">Sign Out</NavLinkExtended></NavWrapper>
           </>
           ) : auth?.accessToken ? (
           <>
-          <NavLinkExtended to="/jobs">Find Jobs</NavLinkExtended>
-          <NavLinkExtended to="/user/myapplications">My Applications</NavLinkExtended>
-          <NavLinkExtended to="/user/jobcart">My Job Cart</NavLinkExtended>
-          <NavLinkExtended to="/user/profile">Professional Profile</NavLinkExtended>
-          <NavButton onClick={showDropdown}><Icon className="fa-regular fa-user" />{auth.username}</NavButton>
-          { showProfileDropdown && <ProfileDropdown />}
+          <NavWrapper>
+            <NavText><Icon className="fa-regular fa-user"></Icon>{auth.username}</NavText>
+          </NavWrapper>
+          <NavWrapper><NavLinkExtended to="/jobs">Find Jobs</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/myapplications">My Applications</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/jobcart">My Job Cart</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/profile">Professional Profile</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/account">Settings</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/logout">Sign Out</NavLinkExtended></NavWrapper>
           </>
           ) : (
           <>
-          <NavLinkExtended to="/jobs">Find Jobs</NavLinkExtended>
-          <NavLinkExtended to="/postjob">Post Jobs</NavLinkExtended>
-          <NavLinkExtended to="/login">Log in</NavLinkExtended>
-          <NavLinkExtended to="/signup">Sign up</NavLinkExtended>
+          <NavWrapper><NavLinkExtended to="/jobs">Find Jobs</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/postjob">Post Jobs</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/login">Log in</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/signup">Sign up</NavLinkExtended></NavWrapper>
           </>
           )
           }
