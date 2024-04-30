@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../hooks/UseAxiosPrivate';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
     JobFormContainer,
     JobForm,
@@ -14,6 +14,7 @@ import {
     JobFormLongInput,
     JobFormWrapper,
 } from '../styles/JobpostForm.styles';
+import { PageError, PageErrorButton, PageLoadingWrapper, PageSuccess } from '../styles/PageLoading.styles';
 
 function EditJobpost() {
     const { id } = useParams();
@@ -22,7 +23,30 @@ function EditJobpost() {
     const [jobDescription, setJobDescription] = useState('')
     const [jobRequirements, setJobRequirements] = useState('')
     const [jobpostexpireson, setJobpostexpireson] = useState('')
+    const [success, setSuccess] = useState('')
     const [error, setError] = useState('');
+
+    useEffect(() => {
+      axiosPrivate.get(`/jobs/posts/job/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: false,
+        })
+          .then((response) => {
+              setJobTitle(response.data.title);
+              setJobDescription(response.data.description);
+              setJobRequirements(response.data.requirements);
+              setJobpostexpireson(response.data.expires_on);
+          })
+          .catch((err) => {
+            if (!err?.response) {
+              setError('No response from server');
+            } else {
+              setError(`Failed to fetch data ${err?.response?.data?.message}`);
+            }
+          });
+    }, []);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -30,41 +54,36 @@ function EditJobpost() {
             title: jobTitle,
             description: jobDescription,
             requirements: jobRequirements,
-            expireson: jobpostexpireson,
+            expires_on: jobpostexpireson,
         })
         .then((response) => {
-            console.log(response.data);
+          setSuccess(`Post Reference Number ${response.data.id} updated successfully`);
         })
         .catch((err) => {
             if (!err?.response) {
                 setError('No response from server');
             } else {
-                setError(`Failed to fetch data ${err?.response?.data?.message}`);
+                setError('Failed to update post');
             }
         });
     }
 
-    useEffect(() => {
-        axiosPrivate.put(`/jobs/posts/job/${id}`, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-            withCredentials: false,
-          })
-            .then((response) => {
-                setJobTitle(response.data.title);
-                setJobDescription(response.data.description);
-                setJobRequirements(response.data.requirements);
-                setJobpostexpireson(response.data.expireson);
-            })
-            .catch((err) => {
-              if (!err?.response) {
-                setError('No response from server');
-              } else {
-                setError(`Failed to fetch data ${err?.response?.data?.message}`);
-              }
-            });
-      }, [axiosPrivate, id]);
+    const navigate = useNavigate()
+    const handleRedirect = () => navigate(-1)
+
+    if (error) {
+        return <PageLoadingWrapper>
+        <PageError>{error}</PageError><br />
+        <PageErrorButton onClick={() => window.location.reload()}>Try again</PageErrorButton>
+        </PageLoadingWrapper>
+    }
+
+    if (success) {
+        return <PageLoadingWrapper>
+        <PageSuccess>{success}</PageSuccess><br />
+        <PageErrorButton onClick={handleRedirect}>Go back to all jobs</PageErrorButton>
+        </PageLoadingWrapper>
+    }
 
   return (
     <JobFormContainer>
@@ -74,21 +93,18 @@ function EditJobpost() {
             <JobFormInput
             type="text"
             required
-            placeholder="Job Title"
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
             />
             <JobFormLongInput
             type="text"
             required
-            placeholder="Job Description"
             value={jobDescription}
             onChange={(e) => setJobDescription(e.target.value)}
             />
             <JobFormLongInput
             type="text"
             required
-            placeholder="Job Requirements"
             value={jobRequirements}
             onChange={(e) => setJobRequirements(e.target.value)}
             />

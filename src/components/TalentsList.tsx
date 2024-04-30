@@ -52,12 +52,20 @@ function TalentsList() {
       {talents && talents.map((talent) => (
         <TalentListContainer key={talent.user_id}>
           <TalentListAttribute>
+          <TalentListTitle>Talent Name</TalentListTitle>
+          {talent.name}
+        </TalentListAttribute>
+          <TalentListAttribute>
           <TalentListTitle>Resume</TalentListTitle>
-          <TalentListLink>{talent.resume}</TalentListLink>
+          <TalentListLink to="#">{talent.resume}</TalentListLink>
           </TalentListAttribute>
         <TalentListAttribute>
           <TalentListTitle>Contact</TalentListTitle>
-          {talent.phone_number}
+          {talent.phone}
+        </TalentListAttribute>
+        <TalentListAttribute>
+          <TalentListTitle>Email</TalentListTitle>
+          {talent.email}
         </TalentListAttribute>
         <TalentListAttribute>
           <TalentListTitle>Place of Residence</TalentListTitle>

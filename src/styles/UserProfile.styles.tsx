@@ -68,6 +68,7 @@ export const UserProfileLink = styled(Link)`
 
 export const UserProfileTextArea = styled.textarea`
   width: 100%;
+  height: 25vh;
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ddd;

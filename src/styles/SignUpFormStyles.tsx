@@ -43,6 +43,12 @@ export const SignUpFormInput = styled.input`
   border-radius: 5px;
 `;
 
+export const FormLabel = styled.label`
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+`;
+
 export const SignUpFormButton = styled.button`
   width: 100%;
   padding: 10px;

@@ -5,6 +5,7 @@ import SigninForm from "./components/Signin";
 import JobpostForm from "./components/JobpostForm";
 import Jobpost from "./components/Jobpost";
 import UserProfile from "./components/UserProfile";
+import UpdateTalentProfile from "./components/UpdateTalentProfile";
 import SelectUserType from "./components/UserTypeSelection";
 import EmployerSignup from "./components/EmployerSignup";
 import EditAccountSettings from "./components/EditUserSettings";
@@ -27,6 +28,7 @@ import ManageApplication from "./components/ManageApplication";
 import Logout from "./components/Logout";
 import ViewSingleApplication from "./components/ViewSingleApplication";
 import UpdateApplicationStatus from "./components/UpdateApplicationStatus";
+import CreateUserProfile from "./components/CreateUserProfile";
 // import ProfileDropdown from "./components/ProfileDropdown";
 
 function App() {
@@ -49,11 +51,12 @@ function App() {
       {/* <Route element={<PersistLogin />}> */}
       <Route element={<RequireAuth allowedRoles={[55]} />}>
         <Route path="home" element={<HomePage />} />
+        <Route path="user/profile/create" element={<CreateUserProfile />} />
+        <Route path="user/profile/update" element={<UpdateTalentProfile/>} />
         <Route path="user/profile" element={<UserProfile />} />
         <Route path="user/account" element={<AccountProfile />} />
-        <Route path="/user/logout" element={<Logout />} />
-        <Route path="user/:id/account/edit" element={<EditAccountSettings />} />
-        <Route path="user/account/delete" element="<UserProfile />" />
+        <Route path="user/logout" element={<Logout />} />
+        <Route path="user/account/edit" element={<EditAccountSettings />} />
         <Route path="jobs/job/:id/apply" element={<ApplyJob />} />
         <Route path="user/myapplications" element={<MyApplications />} />
         <Route path="user/myapplications/:id" element={<ViewSingleApplication />} />

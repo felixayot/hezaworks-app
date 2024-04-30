@@ -16,7 +16,7 @@ function AccountProfile() {
   // const navigate = useNavigate()
 
   const [usrAcc, setUsrAcc] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  //const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function AccountProfile() {
     <JobpostAttribute><h3>User ID</h3>{usrAcc.userID}</JobpostAttribute>
     <JobpostAttribute><h3>Account Creation Date</h3>{usrAcc.created_at}</JobpostAttribute>
     <JobpostButton>
-    <JobpostLink to={`/user/${usrAcc.UserID}/account/edit`}>Edit My Info</JobpostLink>
+    <JobpostLink to={`/user/account/edit`}>Edit My Info</JobpostLink>
     </JobpostButton>
     </JobpostContainer>
   )

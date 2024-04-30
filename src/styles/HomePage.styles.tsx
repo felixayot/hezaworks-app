@@ -22,11 +22,19 @@ export const HomeContainer = styled.div`
 export const HomeTitle = styled.h2`
   font-size: 3rem;
   margin-bottom: 1rem;
+
+  @media(max-width: 768px) {
+      font-size: 1.5rem;
+  }
 `;
 
 export const HomeDescription = styled.p`
   font-size: 1.5rem;
   margin-bottom: 1rem;
+
+  @media(max-width: 768px) {
+      font-size: 1rem;
+  }
 `;
 
 export const HomeButton = styled.button`

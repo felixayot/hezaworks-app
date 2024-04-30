@@ -40,7 +40,7 @@ function Jobpost() {
           if (!err?.response) {
             setError('No response from server');
           } else {
-            setError(`Failed to fetch data ${err?.response?.data?.message}`);
+            setError('Failed to fetch data');
           }
         });
   }, []);
