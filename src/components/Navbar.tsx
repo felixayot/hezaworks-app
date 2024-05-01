@@ -40,7 +40,20 @@ function Navbar() {
             <NavLink to="/home">
               <Logo src={LogoImage}></Logo>
             </NavLink>
-              { auth?.roles?.includes(3)
+              { auth?.roles?.includes(1)
+              ? (
+                <>
+            <NavLink to="/adminpanel/admins">Admins</NavLink>
+            <NavLink to="/adminpanel/recruiters">Recruiters</NavLink>
+            <NavLink to="/adminpanel/talents">Other Users</NavLink>
+            </>
+              ) : auth?.roles?.includes(2)
+              ? (
+                <>
+            <NavLink to="/adminpanel/recruiters">Recruiters</NavLink>
+            <NavLink to="/adminpanel/talents">Other Users</NavLink>
+            </>
+              ) : auth?.roles?.includes(3)
               ? (
                 <>
             <NavLink to="/postjob">Post Jobs</NavLink>
@@ -72,7 +85,27 @@ function Navbar() {
         </LeftContainer>
         <RightContainer>
           <NavLinkContainer>
-            {auth?.roles?.includes(3) ? (
+            {auth?.roles?.includes(1) ? (
+              <>
+            <NavLink to="/adminpanel/inactive">Inactive Users</NavLink>
+              {/* {<ProfileDropdown title={auth.username}>
+              <NavDropdown.Item href="/user/account">Account Settings</NavDropdown.Item><br />
+              <NavDropdown.Item href="/home">Sign Out</NavDropdown.Item>
+            </ProfileDropdown>} */}
+            <NavButton onClick={showDropdown}><Icon className="fa-regular fa-user" />{auth.username}</NavButton>
+            { showProfileDropdown && <ProfileDropdown />}
+          </>
+            ) : auth?.roles?.includes(2) ? (
+              <>
+            <NavLink to="/adminpanel/inactive">Inactive Users</NavLink>
+              {/* {<ProfileDropdown title={auth.username}>
+              <NavDropdown.Item href="/user/account">Account Settings</NavDropdown.Item><br />
+              <NavDropdown.Item href="/home">Sign Out</NavDropdown.Item>
+            </ProfileDropdown>} */}
+            <NavButton onClick={showDropdown}><Icon className="fa-regular fa-user" />{auth.username}</NavButton>
+            { showProfileDropdown && <ProfileDropdown />}
+          </>
+          ) : auth?.roles?.includes(3) ? (
               <>
             <NavLink to="/user/viewprofiles">View Talents</NavLink>
               {/* {<ProfileDropdown title={auth.username}>
@@ -110,7 +143,30 @@ function Navbar() {
           <NavLinkExtended to="/home">
             <Logo src={LogoImage}></Logo>
           </NavLinkExtended>
-          { auth?.roles?.includes(3) ? (
+          {auth?.roles?.includes(1) ? (
+          <>
+          <NavWrapper>
+            <NavText><Icon className="fa-regular fa-user"></Icon>{auth.username}</NavText>
+          </NavWrapper>
+          <NavWrapper><NavLinkExtended to="/adminpanel/admins">Admins</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/adminpanel/recruiters">Recruiters</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/adminpanel/talents">Other Users</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/adminpanel/inactive">Inactive Users</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/account">Settings</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/logout">Sign Out</NavLinkExtended></NavWrapper>
+          </>
+          ) : auth?.roles?.includes(2) ? (
+          <>
+          <NavWrapper>
+            <NavText><Icon className="fa-regular fa-user"></Icon>{auth.username}</NavText>
+          </NavWrapper>
+          <NavWrapper><NavLinkExtended to="/adminpanel/recruiters">Recruiters</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/adminpanel/talents">Other Users</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/adminpanel/inactive">Inactive Users</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/account">Settings</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/user/logout">Sign Out</NavLinkExtended></NavWrapper>
+          </>
+          ) : auth?.roles?.includes(3) ? (
           <>
           <NavWrapper>
             <NavText><Icon className="fa-regular fa-user"></Icon>{auth.username}</NavText>

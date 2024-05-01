@@ -5,14 +5,14 @@ import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { JobpostContainer, JobpostTitle, JobpostAttribute, JobpostLink, JobpostButton } from '../styles/Jobpost.styles';
 import { SignUpFormButton, SignUpFormLink } from '../styles/SignUpFormStyles';
-// import axiosInstance from '../api/axios'
+import useAuth from '../hooks/useAuth'
 import useAxiosPrivate from '../hooks/UseAxiosPrivate';
 
 const ACCPROFILE_URL = 'auth/users/me'
 
 function AccountProfile() {
   const axiosPrivate = useAxiosPrivate()
-  // const location = useLocation()
+  const { auth } = useAuth()
   // const navigate = useNavigate()
 
   const [usrAcc, setUsrAcc] = useState([]);
@@ -44,6 +44,7 @@ function AccountProfile() {
     <JobpostContainer>
     <JobpostTitle>My Info</JobpostTitle>
     <JobpostAttribute><h3>Name</h3>{usrAcc.name}</JobpostAttribute>
+    { auth.roles.includes(3) ? <JobpostAttribute><h3>Company/Organization Name</h3>{usrAcc.company}</JobpostAttribute> : null }
     <JobpostAttribute><h3>Username</h3>{usrAcc.username}</JobpostAttribute>
     <JobpostAttribute><h3>Email</h3>{usrAcc.email}</JobpostAttribute>
     <JobpostAttribute><h3>User ID</h3>{usrAcc.userID}</JobpostAttribute>

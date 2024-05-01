@@ -13,7 +13,7 @@ import AccountProfile from "./components/AccountProfile";
 import EditJobpost from "./components/EditJobpost";
 import Unauthorized from "./components/Unauthorized";
 import NotFound from "./components/NotFound";
-import Admin from "./components/Admin";
+import AdminHome from "./components/Admin";
 import RequireAuth from "./components/RequireAuth";
 import Error500 from "./components/Error500";
 import UserPosts from "./components/UserPosts";
@@ -29,6 +29,10 @@ import Logout from "./components/Logout";
 import ViewSingleApplication from "./components/ViewSingleApplication";
 import UpdateApplicationStatus from "./components/UpdateApplicationStatus";
 import CreateUserProfile from "./components/CreateUserProfile";
+import Users from "./components/Users";
+import Recruiters from "./components/Recruiters";
+import Admins from "./components/AdminsList";
+import InactiveUsers from "./components/InactiveUsers";
 // import ProfileDropdown from "./components/ProfileDropdown";
 
 function App() {
@@ -75,9 +79,22 @@ function App() {
         <Route path="user/job/:id/update" element={<EditJobpost />} />
         <Route path="user/job/:id/delete" element="<Jobpost />" />
       </Route>
+
+      {/* Admin2 routes */}
+      <Route element={<RequireAuth allowedRoles={[2]} />}>
+        <Route path="adminpanel" element={<AdminHome />}></Route>
+        <Route path="adminpanel/talents" element={<Users />}></Route>
+        <Route path="adminpanel/recruiters" element={<Recruiters />}></Route>
+        <Route path="adminpanel/inactive" element={<InactiveUsers />}></Route>
+      </Route>
+
       {/* Admin routes */}
       <Route element={<RequireAuth allowedRoles={[1]} />}>
-        <Route path="admin" element={<Admin />} />
+        <Route path="adminpanel" element={<AdminHome />} />
+        <Route path="adminpanel/talents" element={<Users />} />
+        <Route path="adminpanel/recruiters" element={<Recruiters />}></Route>
+        <Route path="adminpanel/admins" element={<Admins />}></Route>
+        <Route path="adminpanel/inactive" element={<InactiveUsers />}></Route>
       </Route>
       {/* </Route> */}
       {/* 404 */}
