@@ -1,6 +1,6 @@
 // Display all users
 /* eslint-disable */
-// @t/s-nocheck
+// @ts-nocheck
 
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../hooks/UseAxiosPrivate';
