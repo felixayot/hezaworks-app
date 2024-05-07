@@ -15,6 +15,7 @@ import {
     SignUpFormLink,
     SignUp,
     SignUpFormRedirectLink, } from '../styles/SignUpFormStyles'
+import { PageError, PageErrorButton, PageLoadingWrapper, PageSuccess } from '../styles/PageLoading.styles'
 
 const SIGNUP_URL = '/auth/signup'
 
@@ -61,7 +62,6 @@ function TalentSignup() {
       console.log(response)
       window.location.href = '/login'
       setSuccess('Account created successfully')
-      window.alert(success)
   } catch (err) {
       if(!err?.response) {
           setError('No response from server')
@@ -75,17 +75,32 @@ function TalentSignup() {
   }
   }
 
+  if (error == '409') {
+    return (
+      <PageLoadingWrapper>
+        <PageError>Username or Email already exists</PageError><br />
+        <PageErrorButton onClick={() => {navigate(-1)}}>Go back</PageErrorButton>
+      </PageLoadingWrapper>
+    )
+  } else if (error) {
+    return (
+      <PageLoadingWrapper>
+        <PageError>{error}</PageError><br />
+        <PageErrorButton onClick={() => {navigate(-1)}}>Go back</PageErrorButton>
+      </PageLoadingWrapper>
+    )
+  } else if (success) {
+    return (
+      <PageLoadingWrapper>
+        <PageSuccess>Account created successfully. Proceed to
+          <PageErrorButton onClick={() => {navigate('/login')}}>Log in</PageErrorButton>
+        </PageSuccess>
+      </PageLoadingWrapper>
+    )
+  }
 
   return (
     <>
-     { success ?
-     (
-        <SignUpFormText>Account created successfully. Proceed to
-          <SignUpFormLink to="/login">Log in</SignUpFormLink>
-        </SignUpFormText>
-     )
-     : 
-     (
       <SignUpFormContainer>
           <SignUpFormWrapper>
               <SignUpFormTitle>Sign Up</SignUpFormTitle>
@@ -133,7 +148,7 @@ function TalentSignup() {
               </SignUp>
           </SignUpFormWrapper>
       </SignUpFormContainer>
-     )}</>
+    </>
     )
 }
 

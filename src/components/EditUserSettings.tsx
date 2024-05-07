@@ -66,7 +66,7 @@ function EditAccountSettings() {
   return (
     <SignUpFormContainer>
         <SignUpFormWrapper>
-            <SignUp>
+            <SignUp encType="multipart/form-data">
             <SignUpFormTitle>Update User Account Settings</SignUpFormTitle>
             <FormLabel>Change Password</FormLabel>
             <SignUpFormInput
@@ -87,7 +87,8 @@ function EditAccountSettings() {
             onChange={(e) => setUsername(e.target.value)}></SignUpFormInput>
             <FormLabel>Change Profile Picture</FormLabel>
             <SignUpFormInput
-            type="file"
+            type="image"
+            accept=".png,.jpg,.jpeg,.gif"
             value={profilePicture}
             onChange={(e) => setProfilePicture(e.target.value)}
             ></SignUpFormInput>

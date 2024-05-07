@@ -1,7 +1,7 @@
 /* eslint-disable */
-// @ts-nocheck
+// @ts/-nocheck
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   JobpostContainer,
   JobpostAttribute,
@@ -10,14 +10,13 @@ import {
   JobpostLink,
   JobpostButton,
 } from "../styles/Jobpost.styles";
+import Modal from "./Modal";
 
 function JobsList({ posts }) {
 
   useEffect(() => {
     document.title = "HezaWorks - Jobs List";
   }, []);
-  //<JobpostContainer element={ isLoading && <div>Loading...</div>} />
-  //Jobposts && Jobposts.map((post) => (
 
   return (
     <>
@@ -46,13 +45,13 @@ function JobsList({ posts }) {
           {post.expires_on}
         </JobpostAttribute>
         <JobpostButton>
-        <JobpostLink to={`/jobs/job/${post.id}/apply`}>Apply Now</JobpostLink>
+        <JobpostLink to={`/jobs/${post.id}`}>View More</JobpostLink>
         </JobpostButton>
         <JobpostButton>
         <JobpostLink to="/user/jobcart">Add to Job cart</JobpostLink>
         </JobpostButton>
       </JobpostContainer>
-  ))}
+    ))}
   </>
   );
 }

@@ -11,7 +11,7 @@ function Jobcart() {
       document.title = 'HezaWorks - Job Cart';
       setCartposts([
         {
-          "id": 1,
+          "id": 0,
           "title": "Software Engineer",
           "organization": "Google",
           "description": "Develop software applications",
@@ -45,7 +45,9 @@ function Jobcart() {
           <h2>Job Expires On</h2>
           {post.expires_on}
         </JobpostAttribute>
+        <JobpostButton>
         <JobpostLink to={`/jobs/job/${post.id}/apply`}>Apply Now</JobpostLink>
+        </JobpostButton>
         </JobpostContainer>
   )
 ));

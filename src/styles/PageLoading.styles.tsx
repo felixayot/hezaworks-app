@@ -49,3 +49,13 @@ export const PageErrorButton = styled.button`
     background-color: #F6921E;
   }
 `;
+
+export const ErrorButton = styled.button`
+  padding: 10px 20px;
+  background-color: #27005D;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+`;

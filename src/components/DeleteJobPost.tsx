@@ -7,38 +7,34 @@ import useAxiosPrivate from "../hooks/UseAxiosPrivate";
 import { ErrorButton, PageError, PageErrorButton, PageLoading, PageLoadingWrapper, PageSuccess, PageSuccessLink } from "../styles/PageLoading.styles";
 import { TPLink } from "../styles/ViewTalentProfile.styles";
 
-function ApplyJob() {
+function DeleteJobPost() {
     const axiosPrivate = useAxiosPrivate();
     const { id } = useParams();
 
-    const [application, setApplication] = useState({});
+    const [deletejob, setDeleteJob] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        document.title = 'HezaWorks - Apply Job';
+        document.title = 'HezaWorks - Delete a Job Post';
 
-        axiosPrivate.post(`/jobs/posts/job/${id}/apply`, {
+        axiosPrivate.delete(`/jobs/posts/job/${id}`, {
             headers: {
                 "Content-Type": "application/json",
             },
             withCredentials: false,
         })
             .then((response) => {
-                setApplication(response.data);
+                setDeleteJob(response.data);
                 setIsLoading(false);
             })
             .catch((err) => {
                 if (!err?.response) {
                     setError("No response from server");
-                } else if (err.response.status === 400) {
-                    setError("Application submitted successfully.");
-                } else if (err.response.status === 401) {
-                    setError("Please activate your account to apply for jobs.");
-                } else if (err.response.status === 403) {
-                    setError("Talent Profile Required");
+                } else if (err?.response?.status === 403) {
+                    setError("403");
                 } else {
-                    setError("Failed to apply for job. Please try again later");
+                    setError("Failed to complete action. Please try again later");
                 }
                 });
     }, []);
@@ -46,17 +42,14 @@ function ApplyJob() {
     const navigate = useNavigate()
     const handleRedirect = () => navigate(-1)
 
-    if (error === "Talent Profile Required") {
+if (error === "403") {
         return (
             <PageLoadingWrapper>
-                <PageError>You need to create a professional profile first before applying for any job.</PageError><br />
-                <ErrorButton>
-                <TPLink to="/user/profile/create">Create one here</TPLink>
-                </ErrorButton>
+                <PageError>Action prohibited. This job post has applications. You can move it to drafts instead</PageError><br />
+                <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
             </PageLoadingWrapper>
         )
-    }
-    else if (error) {
+    } else if (error) {
         return (
             <PageLoadingWrapper>
                 <PageError>{error}</PageError><br />
@@ -73,10 +66,11 @@ function ApplyJob() {
 
   return (
     <PageLoadingWrapper>
-        <PageSuccess>Application submitted successfully with reference number {application.application_id}. View more details in <PageSuccessLink to="/user/myapplications">My Applications.</PageSuccessLink>
+        <PageSuccess>Job Reference ID {id} has been permanently deleted successfully.
+        <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
         </PageSuccess>
     </PageLoadingWrapper>
   )
 }
 
-export default ApplyJob
+export default DeleteJobPost

@@ -51,6 +51,7 @@ function ManageApplication() {
     {application.applicant}</ApplicationLink></ApplicationAttribute>
     <ApplicationAttribute><ApplicationTitle>Application Status</ApplicationTitle>{application.status}</ApplicationAttribute>
     <ApplicationAttribute><ApplicationTitle>Application date</ApplicationTitle>{application.applied_at}</ApplicationAttribute>
+    <JobpostButton><JobpostLink to={`/user/viewprofiles/${application.applicant_id}`}>View Applicant</JobpostLink></JobpostButton>
     <JobpostButton><JobpostLink to={`/user/applications/${application.application_id}/updatestatus`}>Update Status</JobpostLink></JobpostButton>
     </ApplicationContainer>
     </>

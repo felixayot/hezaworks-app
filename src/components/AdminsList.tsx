@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from 'react';
 import {
-    StyledLink, Table, TableBody, TableCell,
+    StyledLink, Table, TableBody, TableButton, TableCell,
     TableContainer, TableHeader, TableHeaderCell,
     TableRow, TableTitle } from '../styles/ApplicationsTable.styles';
 import useAxiosPrivate from '../hooks/UseAxiosPrivate';
@@ -60,7 +60,7 @@ function Admins() {
     <TableHeaderCell>Email</TableHeaderCell>
 {/* <TableHeaderCell>Change Role</TableHeaderCell>
 <TableHeaderCell>Create a Recruiter</TableHeaderCell> */}
-    <TableHeaderCell>Deactivate a User</TableHeaderCell>
+    <TableHeaderCell>Manage Admin</TableHeaderCell>
     </TableRow>
     </TableHeader>
     <TableBody>
@@ -69,13 +69,11 @@ function Admins() {
     <TableCell>{user.id}</TableCell>
     <TableCell>{user.username}</TableCell>
     <TableCell>{user.email}</TableCell>
-    {/* <TableCell><StyledLink to="#">Make Admin</StyledLink></TableCell>
-    <TableCell><StyledLink to="#">Make Recruiter</StyledLink></TableCell> */}
-    <TableCell><StyledLink to="#">Deactivate</StyledLink></TableCell>
+    <TableCell><StyledLink to={`/adminpanel/admins/${user.id}`}>View More</StyledLink></TableCell>
     </TableRow>
-        ))}
-        </TableBody>
-        </Table>
+    ))}
+    </TableBody>
+    </Table>
     </TableContainer>
   )
 }

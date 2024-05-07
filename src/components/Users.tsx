@@ -8,7 +8,8 @@ import { PageError, PageLoading, PageLoadingWrapper } from '../styles/PageLoadin
 import {
     StyledLink, Table, TableBody, TableCell,
     TableContainer, TableHeader, TableHeaderCell,
-    TableRow, TableTitle } from '../styles/ApplicationsTable.styles';
+    TableRow, TableTitle, TableButton } from '../styles/ApplicationsTable.styles';
+import { BASE_URL } from '../api/axios';
 
 const TALENT_USERS = '/auth/users'
 
@@ -58,9 +59,7 @@ function Users() {
         <TableHeaderCell>User ID</TableHeaderCell>
         <TableHeaderCell>Username</TableHeaderCell>
         <TableHeaderCell>Email</TableHeaderCell>
-        <TableHeaderCell>Change Role</TableHeaderCell>
-        <TableHeaderCell>Create a Recruiter</TableHeaderCell>
-        <TableHeaderCell>Deactivate a User</TableHeaderCell>
+        <TableHeaderCell>Manage User</TableHeaderCell>
         </TableRow>
         </TableHeader>
         <TableBody>
@@ -69,13 +68,11 @@ function Users() {
         <TableCell>{user.id}</TableCell>
         <TableCell>{user.username}</TableCell>
         <TableCell>{user.email}</TableCell>
-        <TableCell><StyledLink to="#">Make Admin</StyledLink></TableCell>
-        <TableCell><StyledLink to="#">Make Recruiter</StyledLink></TableCell>
-        <TableCell><StyledLink to="#">Deactivate</StyledLink></TableCell>
+        <TableCell><StyledLink to={`/adminpanel/users/${user.id}`}>View More</StyledLink></TableCell>
         </TableRow>
             ))}
-            </TableBody>
-            </Table>
+        </TableBody>
+        </Table>
         </TableContainer>
   )
 }

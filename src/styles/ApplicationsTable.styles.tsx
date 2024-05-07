@@ -49,3 +49,17 @@ export const TableHeaderCell = styled.th`
   padding: 10px;
   text-align: left;
 `;
+
+export const TableButton = styled.button`
+  padding: 10px 20px;
+  background-color: #27005D;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #F6921E;
+  }
+`;

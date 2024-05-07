@@ -45,7 +45,7 @@ function Navbar() {
                 <>
             <NavLink to="/adminpanel/admins">Admins</NavLink>
             <NavLink to="/adminpanel/recruiters">Recruiters</NavLink>
-            <NavLink to="/adminpanel/talents">Other Users</NavLink>
+            <NavLink to="/adminpanel/users">Other Users</NavLink>
             </>
               ) : auth?.roles?.includes(2)
               ? (
@@ -150,7 +150,7 @@ function Navbar() {
           </NavWrapper>
           <NavWrapper><NavLinkExtended to="/adminpanel/admins">Admins</NavLinkExtended></NavWrapper>
           <NavWrapper><NavLinkExtended to="/adminpanel/recruiters">Recruiters</NavLinkExtended></NavWrapper>
-          <NavWrapper><NavLinkExtended to="/adminpanel/talents">Other Users</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/adminpanel/users">Other Users</NavLinkExtended></NavWrapper>
           <NavWrapper><NavLinkExtended to="/adminpanel/inactive">Inactive Users</NavLinkExtended></NavWrapper>
           <NavWrapper><NavLinkExtended to="/user/account">Settings</NavLinkExtended></NavWrapper>
           <NavWrapper><NavLinkExtended to="/user/logout">Sign Out</NavLinkExtended></NavWrapper>
@@ -161,7 +161,7 @@ function Navbar() {
             <NavText><Icon className="fa-regular fa-user"></Icon>{auth.username}</NavText>
           </NavWrapper>
           <NavWrapper><NavLinkExtended to="/adminpanel/recruiters">Recruiters</NavLinkExtended></NavWrapper>
-          <NavWrapper><NavLinkExtended to="/adminpanel/talents">Other Users</NavLinkExtended></NavWrapper>
+          <NavWrapper><NavLinkExtended to="/adminpanel/users">Other Users</NavLinkExtended></NavWrapper>
           <NavWrapper><NavLinkExtended to="/adminpanel/inactive">Inactive Users</NavLinkExtended></NavWrapper>
           <NavWrapper><NavLinkExtended to="/user/account">Settings</NavLinkExtended></NavWrapper>
           <NavWrapper><NavLinkExtended to="/user/logout">Sign Out</NavLinkExtended></NavWrapper>

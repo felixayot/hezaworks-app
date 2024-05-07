@@ -35,7 +35,8 @@ export const TalentListLink = styled(Link)`
     border: none;
     border-radius: 5px;
     background-color: #27005D;
-    color: #fff; */
+     */
+    color: #fff;
     cursor: pointer;
     
     &:hover {
@@ -43,3 +44,14 @@ export const TalentListLink = styled(Link)`
         transition: 200ms ease-out;
     }
     `;
+
+export const TPButton = styled.button`
+  width: 25%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #27005D;
+  color: #fff;
+  cursor: pointer;
+`;

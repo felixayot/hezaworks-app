@@ -81,7 +81,7 @@ function EditJobpost() {
     if (success) {
         return <PageLoadingWrapper>
         <PageSuccess>{success}</PageSuccess><br />
-        <PageErrorButton onClick={handleRedirect}>Go back to all jobs</PageErrorButton>
+        <PageErrorButton onClick={handleRedirect}>Go Back</PageErrorButton>
         </PageLoadingWrapper>
     }
 

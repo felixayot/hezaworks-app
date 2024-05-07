@@ -17,7 +17,7 @@ function CreateUserProfile() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const from = location.state?.from?.pathname || '/jobs'
+  const from = location.state?.from?.pathname || '/user/profile'
 
   useEffect(() => {
     document.title = 'HezaWorks - Create My Profile'
@@ -40,22 +40,27 @@ function CreateUserProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const formData = new FormData()
+    formData.append('file', resume)
+    formData.append('fileName', resume.name)
+    formData.append('phone_number', phone)
+    formData.append('address', address)
+    formData.append('city', city)
+    formData.append('education_level', educationLevel)
+    formData.append('institution', institution)
+    formData.append('field', field)
+    formData.append('employer', employer)
+    formData.append('title', title)
+    formData.append('responsibilities', responsibilities)
+    console.log(formData)
+
     try {
       const response = await axiosPrivate.post(PROFILE_URL,
         JSON.stringify({
-          resume,
-          phone_number: phone,
-          address,
-          city,
-          education_level: educationLevel,
-          institution,
-          field,
-          employer,
-          title,
-          responsibilities
+          formData,
         }),
         {
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'multipart/form-data' },
           withCredentials: false
         }
       )
@@ -98,21 +103,23 @@ function CreateUserProfile() {
     <>
     <UserProfileTitle>Create Your Professional Profile</UserProfileTitle>
     <UserProfileContainer>
-        <UserProfileWrapper key="cvCard">
+        <UserProfileWrapper>
         <UserProfileTitle>Upload your Resume</UserProfileTitle>
-          <ProfileForm>
+          <ProfileForm encType="multipart/form-data">
         <label>Resume:
         <UserProfileInput
         type="file"
+        name="resume"
+        accept=".pdf,.doc,.docx"
         required
-        value={resume}
-        onChange={(e)=>setResume(e.target.value)} />
+        // value={resume}
+        onChange={(e)=>setResume(e.target.files[0])} />
         </label>
         <UserProfileButton><Icon className="fa-solid fa-arrow-right"></Icon>Proceed to Next</UserProfileButton>
         </ProfileForm>
         </UserProfileWrapper>
 
-        <UserProfileWrapper key="piCard">
+        <UserProfileWrapper>
         <UserProfileTitle>Personal Information</UserProfileTitle>
           <ProfileForm>
         <UserProfileInput
@@ -137,7 +144,7 @@ function CreateUserProfile() {
         </ProfileForm>
         </UserProfileWrapper>
 
-        <UserProfileWrapper key="edCard">
+        <UserProfileWrapper>
         <UserProfileTitle>Education</UserProfileTitle>
           <ProfileForm>
         <UserProfileInput
@@ -162,7 +169,7 @@ function CreateUserProfile() {
         </ProfileForm>
         </UserProfileWrapper>
 
-        <UserProfileWrapper key="expCard">
+        <UserProfileWrapper>
         <UserProfileTitle>Professional Experience</UserProfileTitle>
           <ProfileForm>
         <UserProfileInput

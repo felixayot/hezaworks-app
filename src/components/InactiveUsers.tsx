@@ -4,11 +4,12 @@
 
 import { useState, useEffect } from 'react';
 import {
-    StyledLink, Table, TableBody, TableCell,
+    StyledLink, Table, TableBody, TableButton, TableCell,
     TableContainer, TableHeader, TableHeaderCell,
     TableRow, TableTitle } from '../styles/ApplicationsTable.styles';
 import useAxiosPrivate from '../hooks/UseAxiosPrivate';
 import { PageError, PageLoading, PageLoadingWrapper } from '../styles/PageLoading.styles';
+import { BASE_URL } from '../api/axios';
 
 const INACTIVES_URL = '/auth/users/inactive'
 
@@ -17,6 +18,7 @@ function InactiveUsers() {
     const [ users, setUsers ] = useState([]);
     const [ isLoading, setIsLoading ] = useState(true);
     const [ error, setError ] = useState('');
+
 
     useEffect(() => {
         document.title = 'HezaWorks - Admins List';
@@ -59,8 +61,8 @@ function InactiveUsers() {
     <TableHeaderCell>Username</TableHeaderCell>
     <TableHeaderCell>Email</TableHeaderCell>
     {/* <TableHeaderCell>Change Role</TableHeaderCell> */}
-    <TableHeaderCell>Create a Recruiter</TableHeaderCell>
-    <TableHeaderCell>Activate User</TableHeaderCell>
+    {/* <TableHeaderCell>Create a Recruiter</TableHeaderCell> */}
+    <TableHeaderCell>Manage Inactive User</TableHeaderCell>
     </TableRow>
     </TableHeader>
     <TableBody>
@@ -69,13 +71,11 @@ function InactiveUsers() {
     <TableCell>{user.id}</TableCell>
     <TableCell>{user.username}</TableCell>
     <TableCell>{user.email}</TableCell>
-    {/* <TableCell><StyledLink to="#">Make Admin</StyledLink></TableCell> */}
-    <TableCell><StyledLink to="#">Make Recruiter</StyledLink></TableCell>
-    <TableCell><StyledLink to="#">Activate</StyledLink></TableCell>
+    <TableCell><StyledLink to={`/adminpanel/inactive/${user.id}`}>View More</StyledLink></TableCell>
     </TableRow>
-        ))}
-        </TableBody>
-        </Table>
+    ))}
+    </TableBody>
+    </Table>
     </TableContainer>
   )
 }

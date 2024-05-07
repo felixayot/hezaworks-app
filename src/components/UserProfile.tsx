@@ -3,7 +3,13 @@
 
 import { useState, useEffect } from "react"
 import useAxiosPrivate from "../hooks/UseAxiosPrivate"
-import { PageError, PageErrorButton, PageLoading, PageLoadingWrapper, PageSuccessLink } from "../styles/PageLoading.styles"
+import { ErrorButton,
+  PageError, PageErrorButton,
+  PageLoading, PageLoadingWrapper,
+  PageSuccessLink } from "../styles/PageLoading.styles"
+import { TPAttribute, TPContainer,
+  TPLink, TPTitle, TPatag } from "../styles/ViewTalentProfile.styles"
+import { TPButton } from "../styles/TalentList.styles"
 
 const USERPROFILE_URL = '/auth/user/talentprofile'
 
@@ -16,7 +22,7 @@ function UserProfile() {
     useEffect(() => {
         axiosPrivate.get(USERPROFILE_URL, {
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "multipart/form-data",
             },
             withCredentials: false,
           })
@@ -28,21 +34,25 @@ function UserProfile() {
               if (!err?.response) {
                 setError('No response from server');
               } else if (err.response.status === 404) {
-                setError('No profile found for this user.');
+                setError('No profile found');
               } else {
                 setError('Failed to fetch user profile.');
               }
             });
       }, []);
 
-    if (error) {
+    if (error === 'No profile found') {
+        return <PageLoadingWrapper>
+            <PageError>You have no professional profile yet.</PageError><br />
+            <ErrorButton><TPLink to="/user/profile/create">
+                Create one here</TPLink>
+                </ErrorButton>
+        </PageLoadingWrapper>
+    } else if (error) {
         return <PageLoadingWrapper>
             <PageError>{error}</PageError><br />
             <PageErrorButton onClick={() => window.location.reload()}>
-                Try again</PageErrorButton><br />
-            Haven't created a profile yet?
-            <PageSuccessLink to="/user/profile/create">
-                Create here</PageSuccessLink>
+                Try again</PageErrorButton>
         </PageLoadingWrapper>
     }
 
@@ -52,23 +62,26 @@ function UserProfile() {
         </PageLoadingWrapper>
     }
   
+    const VIEWRESUME_URL = `/main/cv/${profile.resume}`
+
     return (
     <>
-        <h2>User Talent Profile</h2>
-        <p>Resume: {profile.resume}</p>
-        <p>Phone: {profile.phone_number}</p>
-        <p>Address: {profile.address}</p>
-        <p>City: {profile.city}</p>
-        <p>Education Level: {profile.education_level}</p>
-        <p>Institution: {profile.institution}</p>
-        <p>Field: {profile.field}</p>
-        <p>Employer: {profile.employer}</p>
-        <p>Title: {profile.title}</p>
-        <p>Responsibilities: {profile.responsibilities}</p>
-        <button><PageSuccessLink to="/user/profile/update">Update profile</PageSuccessLink>
-        </button>
-        <br />
-        <br />
+      <TPContainer>
+        <TPTitle>User Talent Profile</TPTitle>
+        <TPAttribute><h3>Resume</h3><TPatag href={`http://localhost:5000/${VIEWRESUME_URL}`}
+        target="_blank">{profile.resume}</TPatag></TPAttribute>
+        <TPAttribute><h3>Phone</h3>{profile.phone_number}</TPAttribute>
+        <TPAttribute><h3>Address</h3>{profile.address}</TPAttribute>
+        <TPAttribute><h3>City</h3>{profile.city}</TPAttribute>
+        <TPAttribute><h3>Education Level</h3>{profile.education_level}</TPAttribute>
+        <TPAttribute><h3>Institution</h3>{profile.institution}</TPAttribute>
+        <TPAttribute><h3>Field</h3>{profile.field}</TPAttribute>
+        <TPAttribute><h3>Employer</h3>{profile.employer}</TPAttribute>
+        <TPAttribute><h3>Title</h3>{profile.title}</TPAttribute>
+        <TPAttribute><h3>Responsibilities</h3>{profile.responsibilities}</TPAttribute>
+        <TPButton><TPLink to="/user/profile/update">Update profile</TPLink>
+        </TPButton>
+        </TPContainer>
     </>
     )
 }

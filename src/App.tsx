@@ -33,6 +33,21 @@ import Users from "./components/Users";
 import Recruiters from "./components/Recruiters";
 import Admins from "./components/AdminsList";
 import InactiveUsers from "./components/InactiveUsers";
+import ViewJobpost from "./components/ViewJobpost";
+import ViewSingleUser from "./components/ViewSingleUser";
+import ViewSingleRecruiter from "./components/ViewSingleRecruiter";
+import ViewSingleAdmin from "./components/ViewSingleAdmin";
+import ViewSingleInactive from "./components/ViewSingleInactive";
+import DeactivateUser from "./components/DeactivateUser";
+import ActivateUser from "./components/ActivateUser";
+import MakeAdmin from "./components/MakeAdmin";
+import MakeRecruiter from "./components/MakeRecruiter";
+import ViewSingleUserPost from "./components/ViewSingleUserPost";
+import DeleteJobPost from "./components/DeleteJobPost";
+import ViewSingleTalent from "./components/ViewSingleTalent";
+// import Uploads from "./components/Uploads";
+// import ViewResume from "./components/ViewResume";
+// import ResumeList from "./components/ResumeList";
 // import ProfileDropdown from "./components/ProfileDropdown";
 
 function App() {
@@ -44,8 +59,11 @@ function App() {
       <Route path="/" element={<HomePage />} />
       {/* <Route path="/prof" element={<ProfileDropdown />} /> */}
       <Route path="home" element={<HomePage />} />
+      <Route path="resume" element="{<Uploads />}" />
+      <Route path="cvlist" element="{<ResumeList />}" />
+      <Route path="cvlist/:fileName" element="{<ViewResume />}" />
       <Route path="jobs" element={<Jobpost />} />
-      <Route path="jobs/job/:id" element="<Jobpost />" />
+      <Route path="jobs/:id" element={<ViewJobpost />} />
       <Route path="signup" element={<SelectUserType />} />
       <Route path="signup/employer" element={<EmployerSignup />} />
       <Route path="signup/talent" element={<TalentSignup />} />
@@ -61,7 +79,7 @@ function App() {
         <Route path="user/account" element={<AccountProfile />} />
         <Route path="user/logout" element={<Logout />} />
         <Route path="user/account/edit" element={<EditAccountSettings />} />
-        <Route path="jobs/job/:id/apply" element={<ApplyJob />} />
+        <Route path="jobs/:id/apply" element={<ApplyJob />} />
         <Route path="user/myapplications" element={<MyApplications />} />
         <Route path="user/myapplications/:id" element={<ViewSingleApplication />} />
         <Route path="user/jobcart" element={<Jobcart />} />
@@ -71,30 +89,46 @@ function App() {
       <Route element={<RequireAuth allowedRoles={[3, 2]} />}>
         <Route path="postjob" element={<JobpostForm />} />
         <Route path="user/posts" element={<UserPosts />} />
+        <Route path="user/jobs/:id" element={<ViewSingleUserPost />} />
         <Route path="user/applications" element={<AllAplications />} />
-        <Route path="user/job/:id/applications" element={<JobApplicants />} />
+        <Route path="user/jobs/:id/applications" element={<JobApplicants />} />
         <Route path="user/applications/:id" element={<ManageApplication />} />
         <Route path="user/applications/:id/updatestatus" element={<UpdateApplicationStatus />} />
         <Route path="user/viewprofiles" element={<TalentsList />} />
-        <Route path="user/job/:id/update" element={<EditJobpost />} />
-        <Route path="user/job/:id/delete" element="<Jobpost />" />
+        <Route path="user/viewprofiles/:id" element={<ViewSingleTalent />} />
+        <Route path="user/jobs/:id/update" element={<EditJobpost />} />
+        <Route path="user/jobs/:id/delete" element={<DeleteJobPost />} />
       </Route>
 
       {/* Admin2 routes */}
       <Route element={<RequireAuth allowedRoles={[2]} />}>
         <Route path="adminpanel" element={<AdminHome />}></Route>
-        <Route path="adminpanel/talents" element={<Users />}></Route>
+        <Route path="adminpanel/users" element={<Users />}></Route>
+        <Route path="adminpanel/users/:id" element={<ViewSingleUser />} />
         <Route path="adminpanel/recruiters" element={<Recruiters />}></Route>
+        <Route path="adminpanel/recruiters/:id" element={<ViewSingleRecruiter />}></Route>
         <Route path="adminpanel/inactive" element={<InactiveUsers />}></Route>
+        <Route path="adminpanel/inactive/:id" element={<ViewSingleInactive />}></Route>
+        <Route path="adminpanel/newrecruiter/:id" element={<MakeRecruiter />}></Route>
+        <Route path="adminpanel/activate/:id" element={<ActivateUser />}></Route>
+        <Route path="adminpanel/deactivate/:id" element={<DeactivateUser />}></Route>
       </Route>
 
       {/* Admin routes */}
       <Route element={<RequireAuth allowedRoles={[1]} />}>
         <Route path="adminpanel" element={<AdminHome />} />
-        <Route path="adminpanel/talents" element={<Users />} />
+        <Route path="adminpanel/users" element={<Users />} />
+        <Route path="adminpanel/users/:id" element={<ViewSingleUser />} />
         <Route path="adminpanel/recruiters" element={<Recruiters />}></Route>
+        <Route path="adminpanel/recruiters/:id" element={<ViewSingleRecruiter />}></Route>
         <Route path="adminpanel/admins" element={<Admins />}></Route>
+        <Route path="adminpanel/admins/:id" element={<ViewSingleAdmin />}></Route>
         <Route path="adminpanel/inactive" element={<InactiveUsers />}></Route>
+        <Route path="adminpanel/inactive/:id" element={<ViewSingleInactive />}></Route>
+        <Route path="adminpanel/newrecruiter/:id" element={<MakeRecruiter />}></Route>
+        <Route path="adminpanel/newadmin/:id" element={<MakeAdmin />}></Route>
+        <Route path="adminpanel/activate/:id" element={<ActivateUser />}></Route>
+        <Route path="adminpanel/deactivate/:id" element={<DeactivateUser />}></Route>
       </Route>
       {/* </Route> */}
       {/* 404 */}

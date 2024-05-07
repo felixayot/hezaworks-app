@@ -82,7 +82,9 @@ function EmployerSignup() {
       <SignUpFormContainer style={{height: "120vh"}}>
         { success ?
         <PageLoadingWrapper>
-          <PageSuccess>{success} Meanwhile you can proceed to
+          <PageSuccess>{success}</PageSuccess>
+          <PageSuccess>
+            Meanwhile you can proceed to
           <SignUpFormLink to="/login">Log in</SignUpFormLink> and interact with the platform.
         </PageSuccess>
         </PageLoadingWrapper>
