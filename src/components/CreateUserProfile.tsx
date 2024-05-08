@@ -7,7 +7,7 @@ import {
   UserProfileInput, UserProfileTextArea, UserProfileTitle,
   UserProfileWrapper } from '../styles/UserProfile.styles'
 import { useState, useEffect } from 'react'
-import { PageError, PageLoadingWrapper, PageSuccessLink } from '../styles/PageLoading.styles'
+import { PageError, PageErrorButton, PageLoadingWrapper, PageSuccess, PageSuccessLink } from '../styles/PageLoading.styles'
 import useAxiosPrivate from '../hooks/UseAxiosPrivate'
 import Icon from "./Icons";
 
@@ -38,10 +38,50 @@ function CreateUserProfile() {
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
 
+  const handleFileChange = (e) => {
+    setResume(e.target.files[0])
+  }
+
+  const handlePhoneChange = (e) => {
+    setPhone(e.target.value)
+  }
+
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value)
+  }
+
+  const handleCityChange = (e) => {
+    setCity(e.target.value)
+  }
+
+  const handleELChange = (e) => {
+    setEducationLevel(e.target.value)
+  }
+
+  const handleInstChange = (e) => {
+    setInstitution(e.target.value)
+  }
+
+  const handleFieldChange = (e) => {
+    setField(e.target.value)
+  }
+
+  const handleEmpChange = (e) => {
+    setEmployer(e.target.value)
+  }
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value)
+}
+
+  const handleRespChange = (e) => {
+    setResponsibilities(e.target.value)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = new FormData()
-    formData.append('file', resume)
+    formData.append('resume', resume)
     formData.append('fileName', resume.name)
     formData.append('phone_number', phone)
     formData.append('address', address)
@@ -52,16 +92,26 @@ function CreateUserProfile() {
     formData.append('employer', employer)
     formData.append('title', title)
     formData.append('responsibilities', responsibilities)
-    console.log(formData)
+    // console.log(formData)
+    console.log(formData.get('fileName'))
+    console.log(formData.get('phone_number'))
+    console.log(formData.get('address'))
+    console.log(formData.get('city'))
+    console.log(formData.get('education_level'))
+    console.log(formData.get('institution'))
+    console.log(formData.get('field'))
+    console.log(formData.get('employer'))
+    console.log(formData.get('title'))
+    console.log(formData.get('responsibilities'))
 
     try {
       const response = await axiosPrivate.post(PROFILE_URL,
-        JSON.stringify({
-          formData,
-        }),
+        formData,
         {
-          headers: { 'Content-Type': 'multipart/form-data' },
-          withCredentials: false
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        withCredentials: false
         }
       )
       // console.log(response)
@@ -90,12 +140,15 @@ function CreateUserProfile() {
 
   if (error) {
     return <PageLoadingWrapper>
-    <PageError>{error}</PageError>
+    <PageError>{error}</PageError><br />
+    <PageErrorButton onClick={() => navigate(-1)}>Go Back</PageErrorButton>
     </PageLoadingWrapper>
   } else if (success) {
     return <PageLoadingWrapper>
-    <PageError>{success}</PageError>
-    <PageSuccessLink to="/user/profile">View Profile</PageSuccessLink>
+    <PageSuccess>{success}</PageSuccess><br />
+    <PageErrorButton>
+      <PageSuccessLink to="/user/profile">View Profile</PageSuccessLink>
+    </PageErrorButton>
     </PageLoadingWrapper>
   }
 
@@ -103,96 +156,96 @@ function CreateUserProfile() {
     <>
     <UserProfileTitle>Create Your Professional Profile</UserProfileTitle>
     <UserProfileContainer>
+        <ProfileForm encType="multipart/form-data">
         <UserProfileWrapper>
         <UserProfileTitle>Upload your Resume</UserProfileTitle>
-          <ProfileForm encType="multipart/form-data">
-        <label>Resume:
+        {/* <h4>Resume:</h4> */}
         <UserProfileInput
         type="file"
         name="resume"
         accept=".pdf,.doc,.docx"
         required
         // value={resume}
-        onChange={(e)=>setResume(e.target.files[0])} />
-        </label>
-        <UserProfileButton><Icon className="fa-solid fa-arrow-right"></Icon>Proceed to Next</UserProfileButton>
-        </ProfileForm>
+        onChange={handleFileChange}
+        />
+        {/* <UserProfileButton onClick={() => null}><Icon className="fa-solid fa-arrow-right"></Icon>Proceed to Next</UserProfileButton>
+        </ProfileForm> */}
         </UserProfileWrapper>
 
         <UserProfileWrapper>
         <UserProfileTitle>Personal Information</UserProfileTitle>
-          <ProfileForm>
+          {/* <ProfileForm> */}
         <UserProfileInput
         type="text"
         required
-        value={phone}
-        onChange={(e)=>setPhone(e.target.value)}
+        // value={phone}
+        onChange={handlePhoneChange}
         placeholder="Phone Number" />
         <UserProfileInput
         type="text"
         required
-        value={address}
-        onChange={(e)=>setAddress(e.target.value)}
+        // value={address}
+        onChange={handleAddressChange}
         placeholder="Home Address" />
         <UserProfileInput
         type="text"
         required
-        value={city}
-        onChange={(e)=>setCity(e.target.value)}
+        // value={city}
+        onChange={handleCityChange}
         placeholder="City" />
-        <UserProfileButton><Icon className="fa-solid fa-arrow-right"></Icon>Proceed to Next</UserProfileButton>
-        </ProfileForm>
+        {/* <UserProfileButton><Icon className="fa-solid fa-arrow-right"></Icon>Proceed to Next</UserProfileButton>
+        </ProfileForm> */}
         </UserProfileWrapper>
 
         <UserProfileWrapper>
         <UserProfileTitle>Education</UserProfileTitle>
-          <ProfileForm>
+          {/* <ProfileForm> */}
         <UserProfileInput
         type="text"
         required
-        value={educationLevel}
-        onChange={(e)=>setEducationLevel(e.target.value)}
+        // value={educationLevel}
+        onChange={handleELChange}
         placeholder="Education Level" />
         <UserProfileInput
         type="text"
         required
-        value={institution}
-        onChange={(e)=>setInstitution(e.target.value)}
+        // value={institution}
+        onChange={handleInstChange}
         placeholder="Institution" />
         <UserProfileInput
         type="text"
         required
-        value={field}
-        onChange={(e)=>setField(e.target.value)}
+        // value={field}
+        onChange={handleFieldChange}
         placeholder="Field of Study" />
-        <UserProfileButton><Icon className="fa-solid fa-arrow-right"></Icon>Proceed to Next</UserProfileButton>
-        </ProfileForm>
+        {/* <UserProfileButton><Icon className="fa-solid fa-arrow-right"></Icon>Proceed to Next</UserProfileButton>
+        </ProfileForm> */}
         </UserProfileWrapper>
 
         <UserProfileWrapper>
         <UserProfileTitle>Professional Experience</UserProfileTitle>
-          <ProfileForm>
+          {/* <ProfileForm> */}
         <UserProfileInput
         type="text"
         required
-        value={employer}
-        onChange={(e)=>setEmployer(e.target.value)}
+        // value={employer}
+        onChange={handleEmpChange}
         placeholder="Employer" />
         <UserProfileInput
         type="text"
         required
-        value={title}
-        onChange={(e)=>setTitle(e.target.value)}
+        // value={title}
+        onChange={handleTitleChange}
         placeholder="Title" />
         <UserProfileTextArea
         type="textarea"
         required
-        value={responsibilities}
-        onChange={(e)=>setResponsibilities(e.target.value)}
+        // value={responsibilities}
+        onChange={handleRespChange}
         placeholder="Responsibilites" />
         <UserProfileButton onClick={handleSubmit}><Icon className="fa-solid fa-paper-plane"></Icon>Submit</UserProfileButton>
-        </ProfileForm>
         </UserProfileWrapper>
+        </ProfileForm>
         </UserProfileContainer>
   </>
   )

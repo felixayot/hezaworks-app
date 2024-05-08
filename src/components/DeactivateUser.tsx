@@ -57,9 +57,8 @@ if (error) {
 
   return (
     <PageLoadingWrapper>
-        <PageSuccess>User ID {id} has been successfully deactivated.
-        <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
-        </PageSuccess>
+        <PageSuccess>User ID {id} has been successfully deactivated.</PageSuccess>
+        <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton><br />
     </PageLoadingWrapper>
   )
 }

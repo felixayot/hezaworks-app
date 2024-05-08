@@ -40,14 +40,15 @@ function MakeRecruiter() {
     const navigate = useNavigate()
     const handleRedirect = () => navigate(-1)
 
-if (error) {
-        return (
-            <PageLoadingWrapper>
-                <PageError>{error}</PageError><br />
-                <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
-            </PageLoadingWrapper>
-        )
-    } else if (isLoading) {
+// if (error) {
+//         return (
+//             <PageLoadingWrapper>
+//                 <PageError>{error}</PageError><br />
+//                 <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
+//             </PageLoadingWrapper>
+//         )
+//     } else
+if (isLoading) {
         return (
             <PageLoadingWrapper>
                 <PageLoading>Submitting...</PageLoading>
@@ -57,7 +58,8 @@ if (error) {
 
   return (
     <PageLoadingWrapper>
-        <PageSuccess>Recruiter roles have been successfully granted to user ID {id}<PageSuccessLink to={`/adminpanel/recruiters/${id}`}>Go back.</PageSuccessLink>
+        <PageSuccess>Recruiter roles have been successfully granted to user ID {id}
+        <PageSuccessLink to={`/adminpanel/recruiters/${id}`}>Go back.</PageSuccessLink>
         </PageSuccess>
     </PageLoadingWrapper>
   )

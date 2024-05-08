@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 export const UserProfileContainer = styled.div`
   display: flex;
-  margin: 20px;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 3vw;
+  /* margin: 20px; */
+  flex-shrink: 15%;
+  flex-direction: column;
+  /* gap: 10vw; */
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -15,9 +15,12 @@ export const UserProfileContainer = styled.div`
 export const UserProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  // gap: 20vh;
+  margin-bottom: 10vh;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 5vw;
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);

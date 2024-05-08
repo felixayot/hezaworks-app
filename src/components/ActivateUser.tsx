@@ -57,9 +57,8 @@ if (error) {
 
   return (
     <PageLoadingWrapper>
-        <PageSuccess>User ID {id} has been successfully activated.
+        <PageSuccess>User ID {id} has been successfully activated.</PageSuccess><br />
         <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
-        </PageSuccess>
     </PageLoadingWrapper>
   )
 }
