@@ -19,6 +19,10 @@ export const SignUpFormWrapper = styled.div`
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 export const SignUpFormTitle = styled.h2`
@@ -58,6 +62,10 @@ export const SignUpFormButton = styled.button`
   background-color: #27005D;
   color: #fff;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const SignUpFormText = styled.p`

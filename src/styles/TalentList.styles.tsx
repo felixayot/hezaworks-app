@@ -10,6 +10,7 @@ export const TalentListContainer = styled.article`
   border-radius: 10px;
   height: auto;
   background-color: #f5f5f5;
+
 `;
 
 export const Title = styled.h1`
@@ -46,7 +47,7 @@ export const TalentListLink = styled(Link)`
     `;
 
 export const TPButton = styled.button`
-  width: 25%;
+  width: 50%;
   padding: 10px;
   margin: 10px 0;
   border: none;
@@ -54,4 +55,8 @@ export const TPButton = styled.button`
   background-color: #27005D;
   color: #fff;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;

@@ -79,7 +79,7 @@ function Navbar() {
                 setExtendNav((curr) => !curr);
               }}
             >
-              {""}
+              {" "}
               {extendNav ? <NavBurger>&#10005;</NavBurger> : <NavBurger>&#8801;</NavBurger>}
             </OpenLinksButton>
           </NavLinkContainer>

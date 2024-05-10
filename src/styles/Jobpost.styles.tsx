@@ -37,6 +37,10 @@ export const JobpostButton = styled.button`
   background-color: #27005D;
   color: #fff;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+        width: 100%;
+      }
 `;
 
 export const JobpostLink = styled(Link)`

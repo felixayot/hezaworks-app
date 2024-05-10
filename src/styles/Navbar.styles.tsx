@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Nav = styled.nav<{ extendNav: boolean }>`
   width: 100%;
-  height: ${(props) => (props.extendNav ? "100vh" : "80px")};
+  height: ${(props) => (props.extendNav ? "100%" : "80px")};
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -84,7 +84,7 @@ export const NavLinkExtended = styled(Link)`
   text-decoration: none;
   color: black;
   margin: 10px;
-  font-size: x-large;
+  font-size: 16px;
 
   &:hover {
     color: #f6921e;
@@ -96,7 +96,7 @@ export const NavText = styled.p`
   text-decoration: none;
   color: black;
   margin: 10px;
-  font-size: x-large;
+  font-size: 16px;
 `;
 
 export const Logo = styled.img`

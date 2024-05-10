@@ -34,6 +34,10 @@ export const VTPButton = styled.button`
     &:hover {
         background-color: #f6921e;
     }
+
+    @media (max-width: 768px) {
+    width: 100%;
+  }
     `;
 
 export const TPatag = styled.a`

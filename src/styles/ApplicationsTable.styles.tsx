@@ -7,6 +7,11 @@ export const TableContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin: 5vw;
+  overflow-x: auto;
+
+  @media (max-width: 768px) {
+    align-items: left;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -26,6 +31,12 @@ export const Table = styled.table`
   border-collapse: collapse;
   width: 100%;
   margin: 20px 20px;
+
+  @media (max-width: 768px) {
+    width: 50%;
+    margin: 5px;
+    border-collapse: none;
+  }
 `;
 
 export const TableHeader = styled.thead`

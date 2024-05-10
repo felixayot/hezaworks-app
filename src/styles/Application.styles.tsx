@@ -23,16 +23,28 @@ export const ApplicationContainer = styled.article`
 export const ApplicationHeader = styled.h2`
   font-size: 2rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+        font-size: 16px;
+      }
 `;
 
 export const ApplicationTitle = styled.h3`
     font-size: 1.5rem;
     margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+      }
 `;
 
 export const ApplicationAttribute = styled.p`
     font-size: 1.5rem;
     /* margin-bottom: 1rem; */
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+      }
 `;
 
 export const ApplicationLink = styled(Link)`

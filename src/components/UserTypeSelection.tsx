@@ -3,8 +3,10 @@
 
 import { useState, useEffect } from 'react';
 import { SignUpFormText, SignUpFormLink, SignUpFormContainer, SignUpFormWrapper, SignUp, SignUpFormTitle, SignUpFormInput, SignUpFormButton } from '../styles/SignUpFormStyles';
+import { useNavigate } from 'react-router-dom';
 
 function SelectUserType() {
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = 'HezaWorks | Select Account Type'
@@ -21,10 +23,10 @@ function SelectUserType() {
     e.preventDefault();
     if (userType === 'employer') {
       // Redirect to employer registration form
-      window.location.href = '/signup/employer';
+      navigate('/signup/employer');
     } else if (userType === 'talent') {
       // Redirect to freelancer registration form
-      window.location.href = '/signup/talent';
+      navigate('/signup/talent');
     } else {
         alert('Please select an account type');
         }
