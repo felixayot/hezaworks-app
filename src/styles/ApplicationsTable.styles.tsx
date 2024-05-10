@@ -5,12 +5,13 @@ export const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: left;
   justify-content: center;
-  margin: 5vw;
+  margin: 10px;
   overflow-x: auto;
 
   @media (max-width: 768px) {
-    align-items: left;
+    display: block;
   }
 `;
 
@@ -35,7 +36,6 @@ export const Table = styled.table`
   @media (max-width: 768px) {
     width: 50%;
     margin: 5px;
-    border-collapse: none;
   }
 `;
 
@@ -54,11 +54,19 @@ export const TableRow = styled.tr`
 
 export const TableCell = styled.td`
   padding: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 export const TableHeaderCell = styled.th`
   padding: 10px;
   text-align: left;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 export const TableButton = styled.button`

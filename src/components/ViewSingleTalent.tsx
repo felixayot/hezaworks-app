@@ -1,5 +1,5 @@
 /* eslint-disable */
-// @t/s-nocheck
+// @ts-nocheck
 
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
