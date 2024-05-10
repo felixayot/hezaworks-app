@@ -12,14 +12,14 @@
   } */
   
   .modalContainer {
-    width: 30vw;
+    width: 25%;
     height: auto;
     border-radius: 12px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
-    padding: 25px;
+    padding: 10px;
 
     position: absolute;
     top: 50%;
@@ -41,7 +41,7 @@
   .titleCloseBtn button {
     background-color: transparent;
     border: none;
-    font-size: 25px;
+    font-size: 15px;
     cursor: pointer;
   }
 
@@ -50,11 +50,11 @@
   }
   
   .modalContainer .body {
-    flex: 50%;
+    flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.7rem;
+    font-size: 1rem;
     text-align: center;
   }
   
@@ -68,12 +68,12 @@
   .modalContainer .footer button {
     width: 150px;
     height: 45px;
-    margin: 10px;
+    margin: 20px;
     border: none;
     background-color: #27005D;
     color: white;
-    border-radius: 8px;
-    font-size: 20px;
+    border-radius: 15px;
+    font-size: 15px;
     cursor: pointer;
   }
   

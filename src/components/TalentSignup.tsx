@@ -27,7 +27,7 @@ function TalentSignup() {
   const from = location.state?.from?.pathname || '/home'
 
   useEffect(() => {
-    document.title = 'HezaWorks - Talent Sign Up'
+    document.title = 'HezaWorks | Talent Sign Up'
     if(auth.username) {
       navigate(from, { replace: true })
     }

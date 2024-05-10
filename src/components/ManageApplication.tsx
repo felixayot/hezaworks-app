@@ -17,7 +17,7 @@ function ManageApplication() {
     const [ error, setError ] = useState('')
 
     useEffect(() => {
-        document.title = 'HezaWorks - Manage Application'
+        document.title = 'HezaWorks | Manage Application'
         axiosPrivate.get(`/jobs/user/applicants/${id}`)
         .then((response) => {
             setApplication(response.data)

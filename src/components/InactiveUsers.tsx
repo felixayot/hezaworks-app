@@ -21,7 +21,7 @@ function InactiveUsers() {
 
 
     useEffect(() => {
-        document.title = 'HezaWorks - Admins List';
+        document.title = 'HezaWorks | Inactive Users';
         axiosPrivate.get(INACTIVES_URL,
             { headers: { 'Content-Type': 'application/json' },
         withCredentials: false }

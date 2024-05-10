@@ -2,22 +2,25 @@
 // @ts-nocheck
 
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useAxiosPrivate from '../hooks/UseAxiosPrivate'
 import { PageError, PageLoading, PageLoadingWrapper } from '../styles/PageLoading.styles'
 import { ApplicationAttribute, ApplicationContainer, ApplicationHeader, ApplicationTitle, ApplicationWrapper } from '../styles/Application.styles'
 import { JobpostButton, JobpostLink } from '../styles/Jobpost.styles'
+import Modal from './Modal'
 
 function ViewSingleApplication() {
     const axiosPrivate = useAxiosPrivate()
     const { id } = useParams()
+    const navigate = useNavigate()
 
     const [ application, setApplication ] = useState('')
     const [ isLoading, setIsLoading ] = useState(true)
     const [ error, setError ] = useState('')
+    const [withdrawModal, setWithdrawModal] = useState(false);
 
     useEffect(() => {
-        document.title = 'HezaWorks - Manage Application'
+        document.title = `HezaWorks | Manage Application Ref ${id}`
         axiosPrivate.get(`/jobs/user/applications/${id}`)
         .then((response) => {
             setApplication(response.data)
@@ -49,8 +52,10 @@ function ViewSingleApplication() {
         <ApplicationAttribute><ApplicationTitle>My Email address</ApplicationTitle>{application.applicant}</ApplicationAttribute>
        <ApplicationAttribute><ApplicationTitle>Application Status</ApplicationTitle>{application.status}</ApplicationAttribute>
         <ApplicationAttribute><ApplicationTitle>Application date</ApplicationTitle>{application.applied_at}</ApplicationAttribute>
-        <JobpostButton><JobpostLink to="#">Withdraw this application</JobpostLink></JobpostButton>
+        <JobpostButton onClick={() => setWithdrawModal(true)}>Withdraw this application</JobpostButton>
         {/* </ApplicationWrapper> */}
+        { withdrawModal && <Modal setOpenModal={setWithdrawModal} BodySubject="This application will be withdrawn and deleted permanently"
+    handleContinue={() => navigate(`/user/myapplications/${application.application_id}/#`)}/>}
     </ApplicationContainer>
     </>
   )

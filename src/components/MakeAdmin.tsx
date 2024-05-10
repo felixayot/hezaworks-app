@@ -16,7 +16,7 @@ function MakeAdmin() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        document.title = 'HezaWorks - Create New Admin';
+        document.title = 'HezaWorks | Create New Admin';
 
         axiosPrivate.put(`/auth/users/newadmin/${id}`, {
             headers: {

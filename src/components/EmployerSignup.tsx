@@ -22,7 +22,7 @@ const SIGNUP_URL = '/auth/signup'
 function EmployerSignup() {
 
   useEffect(() => {
-    document.title = 'HezaWorks - Recruiter Sign Up'
+    document.title = 'HezaWorks | Recruiter Sign Up'
   }
   , [])
 

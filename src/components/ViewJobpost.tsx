@@ -29,7 +29,7 @@ function ViewJobpost() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "HezaWorks - Job Post";
+    document.title = `HezaWorks | View Job Ref ${id}`;
     axiosInstance
       .get(`/jobs/posts/${id}`, {
         headers: {

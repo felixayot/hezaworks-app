@@ -16,7 +16,7 @@ function ActivateUser() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        document.title = 'HezaWorks - Activate User';
+        document.title = 'HezaWorks | Activate User';
 
         axiosPrivate.put(`/auth/users/activate/${id}`, {
             headers: {

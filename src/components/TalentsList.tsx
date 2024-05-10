@@ -18,6 +18,7 @@ import {
 } from "../styles/TalentList.styles";
 import { Title } from "../styles/Jobpost.styles";
 import { TPatag } from "../styles/ViewTalentProfile.styles";
+import { BASE_URL } from "../api/axios";
 
 const TALENTS_URL = "/auth/users/talentlist";
 
@@ -28,7 +29,7 @@ function TalentsList() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "HezaWorks - Talents List";
+    document.title = "HezaWorks | Talents List";
     axiosPrivate
       .get(TALENTS_URL, {
         headers: {
@@ -80,7 +81,7 @@ function TalentsList() {
               <TalentListAttribute>
                 <h3>Resume</h3>
                 <TPatag
-                  href={`http://localhost:5000/main/cv/${talent.resume}`}
+                  href={`${BASE_URL}main/cv/${talent.resume}`}
                   target="_blank"
                 >
                   {talent.resume}

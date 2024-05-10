@@ -20,7 +20,7 @@ function CreateUserProfile() {
   const from = location.state?.from?.pathname || '/user/profile'
 
   useEffect(() => {
-    document.title = 'HezaWorks - Create My Profile'
+    document.title = 'HezaWorks | Create My Profile'
   }
   , [])
 

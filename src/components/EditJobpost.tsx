@@ -27,6 +27,7 @@ function EditJobpost() {
     const [error, setError] = useState('');
 
     useEffect(() => {
+      document.title = 'HezaWorks | Update Job'
       axiosPrivate.get(`/jobs/posts/job/${id}`, {
           headers: {
             "Content-Type": "application/json",

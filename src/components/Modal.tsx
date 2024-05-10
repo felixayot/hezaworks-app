@@ -17,7 +17,7 @@ function Modal({ setOpenModal, BodySubject, handleContinue }) {
           </button>
         </div>
         <div className="title">
-          <h1>Are You Sure?</h1>
+          <h3>Are You Sure?</h3>
         </div>
         <div className="body">
           <p>{BodySubject}</p>

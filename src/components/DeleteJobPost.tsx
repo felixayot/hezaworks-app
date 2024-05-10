@@ -16,7 +16,7 @@ function DeleteJobPost() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        document.title = 'HezaWorks - Delete a Job Post';
+        document.title = 'HezaWorks | Delete a Job Post';
 
         axiosPrivate.delete(`/jobs/posts/job/${id}`, {
             headers: {

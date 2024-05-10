@@ -20,7 +20,7 @@ function ViewSingleInactive() {
   const [activateModal, setActivateModal] = useState(false);
 
   useEffect(() => {
-    document.title = 'HezaWorks - View Inactive User Info';
+    document.title = `HezaWorks | View Inactive User ID ${id} Info`;
     axiosPrivate.get(`auth/users/inactive/${id}`, {
         headers: {
           "Content-Type": "application/json",

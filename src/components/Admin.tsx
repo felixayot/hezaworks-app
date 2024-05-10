@@ -3,11 +3,17 @@
 
 // Admin
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react'
 // import Users from './Users';
 import useAuth from '../hooks/useAuth';
 
 function AdminHome() {
     const { auth } = useAuth();
+
+    useEffect(() => {
+        document.title = 'HezaWorks | Admin'
+    }, [])
+    
     return (
         <>
         <section>

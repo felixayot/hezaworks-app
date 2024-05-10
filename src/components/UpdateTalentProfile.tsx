@@ -35,7 +35,7 @@ function UpdateTalentProfile() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    document.title = 'HezaWorks - Update My Profile'
+    document.title = 'HezaWorks | Update My Profile'
     axiosPrivate.get(USERPROFILE_URL, {
         headers: {
           "Content-Type": "application/json",

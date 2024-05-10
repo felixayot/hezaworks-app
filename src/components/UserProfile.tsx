@@ -10,6 +10,7 @@ import { ErrorButton,
 import { TPAttribute, TPContainer,
   TPLink, TPTitle, TPatag } from "../styles/ViewTalentProfile.styles"
 import { TPButton } from "../styles/TalentList.styles"
+import { BASE_URL } from "../api/axios"
 
 const USERPROFILE_URL = '/auth/user/talentprofile'
 
@@ -20,6 +21,7 @@ function UserProfile() {
     const [ error, setError ] = useState('')
 
     useEffect(() => {
+      document.title = "HezaWorks | My Professional Profile"
         axiosPrivate.get(USERPROFILE_URL, {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -62,13 +64,13 @@ function UserProfile() {
         </PageLoadingWrapper>
     }
   
-    const VIEWRESUME_URL = `/main/cv/${profile.resume}`
+    const VIEWRESUME_URL = `main/cv/${profile.resume}`
 
     return (
     <>
       <TPContainer>
         <TPTitle>User Talent Profile</TPTitle>
-        <TPAttribute><h3>Resume</h3><TPatag href={`http://localhost:5000/${VIEWRESUME_URL}`}
+        <TPAttribute><h3>Resume</h3><TPatag href={`${BASE_URL}${VIEWRESUME_URL}`}
         target="_blank">{profile.resume}</TPatag></TPAttribute>
         <TPAttribute><h3>Phone</h3>{profile.phone_number}</TPAttribute>
         <TPAttribute><h3>Address</h3>{profile.address}</TPAttribute>

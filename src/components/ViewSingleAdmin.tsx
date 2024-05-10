@@ -21,7 +21,7 @@ function ViewSingleRecruiter() {
   const [deactivateModal, setDeactivateModal] = useState(false);
 
   useEffect(() => {
-    document.title = 'HezaWorks - View Admin Info';
+    document.title = `HezaWorks | View Admin User ID ${id} Info`;
     axiosPrivate.get(`auth/users/admins/${id}`, {
         headers: {
           "Content-Type": "application/json",

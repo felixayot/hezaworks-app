@@ -24,7 +24,7 @@ function UserPosts() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "HezaWorks - My Job Posts";
+    document.title = "HezaWorks | My Job Posts";
     axiosPrivate.get(USERPOSTS_URL, {
         headers: {
           "Content-Type": "application/json",

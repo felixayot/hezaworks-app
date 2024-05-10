@@ -82,6 +82,7 @@ function App() {
         <Route path="jobs/:id/apply" element={<ApplyJob />} />
         <Route path="user/myapplications" element={<MyApplications />} />
         <Route path="user/myapplications/:id" element={<ViewSingleApplication />} />
+        <Route path="user/myapplications/:id/withdraw" element="{<WithdrawApplication />}" />
         <Route path="user/jobcart" element={<Jobcart />} />
       </Route>
 

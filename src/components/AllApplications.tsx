@@ -19,7 +19,7 @@ function AllApplications() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "HezaWorks - All Applicants";
+    document.title = "HezaWorks | All Applicants";
     axiosPrivate
       .get(ALLAPPLICANTS_URL, {
         headers: {

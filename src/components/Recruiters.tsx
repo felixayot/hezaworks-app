@@ -19,7 +19,7 @@ function Recruiters() {
     const [ error, setError ] = useState('');
 
     useEffect(() => {
-        document.title = 'HezaWorks - Recruiters List';
+        document.title = 'HezaWorks | Recruiters List';
         axiosPrivate.get(RECRUITERS_USERS,
             { headers: { 'Content-Type': 'application/json' },
         withCredentials: false

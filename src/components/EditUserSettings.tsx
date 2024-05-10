@@ -23,7 +23,7 @@ function EditAccountSettings() {
   const [ success, setSuccess ] = useState('')
 
   useEffect(() => {
-    document.title = 'HezaWorks - Edit Account Settings'
+    document.title = 'HezaWorks | Update Account Settings'
     axiosPrivate.get(ACCPROFILE_URL, {
       headers: {
         "Content-Type": "application/json",

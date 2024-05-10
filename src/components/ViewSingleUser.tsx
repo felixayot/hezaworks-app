@@ -21,7 +21,7 @@ function ViewSingleUser() {
   const [deactivateModal, setDeactivateModal] = useState(false);
 
   useEffect(() => {
-    document.title = 'HezaWorks - View User Info';
+    document.title = `HezaWorks | View User ID ${id} Info`;
     axiosPrivate.get(`auth/whois/${id}`, {
         headers: {
           "Content-Type": "application/json",

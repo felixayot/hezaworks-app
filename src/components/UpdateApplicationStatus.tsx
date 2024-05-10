@@ -16,7 +16,7 @@ function UpdateApplicationStatus() {
     const [ error, setError ] = useState('')
 
     useEffect(() => {
-        document.title = 'HezaWorks - Update Application Status'
+        document.title = 'HezaWorks | Update Application Status'
     }, [])
 
     const handleSubmit = async (e) => {

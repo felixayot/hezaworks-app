@@ -29,7 +29,7 @@ function ViewSingleTalent() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "HezaWorks - View a Talent";
+    document.title = "HezaWorks | View a Talent";
     axiosPrivate
       .get(`/auth/users/talentlist/${id}`, {
         headers: {

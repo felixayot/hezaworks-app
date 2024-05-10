@@ -30,7 +30,7 @@ function JobApplicants() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "HezaWorks - Job Applicants";
+    document.title = `HezaWorks | Job Ref ${id} Applicants`;
     axiosPrivate
       .get(`/jobs/posts/job/${id}/applicants`)
       .then((response) => {

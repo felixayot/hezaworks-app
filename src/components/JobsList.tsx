@@ -15,7 +15,7 @@ import Modal from "./Modal";
 function JobsList({ posts }) {
 
   useEffect(() => {
-    document.title = "HezaWorks - Jobs List";
+    document.title = "HezaWorks | Jobs List";
   }, []);
 
   return (

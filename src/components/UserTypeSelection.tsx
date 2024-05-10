@@ -7,7 +7,7 @@ import { SignUpFormText, SignUpFormLink, SignUpFormContainer, SignUpFormWrapper,
 function SelectUserType() {
 
   useEffect(() => {
-    document.title = 'HezaWorks - Select Account Type'
+    document.title = 'HezaWorks | Select Account Type'
   }
   , [])
 

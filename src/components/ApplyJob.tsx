@@ -16,7 +16,7 @@ function ApplyJob() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        document.title = 'HezaWorks - Apply Job';
+        document.title = 'HezaWorks | Apply Job';
 
         axiosPrivate.post(`/jobs/posts/job/${id}/apply`, {
             headers: {

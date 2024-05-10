@@ -43,7 +43,7 @@ function SigninForm() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "HezaWorks - Sign In";
+    document.title = "HezaWorks | Sign In";
     setError("");
   }, [username, password]);
 

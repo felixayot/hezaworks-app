@@ -20,7 +20,7 @@ function Users() {
     const [ error, setError ] = useState('');
 
     useEffect(() => {
-        document.title = 'HezaWorks - Users List';
+        document.title = 'HezaWorks | Users List';
         axiosPrivate.get(TALENT_USERS,
             { headers: { 'Content-Type': 'application/json' },
         withCredentials: false }

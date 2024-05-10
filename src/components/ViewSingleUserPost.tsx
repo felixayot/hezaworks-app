@@ -25,7 +25,7 @@ function ViewSingleUserPost() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    document.title = "HezaWorks - My Job Posts";
+    document.title = `HezaWorks | View Job Ref ${id}`;
     axiosPrivate.get(`jobs/user/myposts/${id}`, {
         headers: {
           "Content-Type": "application/json",

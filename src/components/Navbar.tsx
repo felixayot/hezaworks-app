@@ -18,6 +18,7 @@ import {
   NavButton,
   NavText,
   NavWrapper,
+  NavBurger,
 } from "../styles/Navbar.styles";
 import LogoImage from "../assets/heza-logo.png";
 import Icon from "./Icons";
@@ -78,8 +79,8 @@ function Navbar() {
                 setExtendNav((curr) => !curr);
               }}
             >
-              {/* {""} */}
-              {extendNav ? <> &#10005;</> : <> &#8801;</>}
+              {""}
+              {extendNav ? <NavBurger>&#10005;</NavBurger> : <NavBurger>&#8801;</NavBurger>}
             </OpenLinksButton>
           </NavLinkContainer>
         </LeftContainer>

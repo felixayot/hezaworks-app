@@ -1,14 +1,16 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import HomePh from "../assets/home-image.jpg";
 import { HomeButton, HomeContainer, HomeDescription, HomeImage, HomeTitle, HomeLink } from "../styles/HomePage.styles";
 
 function HomePage() {
+  const navigate = useNavigate()
+
   useEffect(() => {
-    document.title = "HezaWorks - Home Page";
+    document.title = "HezaWorks | Home";
   }, []);
 
   return (
@@ -17,7 +19,7 @@ function HomePage() {
       <HomeContainer>
         <HomeTitle>Join the biggest professional community at HezaWorks</HomeTitle>
         <HomeDescription>Find talent and get hired for your talent today
-          <HomeButton><HomeLink to="/signup">Get started</HomeLink></HomeButton>
+          <HomeButton onClick={() => navigate("/signup")}>{/*<HomeLink to="/signup">*/}Get started{/*</HomeLink>*/}</HomeButton>
         </HomeDescription>
         <HomeImage src={ HomePh} ></HomeImage>
       </HomeContainer>

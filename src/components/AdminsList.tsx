@@ -19,7 +19,7 @@ function Admins() {
     const [ error, setError ] = useState('');
 
     useEffect(() => {
-        document.title = 'HezaWorks - Admins List';
+        document.title = 'HezaWorks | Admins List';
         axiosPrivate.get(ADMINS,
             { headers: { 'Content-Type': 'application/json' },
         withCredentials: false }

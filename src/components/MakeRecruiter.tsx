@@ -16,7 +16,7 @@ function MakeRecruiter() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        document.title = 'HezaWorks - Create New Recruiter';
+        document.title = 'HezaWorks | Create New Recruiter';
 
         axiosPrivate.put(`/auth/users/newrecruiter/${id}`, {
             headers: {

@@ -21,7 +21,7 @@ const POST_URL = '/jobs/posts'
 function JobpostForm() {
 
     useEffect(() => {
-        document.title = 'HezaWorks - Post a Job'
+        document.title = 'HezaWorks | Post a Job'
       }
       , [])
 

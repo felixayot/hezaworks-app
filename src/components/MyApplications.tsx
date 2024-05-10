@@ -16,7 +16,7 @@ function MyApplications() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        document.title = 'HezaWorks - My Applications';
+        document.title = 'HezaWorks | My Applications';
         axiosPrivate.get(MYAPPLICATIONS_URL, {
             headers: {
               "Content-Type": "application/json",

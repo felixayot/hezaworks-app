@@ -20,7 +20,7 @@ function AccountProfile() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    document.title = 'HezaWorks - My Info';
+    document.title = 'HezaWorks | My Info';
     axiosPrivate.get(ACCPROFILE_URL, {
         headers: {
           "Content-Type": "application/json",

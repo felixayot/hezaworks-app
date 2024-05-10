@@ -1,15 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-// import { NavDropdown } from "react-bootstrap";
 
 export const Nav = styled.nav<{ extendNav: boolean }>`
   width: 100%;
   height: ${(props) => (props.extendNav ? "100vh" : "80px")};
-  /* overflow: ${(props) => (props.extendNav ? "visible !important" : "hidden")}; */
   background-color: white;
   display: flex;
   flex-direction: column;
-  border-bottom: 0.05px solid #27005D;
+  border-bottom: 0.05px solid #27005d;
 
   @media (max-width: 768px) {
     border-bottom: none;
@@ -52,9 +50,9 @@ export const NavLink = styled(Link)`
   font-size: x-large;
 
   &:hover {
-  color:  #F6921E;
-  transition: 200ms ease-out;
-    }
+    color: #f6921e;
+    transition: 200ms ease-out;
+  }
 
   @media (max-width: 768px) {
     display: none;
@@ -73,9 +71,9 @@ export const NavButton = styled.button`
   cursor: pointer;
 
   &:hover {
-  color:  #F6921E;
-  transition: 200ms ease-out;
-    }
+    color: #f6921e;
+    transition: 200ms ease-out;
+  }
 
   @media (max-width: 768px) {
     display: none;
@@ -89,8 +87,8 @@ export const NavLinkExtended = styled(Link)`
   font-size: x-large;
 
   &:hover {
-  color:  #F6921E;
-  transition: 200ms ease-out;
+    color: #f6921e;
+    transition: 200ms ease-out;
   }
 `;
 
@@ -126,8 +124,8 @@ export const NavExtendedContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: auto;
-  align-items:left;
+  /* height: auto; */
+  align-items: left;
   /* border: 0.05px solid #27005D; */
 
   @media (min-width: 768px) {
@@ -141,4 +139,13 @@ export const NavWrapper = styled.div`
   align-items: left;
   box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.1);
   width: 100%;
+`;
+
+export const NavBurger = styled.div`
+  position: absolute;
+  left: 5%;
+  top: 0;
+  /* width: 10px;
+  height: -10px; */
+  /* border: 3px solid blue; */
 `;

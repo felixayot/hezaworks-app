@@ -5,7 +5,7 @@ import { ErrorpageButton, ErrorpageContainer, ErrorpageText, ErrorpageTitle } fr
 function Unauthorized() {
 
   useEffect(() => {
-    document.title = 'HezaWorks - Unauthorized'
+    document.title = 'HezaWorks | Unauthorized'
   }
   , [])
 
