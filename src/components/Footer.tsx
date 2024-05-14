@@ -20,9 +20,9 @@ function Footer() {
         <FooterLink to="/#">Pricing</FooterLink>
         </Column>
         <Column>
-        <Title>About Us</Title>
-        <FooterLink to="/#">Mission</FooterLink>
-        <FooterLink to="/#">Vision</FooterLink>
+        <Title>HezaWorks</Title>
+        <FooterLink to="/#">About Us</FooterLink>
+        <FooterLink to="/#">FAQs</FooterLink>
         </Column>
         <Column>
         <Title>Contact Us</Title>

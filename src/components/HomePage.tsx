@@ -4,7 +4,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import HomePh from "../assets/home-image.jpg";
-import { HomeButton, HomeContainer, HomeDescription, HomeImage, HomeTitle, HomeLink } from "../styles/HomePage.styles";
+import { HomeButton, HomeContainer, HomeDescription, HomeImage, HomeTitle, HomeLink, ItemTitle } from "../styles/HomePage.styles";
 
 function HomePage() {
   const navigate = useNavigate()
@@ -18,36 +18,44 @@ function HomePage() {
       <Outlet />
       <HomeContainer>
         <HomeTitle>Join the biggest professional community at HezaWorks</HomeTitle>
-        <HomeDescription>Find talent and get hired for your talent today
+        <HomeDescription>Find talent and get hired for your talent today<br /><br />
           <HomeButton onClick={() => navigate("/signup")}>{/*<HomeLink to="/signup">*/}Get started{/*</HomeLink>*/}</HomeButton>
         </HomeDescription>
         <HomeImage src={ HomePh} ></HomeImage>
       </HomeContainer>
       <HomeContainer>
-        <HomeTitle>Our Services
+        <div>
+        <ItemTitle>Our Services</ItemTitle>
         <HomeDescription>Find talent and get hired for your talent today
+        <br /><br />
           <HomeButton><HomeLink to="#">Learn more</HomeLink></HomeButton>
-        </HomeDescription>
-      </HomeTitle>
-      <HomeTitle>Our Offers
+          </HomeDescription>
+        </div>
+        <div>
+      <ItemTitle>Our Offers</ItemTitle>
       <HomeDescription>Find talent and get hired for your talent today
+      <br /><br />
         <HomeButton><HomeLink to="#">Learn more</HomeLink></HomeButton>
       </HomeDescription>
-      </HomeTitle>
+      </div>     
       </HomeContainer>
+
       <HomeContainer>
-      <HomeTitle>About Us
+      <div>
+      <ItemTitle>About Us</ItemTitle>
       <HomeDescription>Find talent and get hired for your talent today
         </HomeDescription>
-      </HomeTitle>
-        <HomeTitle>Our Mission
+        </div>
+        <div>
+        <ItemTitle>Our Mission</ItemTitle>
         <HomeDescription>Find talent and get hired for your talent today
         </HomeDescription>
-        </HomeTitle>
-        <HomeTitle>Our Vision
+        </div>
+        <div>
+        <ItemTitle>Our Vision</ItemTitle>
         <HomeDescription>Find talent and get hired for your talent today
         </HomeDescription>
-        </HomeTitle>
+        </div>
       </HomeContainer>
     </>
   );

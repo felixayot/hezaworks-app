@@ -20,7 +20,17 @@ export const HomeContainer = styled.div`
 `;
 
 export const HomeTitle = styled.h2`
-  font-size: 3rem;
+  font-size: 35px;
+  margin-bottom: 1rem;
+
+  @media(max-width: 768px) {
+      font-size: 18px;
+      margin: 20px;
+  }
+`;
+
+export const ItemTitle = styled.h2`
+  font-size: 25px;
   margin-bottom: 1rem;
 
   @media(max-width: 768px) {
@@ -30,7 +40,7 @@ export const HomeTitle = styled.h2`
 `;
 
 export const HomeDescription = styled.p`
-  font-size: 1.5rem;
+  font-size: 21px;
   margin-bottom: 1rem;
 
   @media(max-width: 768px) {

@@ -24,7 +24,7 @@ export const Column = styled.div`
 export const Row = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-gap: 20px;
+    grid-gap: 10px;
 
     @media (max-width: 1000px) {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -35,7 +35,7 @@ export const FooterLink = styled(Link)`
   text-decoration: none;
   color: #fff;
   margin: 10px;
-  font-size: 18px;
+  font-size: 14px;
 
   &:hover {
   color:  #0795FF;
@@ -45,7 +45,7 @@ export const FooterLink = styled(Link)`
 
 export const Title = styled.p`
     color: #F6921E;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 40px;
     font-weight: bold;
 
