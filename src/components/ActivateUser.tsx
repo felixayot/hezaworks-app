@@ -43,7 +43,7 @@ function ActivateUser() {
 if (error) {
         return (
             <PageLoadingWrapper>
-                <PageError>{error}</PageError><br />
+                <PageError>{error}</PageError><br /><br />
                 <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
             </PageLoadingWrapper>
         )
@@ -58,7 +58,7 @@ if (error) {
   return (
     <PageLoadingWrapper>
         <PageSuccess>User ID {id} has been successfully activated.</PageSuccess><br />
-        <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
+        <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton><br />
     </PageLoadingWrapper>
   )
 }

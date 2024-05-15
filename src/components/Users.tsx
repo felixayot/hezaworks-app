@@ -32,8 +32,10 @@ function Users() {
             .catch((err) => {
                 if (!err.response) {
                 setError('No response from server');
-            } else if (err.response?.status === 401) {
-                setError('Unauthorized');
+            } else if (err.response?.status === 403) {
+                setError('403');
+            } else {
+                setError('An error occurred');
             }
         });
     }, []);
@@ -42,9 +44,12 @@ function Users() {
         return <PageLoadingWrapper>
             <PageLoading>Loading...</PageLoading>
             </PageLoadingWrapper>
-    }
-
-    else if (error) {
+    } else if (error === '403') {
+        return <PageLoadingWrapper>
+            <PageError>You are not authorized to view this page. 
+                Please contact your system administrator.</PageError>
+            </PageLoadingWrapper>
+    } else if (error) {
         return <PageLoadingWrapper>
             <PageError>{error}</PageError>
             </PageLoadingWrapper>

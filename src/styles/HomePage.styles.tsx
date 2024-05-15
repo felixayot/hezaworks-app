@@ -51,7 +51,7 @@ export const HomeDescription = styled.p`
 
 export const HomeButton = styled.button`
   padding: 1rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   background-color: #27005D;
   color: white;
   border: none;

@@ -33,6 +33,8 @@ function Admins() {
                 setError('No response from server');
             } else if (err.response?.status === 401) {
                 setError('Unauthorized');
+            } else {
+                setError('An error occurred');
             }
         });
     }, []);

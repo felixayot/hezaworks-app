@@ -52,7 +52,7 @@ function Navbar() {
               ? (
                 <>
             <NavLink to="/adminpanel/recruiters">Recruiters</NavLink>
-            <NavLink to="/adminpanel/talents">Other Users</NavLink>
+            <NavLink to="/adminpanel/users">Other Users</NavLink>
             </>
               ) : auth?.roles?.includes(3)
               ? (

@@ -34,7 +34,7 @@ export const Table = styled.table`
   margin: 20px 20px;
 
   @media (max-width: 768px) {
-    width: 50%;
+    /* width: 50%; */
     margin: 5px;
   }
 `;

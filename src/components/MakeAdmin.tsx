@@ -43,7 +43,7 @@ function MakeAdmin() {
 if (error) {
         return (
             <PageLoadingWrapper>
-                <PageError>{error}</PageError><br />
+                <PageError>{error}</PageError><br /><br />
                 <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
             </PageLoadingWrapper>
         )
@@ -57,7 +57,8 @@ if (error) {
 
   return (
     <PageLoadingWrapper>
-        <PageSuccess>Admin roles have been successfully granted to user ID {id}<PageSuccessLink to={`/adminpanel/admins/${id}`}>Go back.</PageSuccessLink>
+        <PageSuccess>Admin roles have been successfully granted to user ID {id}<br /><br />
+        <PageErrorButton onClick={() => navigate(`/adminpanel/admins/${id}`)}>Go back</PageErrorButton>
         </PageSuccess>
     </PageLoadingWrapper>
   )

@@ -43,7 +43,7 @@ function DeactivateUser() {
 if (error) {
         return (
             <PageLoadingWrapper>
-                <PageError>{error}</PageError><br />
+                <PageError>{error}</PageError><br /><br />
                 <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
             </PageLoadingWrapper>
         )
@@ -57,7 +57,7 @@ if (error) {
 
   return (
     <PageLoadingWrapper>
-        <PageSuccess>User ID {id} has been successfully deactivated.</PageSuccess>
+        <PageSuccess>User ID {id} has been successfully deactivated.</PageSuccess><br />
         <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton><br />
     </PageLoadingWrapper>
   )

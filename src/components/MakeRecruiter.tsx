@@ -43,7 +43,7 @@ function MakeRecruiter() {
 // if (error) {
 //         return (
 //             <PageLoadingWrapper>
-//                 <PageError>{error}</PageError><br />
+//                 <PageError>{error}</PageError><br /><br />
 //                 <PageErrorButton onClick={handleRedirect}>Go back</PageErrorButton>
 //             </PageLoadingWrapper>
 //         )

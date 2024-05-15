@@ -10,6 +10,10 @@ import {
 } from "../styles/PageLoading.styles";
 import useAxiosPrivate from "../hooks/UseAxiosPrivate";
 import {
+  TLButton,
+  TLCard,
+  TLName,
+  TLTitle,
   TPButton,
   TalentListAttribute,
   TalentListContainer,
@@ -19,19 +23,21 @@ import {
 import { Title } from "../styles/Jobpost.styles";
 import { TPatag } from "../styles/ViewTalentProfile.styles";
 import { BASE_URL } from "../api/axios";
-
-const TALENTS_URL = "/auth/users/talentlist";
+import { PgButton, PgContainer, PgSpan } from "../styles/Pagination.styles";
+import { useNavigate } from "react-router-dom";
 
 function TalentsList() {
   const axiosPrivate = useAxiosPrivate();
   const [talents, setTalents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "HezaWorks | Talents List";
     axiosPrivate
-      .get(TALENTS_URL, {
+      .get(`/auth/users/talentlist?page=${currentPage}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -50,7 +56,13 @@ function TalentsList() {
           );
         }
       });
-  }, [axiosPrivate]);
+  }, [currentPage]);
+
+  let talentsCount = 0;
+  talents.map((talent) => {
+    talentsCount = talent.count;
+  });
+  const pageCount = Math.ceil(talentsCount / 4);
 
   if (error) {
     return (
@@ -71,7 +83,7 @@ function TalentsList() {
     return (
       <>
         <Title>Talents List</Title>
-        {talents &&
+        {/* {talents &&
           talents.map((talent) => (
             <TalentListContainer key={talent.id}>
               <TalentListAttribute>
@@ -89,7 +101,7 @@ function TalentsList() {
               </TalentListAttribute>
               {/* <TalentListTitle>Resume</TalentListTitle>
           <TalentListLink to="#">{talent.resume}</TalentListLink>
-          </TalentListAttribute> */}
+          </TalentListAttribute> *
               <TalentListAttribute>
                 <TalentListTitle>Contact</TalentListTitle>
                 {talent.phone}
@@ -130,8 +142,22 @@ function TalentsList() {
                 </TalentListLink>
               </TPButton>
             </TalentListContainer>
-          ))}
-      </>
+          ))} */}
+        {talents && talents.map((talent) => (
+      <TLCard key={talent.id}>
+      <TLName>{talent.name}</TLName>
+      <TLTitle>{talent.title}</TLTitle>
+          <TLButton onClick={() => navigate(`/user/viewprofiles/${talent.id}`)}>
+          View this talent
+          </TLButton>
+        </TLCard>
+      ))}
+  <PgContainer>
+      <PgButton onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</PgButton>
+      <PgSpan> Page {currentPage} </PgSpan>
+      <PgButton onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === pageCount}>Next</PgButton>
+  </PgContainer>
+  </>
     );
   }
 }
