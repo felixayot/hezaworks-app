@@ -9,6 +9,7 @@ import {
   PageLoading,
   PageLoadingWrapper,
 } from "../styles/PageLoading.styles";
+import { BASE_URL } from "../api/axios";
 import useAxiosPrivate from "../hooks/UseAxiosPrivate";
 import {
   TPButton,
@@ -79,7 +80,7 @@ function ViewSingleTalent() {
           <TalentListAttribute>
             <h3>Resume</h3>
             <TPatag
-              href={`http://localhost:5000/main/cv/${talent.resume}`}
+              href={`${BASE_URL}main/cv/${talent.resume}`}
               target="_blank"
             >
               {talent.resume}

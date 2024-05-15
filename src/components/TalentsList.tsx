@@ -22,7 +22,6 @@ import {
 } from "../styles/TalentList.styles";
 import { Title } from "../styles/Jobpost.styles";
 import { TPatag } from "../styles/ViewTalentProfile.styles";
-import { BASE_URL } from "../api/axios";
 import { PgButton, PgContainer, PgSpan } from "../styles/Pagination.styles";
 import { useNavigate } from "react-router-dom";
 
@@ -83,66 +82,6 @@ function TalentsList() {
     return (
       <>
         <Title>Talents List</Title>
-        {/* {talents &&
-          talents.map((talent) => (
-            <TalentListContainer key={talent.id}>
-              <TalentListAttribute>
-                <TalentListTitle>Talent Name</TalentListTitle>
-                {talent.name}
-              </TalentListAttribute>
-              <TalentListAttribute>
-                <h3>Resume</h3>
-                <TPatag
-                  href={`${BASE_URL}main/cv/${talent.resume}`}
-                  target="_blank"
-                >
-                  {talent.resume}
-                </TPatag>
-              </TalentListAttribute>
-              {/* <TalentListTitle>Resume</TalentListTitle>
-          <TalentListLink to="#">{talent.resume}</TalentListLink>
-          </TalentListAttribute> *
-              <TalentListAttribute>
-                <TalentListTitle>Contact</TalentListTitle>
-                {talent.phone}
-              </TalentListAttribute>
-              <TalentListAttribute>
-                <TalentListTitle>Email</TalentListTitle>
-                {talent.email}
-              </TalentListAttribute>
-              <TalentListAttribute>
-                <TalentListTitle>Place of Residence</TalentListTitle>
-                {talent.city}
-              </TalentListAttribute>
-              <TalentListAttribute>
-                <TalentListTitle>Level of Education</TalentListTitle>
-                {talent.education_level}
-              </TalentListAttribute>
-              <TalentListAttribute>
-                <TalentListTitle>Field of Study</TalentListTitle>
-                {talent.field}
-              </TalentListAttribute>
-              <TalentListAttribute>
-                <TalentListTitle>Current or Former Employer</TalentListTitle>
-                {talent.employer}
-              </TalentListAttribute>
-              <TalentListAttribute>
-                <TalentListTitle>Current or Former Job Title</TalentListTitle>
-                {talent.title}
-              </TalentListAttribute>
-              <TalentListAttribute>
-                <TalentListTitle>
-                  Roles Performed at Former or Current Job
-                </TalentListTitle>
-                {talent.responsibilities}
-              </TalentListAttribute>
-              <TPButton>
-                <TalentListLink to={`/user/viewprofiles/${talent.id}`}>
-                  View More
-                </TalentListLink>
-              </TPButton>
-            </TalentListContainer>
-          ))} */}
         {talents && talents.map((talent) => (
       <TLCard key={talent.id}>
       <TLName>{talent.name}</TLName>

@@ -37,25 +37,8 @@ function JobsList({ posts }) {
       <JobCard key={post.id}>
         <PostTitleLink to={`/jobs/${post.id}`}>{post.title}</PostTitleLink>
         <PostAuthor>
-          {/* <h2>Organization</h2> */}
           {post.organization}
         </PostAuthor>
-        {/* <JobpostAttribute>
-          <h2>Job Description</h2>
-          {post.description}
-        </JobpostAttribute>
-        <JobpostAttribute>
-          <h2>Job Requirements</h2>
-          {post.requirements}
-        </JobpostAttribute> */}
-        {/* <PostDate>
-          <PostDateHeader>Date Posted</PostDateHeader>
-          {post.posted_at}
-        </PostDate>
-        <ExpireDate>
-          <ExpireDateHeader>Job Expires On</ExpireDateHeader>
-          {post.expires_on}
-      </ExpireDate> */}
         <ApplyButton onClick={() => navigate(`/jobs/${post.id}`)}>
         Apply
         </ApplyButton>
