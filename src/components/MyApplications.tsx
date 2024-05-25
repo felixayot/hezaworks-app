@@ -6,18 +6,18 @@ import { PageError, PageErrorButton, PageLoading, PageLoadingWrapper } from '../
 import useAxiosPrivate from '../hooks/UseAxiosPrivate';
 import { StyledLink, Table, TableBody, TableCell, TableContainer, TableHeader, TableHeaderCell, TableRow, TableTitle } from '../styles/ApplicationsTable.styles';
 import { useNavigate } from 'react-router-dom';
-
-const MYAPPLICATIONS_URL = '/jobs/user/myapplications';
+import { PgButton, PgContainer, PgSpan } from '../styles/Pagination.styles';
 
 function MyApplications() {
     const axiosPrivate = useAxiosPrivate();
     const [applications, setApplications] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
+    const [ currentPage, setCurrentPage ] = useState(1);
 
     useEffect(() => {
         document.title = 'HezaWorks | My Applications';
-        axiosPrivate.get(MYAPPLICATIONS_URL, {
+        axiosPrivate.get(`/jobs/user/myapplications?page=${currentPage}`, {
             headers: {
               "Content-Type": "application/json",
             },
@@ -36,7 +36,13 @@ function MyApplications() {
                 setError('Failed to fetch data');
               }
             });
-      }, [axiosPrivate]);
+      }, [currentPage]);
+
+      let applsCount = 0;
+      applications.map((appl) => {
+        applsCount = appl.count;
+      });
+      const pageCount = Math.ceil(applsCount / 10);
 
     const navigate = useNavigate()
     const handleRedirect = () => navigate(-1)
@@ -82,6 +88,11 @@ function MyApplications() {
       </TableBody>
     </Table>
     </TableContainer>
+    <PgContainer>
+      <PgButton onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</PgButton>
+      <PgSpan> Page {currentPage} </PgSpan>
+      <PgButton onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === pageCount}>Next</PgButton>
+    </PgContainer>
   </>
   )
 }

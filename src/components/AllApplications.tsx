@@ -10,18 +10,20 @@ import {
 } from "../styles/PageLoading.styles";
 import useAxiosPrivate from "../hooks/UseAxiosPrivate";
 import { StyledLink, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow, TableTitle } from "../styles/ApplicationsTable.styles";
+import { PgButton, PgContainer, PgSpan } from "../styles/Pagination.styles";
 
-const ALLAPPLICANTS_URL = "/jobs/user/allapplicants";
+const ALLAPPLICANTS_URL = "";
 function AllApplications() {
   const axiosPrivate = useAxiosPrivate();
   const [applicants, setApplicants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [ currentPage, setCurrentPage ] = useState(1);
 
   useEffect(() => {
     document.title = "HezaWorks | All Applicants";
     axiosPrivate
-      .get(ALLAPPLICANTS_URL, {
+      .get(`/jobs/user/allapplicants?page=${currentPage}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -37,10 +39,16 @@ function AllApplications() {
         } else if (err?.response?.data === undefined) {
           setError("No applications received yet");
         } else {
-          setError(`Failed to fetch data ${err?.response?.data?.message}`);
+          setError("Failed to fetch data");
         }
       });
-  }, [axiosPrivate]);
+  }, [currentPage]);
+
+  let applsCount = 0;
+  applicants.map((appl) => {
+    applsCount = appl.count;
+  });
+  const pageCount = Math.ceil(applsCount / 10);
 
   if (error) {
     return (
@@ -86,6 +94,11 @@ function AllApplications() {
             }
         </TableBody>
       </Table>
+      <PgContainer>
+      <PgButton onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</PgButton>
+      <PgSpan> Page {currentPage} </PgSpan>
+      <PgButton onClick={() => setCurrentPage(currentPage)} disabled={currentPage === pageCount}>Next</PgButton>
+    </PgContainer>
     </>
   );
 }

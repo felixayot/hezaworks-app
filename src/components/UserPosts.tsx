@@ -21,6 +21,9 @@ import {
   ExpireDate,
   ExpireDateHeader,
   PostDateHeader,
+  CompanyLogoDiv,
+  CompanyLogo,
+  ViewButton,
 } from "../styles/Jobpost.styles";
 import { PgButton, PgContainer, PgSpan } from "../styles/Pagination.styles";
 import { useNavigate } from "react-router-dom";
@@ -82,11 +85,15 @@ function UserPosts() {
       <Title>My Job Posts({jobsCount})</Title>
       {Jobposts && Jobposts.map((post) => (
       <JobCard key={post.id}>
+      <CompanyLogoDiv>
+        {/* https://picsum.photos/200 */}
+        <CompanyLogo src="https://picsum.photos/300" />
+      </CompanyLogoDiv>
       <PostTitleLink to={`/user/jobs/${post.id}`}>{post.title}</PostTitleLink>
-      <PostAuthor>{post.posted_at}</PostAuthor>
-      <ApplyButton onClick={() => navigate(`/user/jobs/${post.id}`)}>
+      <PostDate>{post.posted_at}</PostDate>
+      <ViewButton onClick={() => navigate(`/user/jobs/${post.id}`)}>
           View this post
-          </ApplyButton>
+          </ViewButton>
         </JobCard>
       ))}
   <PgContainer>

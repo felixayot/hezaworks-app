@@ -81,13 +81,17 @@ export const PostDateHeader = styled.p`
 `;
 
 export const PostDate = styled.p`
-  text-decoration: none;
-  grid-area: 2 / 4 / 2 / 4;
-  font-size: 16px;
-  align-self: start;
-  font-weight: 500;
-  margin-top: 5px;
-  padding: 0 24px;
+  grid-area: 2 / 2 / 3 / 3;
+  align-self: center;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 5px;
+  /* padding: 0 24px; */
+
+  @media (max-width: 768px) {
+    grid-area: 2 / 2 / 3 / 2;
+    padding: 0 16px;
+  }
 `;
 
 export const ExpireDateHeader = styled.p`
@@ -150,6 +154,14 @@ export const PostTitleLink = styled(Link)`
   font-weight: 500;
   margin-top: 5px;
   padding: 0 24px;
+
+  @media (max-width: 768px) {
+    grid-area: 1 / 3 / 8 / 4;
+    /* display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding: 0 16px; */
+  }
   `;
 
 export const ApplyButton = styled.button`
@@ -197,3 +209,55 @@ export const SaveButton = styled.button`
       /* margin-right: 10px; */
     }
 `;
+
+export const CompanyLogoDiv = styled.div` 
+  grid-area: 1 / 1 / 2 / 2;
+  background-color: #fff;
+  height: 80px;
+  width: 80px;
+  box-sizing: border-box;
+  position: relative;
+  padding: 5px;
+
+  @media (max-width: 768px) {
+    height: 40px;
+    width: 50px;
+    padding: 5px;
+  }
+`;
+
+export const CompanyLogo = styled.img`
+  max-height: calc(100% - 10px);
+  max-width: calc(100% - 10px);
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* @media (max-width: 768px) {
+    display: none;
+  } */
+`;
+
+export const ViewButton = styled.button`
+  grid-area: 1 / 8 / 2 / 8;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  padding: 6px 12px;
+  z-index: 2;
+  background-color: #27005D;
+  color: #fff;
+
+  @media (max-width: 768px) {
+    grid-area: 6 / 3 / 3 / 2;
+    display: flex;
+    margin-right: 50px;
+  }
+  `;

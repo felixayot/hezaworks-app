@@ -1,26 +1,17 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import {
-  JobpostContainer,
-  JobpostAttribute,
-  JobpostTitle,
   Title,
-  JobpostLink,
-  JobpostButton,
-  PostButton,
   SaveButton,
   ApplyButton,
   PostTitleLink,
   PostAuthor,
   JobCard,
-  PostDate,
-  ExpireDate,
-  ExpireDateHeader,
-  PostDateHeader,
+  CompanyLogo,
+  CompanyLogoDiv,
 } from "../styles/Jobpost.styles";
-import Modal from "./Modal";
 import { useNavigate } from "react-router-dom";
 
 function JobsList({ posts }) {
@@ -35,6 +26,10 @@ function JobsList({ posts }) {
   <Title>Jobs available for Applications</Title>
   {posts.map((post) => (
       <JobCard key={post.id}>
+        <CompanyLogoDiv>
+        {/* Random placeholder photos https://picsum.photos/seed/{picsum/200/300} */}
+        <CompanyLogo src={`https://picsum.photos/seed/${Math.random()*1000}/300`} />
+        </CompanyLogoDiv>
         <PostTitleLink to={`/jobs/${post.id}`}>{post.title}</PostTitleLink>
         <PostAuthor>
           {post.organization}
@@ -42,7 +37,7 @@ function JobsList({ posts }) {
         <ApplyButton onClick={() => navigate(`/jobs/${post.id}`)}>
         Apply
         </ApplyButton>
-        <SaveButton onClick={() => navigate("/user/jobcart")}>
+        <SaveButton onClick={() => navigate("#")}>
         Add to Job cart
         </SaveButton>
       </JobCard>

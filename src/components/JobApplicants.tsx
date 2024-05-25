@@ -20,6 +20,7 @@ import {
   TableRow,
   TableTitle,
 } from "../styles/ApplicationsTable.styles";
+import { PgContainer, PgSpan, PgButton } from "../styles/Pagination.styles";
 
 function JobApplicants() {
   const { id } = useParams();
@@ -28,11 +29,12 @@ function JobApplicants() {
   const [applicants, setApplicants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     document.title = `HezaWorks | Job Ref ${id} Applicants`;
     axiosPrivate
-      .get(`/jobs/posts/job/${id}/applicants`)
+      .get(`/jobs/posts/job/${id}/applicants?page=${currentPage}`)
       .then((response) => {
         setApplicants(response.data);
         setIsLoading(false);
@@ -46,7 +48,13 @@ function JobApplicants() {
           setError(`Failed to fetch data ${err?.response?.data?.message}`);
         }
       });
-  }, [axiosPrivate, id]);
+  }, [currentPage]);
+
+  let applsCount = 0;
+  applicants.map((appl) => {
+    applsCount = appl.count;
+  });
+  const pageCount = Math.ceil(applsCount / 10);
 
   if (error) {
     return (
@@ -98,6 +106,11 @@ function JobApplicants() {
             })}
         </TableBody>
       </Table>
+      <PgContainer>
+      <PgButton onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</PgButton>
+      <PgSpan> Page {currentPage} </PgSpan>
+      <PgButton onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === pageCount}>Next</PgButton>
+    </PgContainer>
     </>
   );
 }
