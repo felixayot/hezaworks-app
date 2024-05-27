@@ -2,7 +2,6 @@
 // @ts-nocheck
 
 import { useEffect, useState } from "react";
-// import axiosInstance from '../api/axios';
 import {
   PageError,
   PageLoading,
@@ -12,7 +11,6 @@ import useAxiosPrivate from "../hooks/UseAxiosPrivate";
 import { StyledLink, Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow, TableTitle } from "../styles/ApplicationsTable.styles";
 import { PgButton, PgContainer, PgSpan } from "../styles/Pagination.styles";
 
-const ALLAPPLICANTS_URL = "";
 function AllApplications() {
   const axiosPrivate = useAxiosPrivate();
   const [applicants, setApplicants] = useState([]);
@@ -48,6 +46,7 @@ function AllApplications() {
   applicants.map((appl) => {
     applsCount = appl.count;
   });
+  // console.log(applsCount);
   const pageCount = Math.ceil(applsCount / 10);
 
   if (error) {
@@ -97,7 +96,7 @@ function AllApplications() {
       <PgContainer>
       <PgButton onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</PgButton>
       <PgSpan> Page {currentPage} </PgSpan>
-      <PgButton onClick={() => setCurrentPage(currentPage)} disabled={currentPage === pageCount}>Next</PgButton>
+      <PgButton onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === pageCount}>Next</PgButton>
     </PgContainer>
     </>
   );

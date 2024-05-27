@@ -1,7 +1,7 @@
 /* eslint-disable */
-// @ts-nocheck
+// @t/s-nocheck
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Title,
   SaveButton,
@@ -11,36 +11,21 @@ import {
   JobCard,
   CompanyLogo,
   CompanyLogoDiv,
-  SearchForm,
-  SearchLabel,
-  SearchInput,
   SearchButton,
+  SearchText,
 } from "../styles/Jobpost.styles";
 import { useNavigate } from "react-router-dom";
-import SearchBar from "./SearchJobs";
+import Results from "./SearchJobs";
 
-function JobsList({ posts }) {
+function SearchResults() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    document.title = "HezaWorks | Jobs List";
-  }, []);
-
-  return (
-    <>
-  <Title>Jobs available for Applications</Title>
-  <SearchBar />
-  {/* <SearchForm>
-    <SearchLabel htmlFor="search">Search for jobs</SearchLabel>
-    <SearchInput
-    type="text"
-    id="search"
-    name="search"
-    placeholder="Enter a job title keyword e.g Engineer"/>
-    <SearchButton onClick={() => navigate("/jobs/searchresults")}>Search</SearchButton>
-  </SearchForm> */}
-  {posts.map((post) => (
-      <JobCard key={post.id}>
+  if (Results.length != 0) {
+    return (
+        <>
+        <Title>Search Results:</Title>
+        {Results.map((post) => (
+        <JobCard key={post.id}>
         <CompanyLogoDiv>
         {/* Random placeholder photos https://picsum.photos/seed/{picsum/200/300} */}
         <CompanyLogo src={`https://picsum.photos/seed/${Math.random()*1000}/300`} />
@@ -59,6 +44,15 @@ function JobsList({ posts }) {
     ))}
   </>
   );
+} else {
+    return (
+        <>
+        <Title>Search Results:</Title>
+        <SearchText>No results found</SearchText>
+        <SearchButton onClick={() => navigate("/jobs")}>Go back</SearchButton>
+        </>
+    );
+}
 }
 
-export default JobsList;
+export default SearchResults;

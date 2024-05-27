@@ -5,6 +5,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import HomePh from "../assets/home-image.jpg";
 import { HomeButton, HomeContainer, HomeDescription, HomeImage, HomeTitle, HomeLink, ItemTitle } from "../styles/HomePage.styles";
+import Icon, { HomeIcon } from "./Icons";
 
 function HomePage() {
   const navigate = useNavigate()
@@ -25,14 +26,14 @@ function HomePage() {
       </HomeContainer>
       <HomeContainer>
         <div>
-        <ItemTitle>Our Services</ItemTitle>
+        <ItemTitle><HomeIcon className="fa-solid fa-list" />Our Services</ItemTitle>
         <HomeDescription>Find talent and get hired for your talent today
         <br /><br />
           <HomeButton><HomeLink to="#">Learn more</HomeLink></HomeButton>
           </HomeDescription>
         </div>
         <div>
-      <ItemTitle>Our Offers</ItemTitle>
+      <ItemTitle><HomeIcon className="fa-solid fa-gift" />Our Offers</ItemTitle>
       <HomeDescription>Find talent and get hired for your talent today
       <br /><br />
         <HomeButton><HomeLink to="#">Learn more</HomeLink></HomeButton>

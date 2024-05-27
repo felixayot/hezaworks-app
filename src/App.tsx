@@ -45,6 +45,7 @@ import MakeRecruiter from "./components/MakeRecruiter";
 import ViewSingleUserPost from "./components/ViewSingleUserPost";
 import DeleteJobPost from "./components/DeleteJobPost";
 import ViewSingleTalent from "./components/ViewSingleTalent";
+import SearchResults from "./components/JobSearchResults";
 // import Uploads from "./components/Uploads";
 // import ViewResume from "./components/ViewResume";
 // import ResumeList from "./components/ResumeList";
@@ -63,6 +64,7 @@ function App() {
       <Route path="cvlist" element="{<ResumeList />}" />
       <Route path="cvlist/:fileName" element="{<ViewResume />}" />
       <Route path="jobs" element={<Jobpost />} />
+      <Route path="jobs/searchresults" element={<SearchResults />} />
       <Route path="jobs/:id" element={<ViewJobpost />} />
       <Route path="signup" element={<SelectUserType />} />
       <Route path="signup/employer" element={<EmployerSignup />} />

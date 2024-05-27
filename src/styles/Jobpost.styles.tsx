@@ -261,3 +261,49 @@ export const ViewButton = styled.button`
     margin-right: 50px;
   }
   `;
+
+export const SearchForm = styled.form`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  margin-bottom: 50px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+`;
+
+export const SearchLabel = styled.label`
+  margin: 8px;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+`;
+
+export const SearchInput = styled.input`
+  width: 50%;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  font-family: 'Nunito Sans', sans-serif;
+  border-radius: 5px;
+  background-color: #fff;
+`;
+
+export const SearchButton = styled.button`
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 30px;
+  background-color: #27005D;
+  color: #fff;
+  cursor: pointer;
+`;
+
+export const SearchText = styled.p`
+  font-size: 16px;
+  color: #333;
+  margin: 20px;
+`;

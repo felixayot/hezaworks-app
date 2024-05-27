@@ -3,9 +3,13 @@
 
 import React from "react";
 
-import { Icons } from "../styles/icons.styles";
+import { Icons, HomeIcons } from "../styles/icons.styles";
 
 function Icon({ className }) {
+  return <Icons className={className} />;
+}
+
+export function HomeIcon({ className }) {
   return <Icons className={className} />;
 }
 
