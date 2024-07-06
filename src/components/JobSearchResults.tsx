@@ -1,7 +1,6 @@
 /* eslint-disable */
 // @t/s-nocheck
 
-import { useState, useEffect } from "react";
 import {
   Title,
   SaveButton,
@@ -15,16 +14,19 @@ import {
   SearchText,
 } from "../styles/Jobpost.styles";
 import { useNavigate } from "react-router-dom";
-import Results from "./SearchJobs";
+import { JobsearchContext } from "../context/JobsearchContext";
+import { useContext } from "react";
 
 function SearchResults() {
   const navigate = useNavigate();
+  const { results } = useContext(JobsearchContext);
+  const count = results.length
 
-  if (Results.length != 0) {
+  if (count != 0) {
     return (
         <>
-        <Title>Search Results:</Title>
-        {Results.map((post) => (
+        <Title style={{ fontSize: "20px" }}>{`Search Results(${count}):`}</Title>
+        {results.map((post) => (
         <JobCard key={post.id}>
         <CompanyLogoDiv>
         {/* Random placeholder photos https://picsum.photos/seed/{picsum/200/300} */}
@@ -40,11 +42,11 @@ function SearchResults() {
         <SaveButton onClick={() => navigate("#")}>
         Add to Job cart
         </SaveButton>
-      </JobCard>
-    ))}
-  </>
-  );
-} else {
+        </JobCard>
+        ))}
+        </>
+    )
+  } else {
     return (
         <>
         <Title>Search Results:</Title>
@@ -52,7 +54,7 @@ function SearchResults() {
         <SearchButton onClick={() => navigate("/jobs")}>Go back</SearchButton>
         </>
     );
-}
+  }
 }
 
 export default SearchResults;

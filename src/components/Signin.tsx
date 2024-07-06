@@ -45,7 +45,7 @@ function SigninForm() {
   useEffect(() => {
     document.title = "HezaWorks | Sign In";
     setError("");
-  }, [username, password]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

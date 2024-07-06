@@ -1,4 +1,7 @@
-import { useState } from "react";
+/* eslint-disable */
+// @ts-nocheck
+
+import { useState, useContext } from "react";
 import {
   SearchForm,
   SearchLabel,
@@ -7,13 +10,13 @@ import {
 } from "../styles/Jobpost.styles";
 import axiosInstance from "../api/axios";
 import { useNavigate } from "react-router-dom";
+import { JobsearchContext } from "../context/JobsearchContext";
 
 const SEARCH_URL = "/jobs/posts/search";
-let Results = [];
 
 function SearchBar() {
   const [search, setSearch] = useState("");
-  const [results, setResults] = useState([]);
+  const { setResults } = useContext(JobsearchContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -21,34 +24,29 @@ function SearchBar() {
     setSearch(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("search", search);
-    axiosInstance
+
+    try {
+      const response = await axiosInstance
       .post(SEARCH_URL, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
         withCredentials: false,
       })
-      .then((response) => {
-        // console.log(response.data);
-        // Results = response.data;
-        setResults(response.data);
-        navigate("/jobs/searchresults");
-      })
-      .catch((err) => {
+      setResults(response.data)
+      navigate("/jobs/searchresults");
+    } catch (err) {
         if (!err?.response) {
           setError("No response from server");
         } else {
           setError("Failed to fetch data");
         }
-      });
+      }
   };
-
-  Results = results;
-  console.log(Results);
 
   return (
     <>
@@ -68,4 +66,3 @@ function SearchBar() {
 }
 
 export default SearchBar;
-export { Results };

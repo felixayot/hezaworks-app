@@ -47,7 +47,7 @@ function EmployerSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-        const response = await axiosInstance.post(SIGNUP_URL,
+        await axiosInstance.post(SIGNUP_URL,
           JSON.stringify({
           first_name: firstName,
           last_name: lastName,
@@ -62,7 +62,6 @@ function EmployerSignup() {
             withCredentials: false
           }
         )
-        console.log(response)
         setSuccess('Account creation successful! You will be notified via email \
         once your account has been approved for posting jobs.')
     } catch (err) {

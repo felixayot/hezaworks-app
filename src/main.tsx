@@ -8,9 +8,11 @@ import { AuthProvider } from "./context/AuthProvider.tsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.tsx";
 import Footer from "./components/Footer.tsx";
+import { JobsearchProvider } from "./context/JobsearchContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <JobsearchProvider>
     <AuthProvider>
     <Router>
     <GlobalStyles />
@@ -23,5 +25,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Footer />
     </Router>
   </AuthProvider>
+  </JobsearchProvider>
  </React.StrictMode>
 );

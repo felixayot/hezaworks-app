@@ -45,7 +45,7 @@ function TalentSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axiosInstance.post(SIGNUP_URL,
+      await axiosInstance.post(SIGNUP_URL,
         JSON.stringify({
         first_name: firstName,
         last_name: lastName,
@@ -59,7 +59,6 @@ function TalentSignup() {
           withCredentials: false
         }
       )
-      console.log(response)
       window.location.href = '/login'
       setSuccess('Account created successfully')
   } catch (err) {

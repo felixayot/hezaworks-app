@@ -52,7 +52,7 @@ function JobsList({ posts }) {
         <ApplyButton onClick={() => navigate(`/jobs/${post.id}`)}>
         Apply
         </ApplyButton>
-        <SaveButton onClick={() => navigate("#")}>
+        <SaveButton onClick={() => disabled}>
         Add to Job cart
         </SaveButton>
       </JobCard>
