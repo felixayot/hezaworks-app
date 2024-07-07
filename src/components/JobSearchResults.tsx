@@ -1,5 +1,5 @@
 /* eslint-disable */
-// @t/s-nocheck
+// @ts-nocheck
 
 import {
   Title,
