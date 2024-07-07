@@ -1,21 +1,14 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { useState, useEffect } from 'react';
-import { JobpostContainer, JobpostTitle, JobpostAttribute, JobpostButton, JobpostLink } from "../styles/Jobpost.styles";
+import { useEffect } from 'react';
+import { Title, JobCard, CompanyLogoDiv, CompanyLogo, PostTitleLink, PostAuthor, ApplyButton, SaveButton } from "../styles/Jobpost.styles";
 import { PageError, PageErrorButton, PageLoadingWrapper } from '../styles/PageLoading.styles';
 import { useNavigate } from 'react-router-dom';
+import useJobcart from '../hooks/useJobcart';
 
 function Jobcart() {
-    const [cartposts, setCartposts] = useState<{
-      id: number;
-      title: string;
-      organization: string;
-      description: string;
-      requirements: string;
-      posted_at: string;
-      expires_on: string;
-    }[]>([]);
+    const { jobcart } = useJobcart()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -33,37 +26,46 @@ function Jobcart() {
       // ]);
     }, []);
 
-  if (cartposts.length != 0) {
+  const count = jobcart.length
+  // console.log(jobcart)
+
+  function handleRemovefromCart(selectedPost) {
+    // let jobExists = jobcart.find((job) => job.id === selectedPost.id);
+    // if (jobExists) {
+      // jobcart.pop(selectedPost);
+      // jobcart.filter((job) => job.id !== selectedPost.id);
+      // jobcart.splice(jobcart.indexOf(selectedPost), 1);
+      // jobcart.splice(selectedPost.id, 1
+    const index = jobcart.indexOf(selectedPost)
+    jobcart.splice(index, 1)
+    window.alert("Job post successfully removed from the cart!")
+    // window.location.reload()
+  }
+
+  if (count != 0) {
     return (
-      cartposts.map((post) => (
-        <JobpostContainer key={post.id}>
-        <JobpostTitle>{post.title}</JobpostTitle>
-        <JobpostAttribute>
-          <h2>Organization</h2>
+      <>
+      <Title style={{ fontSize: "20px" }}>{`Posts in Jobcart(${count})`}</Title>
+        {jobcart.map((post) => (
+        <JobCard key={post.id}>
+        <CompanyLogoDiv>
+        {/* Random placeholder photos https://picsum.photos/seed/{picsum/200/300} */}
+        <CompanyLogo src={`https://picsum.photos/seed/${Math.random()*1000}/300`} />
+        </CompanyLogoDiv>
+        <PostTitleLink to={`/jobs/${post.id}`}>{post.title}</PostTitleLink>
+        <PostAuthor>
           {post.organization}
-        </JobpostAttribute>
-        <JobpostAttribute>
-          <h2>Job Description</h2>
-          {post.description}
-        </JobpostAttribute>
-        <JobpostAttribute>
-          <h2>Job Requirements</h2>
-          {post.requirements}
-        </JobpostAttribute>
-        <JobpostAttribute>
-          <h2>Date Posted</h2>
-          {post.posted_at}
-        </JobpostAttribute>
-        <JobpostAttribute>
-          <h2>Job Expires On</h2>
-          {post.expires_on}
-        </JobpostAttribute>
-        <JobpostButton>
-        <JobpostLink to={`/jobs/job/${post.id}/apply`}>Apply Now</JobpostLink>
-        </JobpostButton>
-        </JobpostContainer>
-  )
-  ))
+        </PostAuthor>
+        <ApplyButton onClick={() => navigate(`/jobs/${post.id}`)}>
+        Apply
+        </ApplyButton>
+        <SaveButton onClick={() => handleRemovefromCart(post)}>
+        Remove from Job cart
+        </SaveButton>
+        </JobCard>
+        ))}
+        </>
+    )
   } else {
     return (
       <PageLoadingWrapper>

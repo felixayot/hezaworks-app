@@ -1,7 +1,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { useState, useContext } from "react";
+import { useState } from "react";
 import {
   SearchForm,
   SearchLabel,
@@ -10,13 +10,13 @@ import {
 } from "../styles/Jobpost.styles";
 import axiosInstance from "../api/axios";
 import { useNavigate } from "react-router-dom";
-import { JobsearchContext } from "../context/JobsearchContext";
+import useJobsearch from "../hooks/useJobsearch";
 
 const SEARCH_URL = "/jobs/posts/search";
 
 function SearchBar() {
   const [search, setSearch] = useState("");
-  const { setResults } = useContext(JobsearchContext);
+  const { setResults } = useJobsearch();
   const [error, setError] = useState("");
   const navigate = useNavigate();
 

@@ -14,12 +14,11 @@ import {
   SearchText,
 } from "../styles/Jobpost.styles";
 import { useNavigate } from "react-router-dom";
-import { JobsearchContext } from "../context/JobsearchContext";
-import { useContext } from "react";
+import useJobsearch from "../hooks/useJobsearch";
 
 function SearchResults() {
   const navigate = useNavigate();
-  const { results } = useContext(JobsearchContext);
+  const { results } = useJobsearch();
   const count = results.length
 
   if (count != 0) {
