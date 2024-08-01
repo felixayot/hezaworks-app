@@ -10,6 +10,13 @@ import Navbar from "./components/Navbar.tsx";
 import Footer from "./components/Footer.tsx";
 import { JobsearchProvider } from "./context/JobsearchContext.tsx";
 import { JobcartProvider } from "./context/JobcartContext.tsx";
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+
+console.log(process.env.NODE_ENV);
+
+if (process.env.NODE_ENV === "production") {
+  disableReactDevTools();
+}
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
