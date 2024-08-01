@@ -1,4 +1,5 @@
 /* eslint-disable */
+// @ts-nocheck
 
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -12,7 +13,7 @@ import { JobsearchProvider } from "./context/JobsearchContext.tsx";
 import { JobcartProvider } from "./context/JobcartContext.tsx";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === "production") {
   disableReactDevTools();
