@@ -32,12 +32,12 @@ function Footer() {
         <FooterLink to="/#"><Icon className="fa-brands fa-linkedin" />LinkedIn</FooterLink>
         <FooterLink to="/#"><Icon className="fa-brands fa-youtube" />YouTube</FooterLink>
         </Column>
-        <Column>
+        {/* <Column>
         <Title>Developers</Title>
         <FooterLink to="https://linkedin.com/in/felixayot" target="_blank"><Icon className="fa-brands fa-linkedin" />LinkedIn</FooterLink>
         <FooterLink to="https://github.com/felixayot" target="_blank"><Icon className="fa-brands fa-github" />GitHub</FooterLink>
         <FooterLink to="mailto:ariscladconsult@gmail.com"><Icon className="fa-regular fa-envelope" />Email</FooterLink>
-        </Column>
+        </Column> */}
         </Row>
         </Wrapper>
       </FooterContainer>
