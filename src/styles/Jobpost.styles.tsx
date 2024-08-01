@@ -176,15 +176,16 @@ export const ApplyButton = styled.button`
   font-size: 14px;
   padding: 6px 12px;
   z-index: 2;
-  background-color: #27005D;
+  background-color: #27005d;
   color: #fff;
 
   @media (max-width: 768px) {
-    grid-area: 6 / 3 / 3 / 2;
+    display: none;
+    /* grid-area: 6 / 3 / 3 / 2;
     display: flex;
-    margin-right: 50px;
+    margin-right: 50px; */
   }
-  `;
+`;
 
 export const SaveButton = styled.button`
   grid-area: 3 / 8 / 5 / 8;
@@ -243,7 +244,7 @@ export const CompanyLogo = styled.img`
 export const ViewButton = styled.button`
   grid-area: 1 / 8 / 2 / 8;
   display: block;
-  width: 100%;
+  /* width: 100%; */
   cursor: pointer;
   border: none;
   border-radius: 4px;

@@ -3,7 +3,7 @@ import HomePage from "./components/HomePage";
 import TalentSignup from "./components/TalentSignup";
 import SigninForm from "./components/Signin";
 import JobpostForm from "./components/JobpostForm";
-import Jobpost from "./components/Jobpost";
+// import Jobpost from "./components/Jobpost";
 import UserProfile from "./components/UserProfile";
 import UpdateTalentProfile from "./components/UpdateTalentProfile";
 import SelectUserType from "./components/UserTypeSelection";
@@ -33,7 +33,7 @@ import Users from "./components/Users";
 import Recruiters from "./components/Recruiters";
 import Admins from "./components/AdminsList";
 import InactiveUsers from "./components/InactiveUsers";
-import ViewJobpost from "./components/ViewJobpost";
+// import ViewJobpost from "./components/ViewJobpost";
 import ViewSingleUser from "./components/ViewSingleUser";
 import ViewSingleRecruiter from "./components/ViewSingleRecruiter";
 import ViewSingleAdmin from "./components/ViewSingleAdmin";
@@ -45,7 +45,9 @@ import MakeRecruiter from "./components/MakeRecruiter";
 import ViewSingleUserPost from "./components/ViewSingleUserPost";
 import DeleteJobPost from "./components/DeleteJobPost";
 import ViewSingleTalent from "./components/ViewSingleTalent";
-import SearchResults from "./components/JobSearchResults";
+// import SearchResults from "./components/JobSearchResults";
+import Realposts from "./components/RealPost";
+import RealSearchResults from "./components/RealSearchResults";
 // import Uploads from "./components/Uploads";
 // import ViewResume from "./components/ViewResume";
 // import ResumeList from "./components/ResumeList";
@@ -63,9 +65,11 @@ function App() {
       <Route path="resume" element="{<Uploads />}" />
       <Route path="cvlist" element="{<ResumeList />}" />
       <Route path="cvlist/:fileName" element="{<ViewResume />}" />
-      <Route path="jobs" element={<Jobpost />} />
-      <Route path="jobs/searchresults" element={<SearchResults />} />
-      <Route path="jobs/:id" element={<ViewJobpost />} />
+      {/* <Route path="jobs" element={<Jobpost />} /> */}
+      <Route path="jobs" element={<Realposts />} />
+      {/* <Route path="jobs/searchresults" element={<SearchResults />} /> */}
+      <Route path="jobs/searchresults" element={<RealSearchResults />} />
+      {/* <Route path="jobs/:title" element={<ViewJobpost />} /> */}
       <Route path="signup" element={<SelectUserType />} />
       <Route path="signup/employer" element={<EmployerSignup />} />
       <Route path="signup/talent" element={<TalentSignup />} />
