@@ -1,4 +1,10 @@
+import { useEffect } from 'react'
+
 function PrivacyPolicy() {
+	useEffect(() => {
+		document.title = 'HezaWorks | Privacy Policy'
+	}, [])
+
 	return (
 		<>
 			<h1>Privacy Policy</h1>
