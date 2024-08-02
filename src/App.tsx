@@ -48,6 +48,7 @@ import ViewSingleTalent from "./components/ViewSingleTalent";
 // import SearchResults from "./components/JobSearchResults";
 import Realposts from "./components/RealPost";
 import RealSearchResults from "./components/RealSearchResults";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 // import Uploads from "./components/Uploads";
 // import ViewResume from "./components/ViewResume";
 // import ResumeList from "./components/ResumeList";
@@ -65,6 +66,7 @@ function App() {
       <Route path="resume" element="{<Uploads />}" />
       <Route path="cvlist" element="{<ResumeList />}" />
       <Route path="cvlist/:fileName" element="{<ViewResume />}" />
+      <Route path="privacypolicy" element={<PrivacyPolicy />} />
       {/* <Route path="jobs" element={<Jobpost />} /> */}
       <Route path="jobs" element={<Realposts />} />
       {/* <Route path="jobs/searchresults" element={<SearchResults />} /> */}

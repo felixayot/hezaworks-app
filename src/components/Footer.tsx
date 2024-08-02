@@ -38,6 +38,10 @@ function Footer() {
         <FooterLink to="https://github.com/felixayot" target="_blank"><Icon className="fa-brands fa-github" />GitHub</FooterLink>
         <FooterLink to="mailto:ariscladconsult@gmail.com"><Icon className="fa-regular fa-envelope" />Email</FooterLink>
         </Column> */}
+        <Column>
+        <Title>Terms and Conditions</Title>
+        <FooterLink to="/privacypolicy" target="_blank"><Icon className="fa-solid fa-shield-halved" />View Terms and Conditions</FooterLink>
+        </Column>
         </Row>
         </Wrapper>
       </FooterContainer>
